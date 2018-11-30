@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 require('./db/mongo') //connect db
-const doctor = require('./routes/doctor')
+const findcook = require('./routes/findcook')
 const patient = require('./routes/patient')
 
 const app = express()
@@ -14,7 +14,7 @@ app.use((req, res, next) =>{
 })
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
-app.use('/doctor', doctor)
+app.use('/findcook', findcook)
 app.use('/patient', patient)
 
 module.exports = app
