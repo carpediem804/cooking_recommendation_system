@@ -5,11 +5,7 @@
       <app-header></app-header>
       <router-view></router-view>
       </div>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/signUp">회원가입테스트</router-link> |
-      <router-link to="/addProfile">프로필추가테스트</router-link>
     </div>
-    <router-view/>
   </div>
 </template>
 <script>
