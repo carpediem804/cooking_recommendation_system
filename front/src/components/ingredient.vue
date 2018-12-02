@@ -379,7 +379,6 @@ export default{
       this.$http.post('http://localhost:8000/findcook/',{
         checkedNames: this.checkedNames
       })
-<<<<<<< HEAD
       this.checkedNames.splice(0,this.checkedNames.length)
       
     },
@@ -393,14 +392,6 @@ export default{
 
 }
 
-
-=======
-    }
-},
-    components:{
-      recommend
-    }
->>>>>>> 33026076b9bcc5e821ecce93f2bb4a4e10774c95
 }
 
 </script>
