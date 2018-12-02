@@ -3,8 +3,7 @@
 
                   <span>
                     <input type = "text" v-model ="ingredient" placeholder ="재료를 쓰시오.">
-                    <input type ="button" v-on:click="ingredients2"
-                    value ="검색">
+                    <input type ="button" v-on:click="ingredients2" value ="검색">
 
                   </span>
         <br>
@@ -278,7 +277,7 @@
                         <br>
                         <input type="button" v-on:click="clear()" value=clear버튼>
                         <input type="button" v-on:click="ingredients()" value ="이 재료 추천 받기">
-                        <input type="button" v-on:click="test" value="dddddd">
+                        
 
                     </span>
 
@@ -392,7 +391,7 @@ export default{
 
       
     },
-    test:function(){
+    /*test:function(){
           this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
               console.log("hi")
               console.log(res.data)
@@ -404,7 +403,7 @@ export default{
           }).catch(res=>{
               console.log(res)
           })
-      }
+      }*/
 },
     components:{
       recommend
