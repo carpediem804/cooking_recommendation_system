@@ -389,6 +389,15 @@ export default{
       })
       this.ingredient=' '
     },
+
+    /*search:function(){
+      if(this.ingredient == '감자')
+      {
+         
+      }
+      
+    }*/
+    
     /*test:function(){
           this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
               console.log("hi")
