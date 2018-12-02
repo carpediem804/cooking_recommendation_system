@@ -1,12 +1,28 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/board">게시판</router-link>
+      <app-header></app-header>
+      <router-view></router-view>
     </div>
-    <router-view/>
   </div>
 </template>
+
+<script>
+    // Imports
+    import header from './components/header.vue';
+    export default {
+        components: {
+            'app-header': header
+        },
+        data () {
+            return {
+            }
+        },
+        methods: {
+        }
+    }
+</script>
+
 
 <style>
   #app {
@@ -27,5 +43,9 @@
 
   #nav a.router-link-exact-active {
     color: #42b983;
+  }
+  body{
+    margin: 0;
+    font-family: 'Nunito SemiBold';
   }
 </style>

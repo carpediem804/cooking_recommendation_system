@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Board from './views/Board.vue'
 import About from './views/About.vue'
+import addBlog from './components/addBlog.vue';
+import showBlogs from './components/showBlogs.vue';
+import singleBlog from './components/singleBlog.vue';
 
 Vue.use(Router)
 
@@ -22,9 +25,12 @@ export default new Router({
       }
     ,
     {
-      path: '/board',
-      name: 'board',
-        component: Board
-    }
+      path: '/showBlogs',
+      name: 'showBlogs',
+        component: showBlogs
+    },
+      { path: '/add', component: addBlog},
+      { path: '/blog/:id', component: singleBlog}
+
   ]
 })
