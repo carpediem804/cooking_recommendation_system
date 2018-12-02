@@ -8,8 +8,7 @@
 
                   </span>
         <br>
-=======
->>>>>>> df87e076ecfb559b95f722b72956551b08732d51
+
         <select v-model = "selected">
               <option disabled value ="">재료 종류</option>
               <option>야채류</option>
