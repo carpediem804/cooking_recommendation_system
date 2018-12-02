@@ -296,7 +296,7 @@
         </ul>
      </div>
   </div>
-    
+
 </template>
 
 <script>
@@ -394,8 +394,8 @@ export default{
       }).then(res=>{
           this.receive_data=res.body.send_data
 
-      }),
-      this.checkedNames.splice(0,this.checkedNames.length)
+      })
+      //this.checkedNames.splice(0,this.checkedNames.length)
     },
 
     ingredients2:function(){
