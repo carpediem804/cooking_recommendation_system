@@ -6,6 +6,7 @@ import AddProfile from './views/addProfile.vue'
 import addBlog from './components/addBlog.vue';
 import showBlogs from './components/showBlogs.vue';
 import singleBlog from './components/singleBlog.vue';
+import ingredient from './components/ingredient.vue';
 
 Vue.use(Router)
 
@@ -34,6 +35,12 @@ export default new Router({
           component: showBlogs
       },
       { path: '/add', component: addBlog},
-      { path: '/blog/:id', component: singleBlog}
+      { path: '/blog/:id', component: singleBlog},
+
+      {
+          path:'/ingredient',
+          name:'ingredient',
+          component:ingredient
+      }
   ]
 })

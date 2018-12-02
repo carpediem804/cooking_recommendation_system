@@ -2,6 +2,7 @@
     <nav>
         <ul>
             <li><router-link to="/" exact>Home</router-link></li>
+            <li> <router-link to="/ingredient" exact>현민이꺼</router-link></li>
             <li><router-link to="/showBlogs" exact>Blog</router-link></li>
             <li><router-link to="/add" exact>Add a new blog</router-link></li>
             <li>  <router-link to="/signUp" exact>회원가입테스트</router-link></li>
