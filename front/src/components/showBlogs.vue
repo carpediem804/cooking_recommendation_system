@@ -1,7 +1,7 @@
 <template>
     <div id="show-blogs">
-        <h1>All Blog Articles</h1>
-        <input type="text" v-model="search" placeholder="search blogs" />
+        <h1>요리 게시판</h1>
+        <input type="text" v-model="search" placeholder="search" />
         <div v-for="blog in filteredBlogs" class="single-blog">
             <router-link v-bind:to="'/blog/' + blog.blogId"><h2>{{ blog.title }}</h2></router-link>
             <article>{{ blog.body }}</article>
@@ -21,8 +21,10 @@ export default {
     },
     created() {
         this.$http.get('http://localhost:4000/').then(function(data){
+
             this.blogs = data.body.data;
             this.$store.state.blogs = this.blogs;
+
             this.$_.forEach(this.blogs, function (blog) {
               console.log(blog.title);
             });
