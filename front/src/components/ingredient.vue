@@ -3,7 +3,7 @@
 
                   <span>
                     <input type = "text" v-model ="ingredient" placeholder ="재료를 쓰시오.">
-                    <input type ="button" v-on:click="ingredients2" value ="검색">
+                    <input type ="button" v-on:click="search" value ="검색">
 
                   </span>
         <br>
@@ -395,15 +395,16 @@ export default{
         ingredient: this.ingredient
       })
       this.ingredient=' '
+
     },
 
-    /*search:function(){
+    search:function(){
       if(this.ingredient == '감자')
       {
          
       }
       
-    }*/
+    }
     
     /*test:function(){
           this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
