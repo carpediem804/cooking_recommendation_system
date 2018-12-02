@@ -1,7 +1,7 @@
 <template>
  <div id ="example_select">
                   <span>
-                    <input v-model ="ingredient" placeholder ="재료를 쓰시오.">
+                    <input type = "text" v-model ="ingredient" placeholder ="재료를 쓰시오.">
                     <input type ="button" v-on:click="ingredients2"
                     value ="검색">
 
@@ -384,6 +384,7 @@ export default{
         ingrdient: this.ingredient
       })
       this.ingredient=' '
+
       
     }
 
