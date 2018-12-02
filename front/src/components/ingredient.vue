@@ -388,10 +388,6 @@ export default{
         ingredient: this.ingredient
       })
       this.ingredient=' '
-      
-
-
-      
     },
     /*test:function(){
           this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
