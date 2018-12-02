@@ -288,7 +288,6 @@
 </template>
 
 <script>
-    import recommend from './recommend.vue'
 
 export default{
   name:'example_select',
@@ -401,23 +400,7 @@ export default{
 
       
     },
-    /*test:function(){
-          this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
-              console.log("hi")
-              console.log(res.data)
-              //요리이름
-              //이미지
-              //요리법
-              //url
-
-          }).catch(res=>{
-              console.log(res)
-          })
-      }*/
 },
-    components:{
-      recommend
-    }
 }
 
 
