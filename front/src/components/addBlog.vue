@@ -1,22 +1,35 @@
 <template>
     <div id="add-blog">
-        <h2>Add a New Blog Post</h2>
+        <h2>게시판 글올리기</h2>
         <form v-if="!submitted">
-            <label>Blog Title:</label>
+            <label>제목:</label>
             <input type="text" v-model.lazy="blog.title" required />
-            <label>Blog Content:</label>
+            <label>내용:</label>
             <textarea v-model.lazy.trim="blog.content"></textarea>
             <div id="checkboxes">
-                <p>Blog Categories:</p>
-                <label>Ninjas</label>
-                <input type="checkbox" value="ninjas" v-model="blog.categories" />
-                <label>Wizards</label>
-                <input type="checkbox" value="wizards" v-model="blog.categories" />
-                <label>Mario</label>
-                <input type="checkbox" value="mario" v-model="blog.categories" />
-                <label>Cheese</label>
-                <input type="checkbox" value="cheese" v-model="blog.categories" />
+                <p>Categories:</p>
+                <label>한식</label>
+                <input type="checkbox" value="한식" v-model="blog.categories" />
+                <label>중식</label>
+                <input type="checkbox" value="중식" v-model="blog.categories" />
+                <label>일식</label>
+                <input type="checkbox" value="일식" v-model="blog.categories" />
+                <label>양식</label>
+                <input type="checkbox" value="양식" v-model="blog.categories" />
             </div>
+
+            <div class="dropbox">
+                <input class="input-file" type="file" name="myfile"
+                       @change="upload($event.target.name, $event.target.files)"
+                       @drop="upload($event.target.name, $event.target.files)">
+                <div v-if="!imgFile">
+                    <h2>파일을 드래그해서 드랍해주세요. </h2>
+                </div>
+                <div v-else>
+                    <img :src="imgFile" />
+                </div>
+            </div>
+
             <label>Author:</label>
             <select v-model="blog.author">
                 <option v-for="author in authors">{{ author }}</option>
@@ -28,11 +41,11 @@
             <h3>Thanks for adding your post</h3>
         </div>
         <div id="preview">
-            <h3>Preview blog</h3>
-            <p>Blog title: {{ blog.title }}</p>
-            <p>Blog content:</p>
+            <h3>Preview</h3>
+            <p>제목: {{ blog.title }}</p>
+            <p>내용:</p>
             <p style="white-space: pre">{{ blog.content }}</p>
-            <p>Blog Categories:</p>
+            <p>Categories:</p>
             <ul>
                 <li v-for="category in blog.categories">{{ category }}</li>
             </ul>
@@ -42,65 +55,117 @@
 </template>
 
 <script>
-// Imports
-export default {
-    data () {
-        return {
-            blog: {
-                title: '',
-                content: '',
-                categories: [],
-                author: ''
+    // Imports
+    export default {
+        data () {
+            return {
+                blog: {
+                    title: '',
+                    content: '',
+                    categories: [],
+                    author: '',
+                    imgFile: null
+                },
+                authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
+                submitted: false
+            }
+        },
+        methods: {
+            post: function(){
+                console.log("post 됨 ")
+                this.$http.post('http://localhost:8000/upload', {
+                    title: this.blog.title,
+                    body: this.blog.content,
+                    category: this.blog.categories,
+                    imgFile: this.blog.imgFile,
+                    blogId: this.$store.state.blogs.length + 1
+                }).then(function(data){
+                    this.submitted = true;
+                });
             },
-            authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
-            submitted: false
-        }
-    },
-    methods: {
-        post: function(){
-            this.$http.post('http://localhost:4000/posts', {
-                title: this.blog.title,
-                body: this.blog.content,
-                blogId: this.$store.state.blogs.length + 1
-            }).then(function(data){
-                this.submitted = true;
-            });
+            upload(name, files) {
+                const formData = new FormData();
+                formData.append(name, files[0], files[0].name);
+                this.createImage(files[0]);
+                imgFile = formData;
+
+                //const url = "http://127.0.0.1:12010/upload/1";
+                //  axios.post(url, formData).then(response => {
+                //    console.log(response);
+                //  })
+            },
+            createImage(file) {
+                var image = new Image();
+                var reader = new FileReader();
+                var vm = this;
+
+                reader.onload = (e) => {
+                    vm.imgFile = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
         }
     }
-}
 </script>
 
 <style scoped>
-#add-blog *{
-    box-sizing: border-box;
-}
-#add-blog{
-    margin: 20px auto;
-    max-width: 500px;
-}
-label{
-    display: block;
-    margin: 20px 0 10px;
-}
-input[type="text"], textarea{
-    display: block;
-    width: 100%;
-    padding: 8px;
-}
-#preview{
-    padding: 10px 20px;
-    border: 1px dotted #ccc;
-    margin: 30px 0;
-}
-h3{
-    margin-top: 10px;
-}
-#checkboxes input{
-    display: inline-block;
-    margin-right: 10px;
-}
-#checkboxes label{
-    display: inline-block;
-    margin-top: 0;
-}
+    #add-blog *{
+        box-sizing: border-box;
+    }
+    #add-blog{
+        margin: 20px auto;
+        max-width: 500px;
+    }
+    label{
+        display: block;
+        margin: 20px 0 10px;
+    }
+    input[type="text"], textarea{
+        display: block;
+        width: 100%;
+        padding: 8px;
+    }
+    #preview{
+        padding: 10px 20px;
+        border: 1px dotted #ccc;
+        margin: 30px 0;
+    }
+    h3{
+        margin-top: 10px;
+    }
+    #checkboxes input{
+        display: inline-block;
+        margin-right: 10px;
+    }
+    #checkboxes label{
+        display: inline-block;
+        margin-top: 0;
+    }
+    .dropbox {
+        outline: 2px dashed #aaa;
+        background: #7fb4dd;
+        width: 300px;
+        height: 300px;
+        position: relative;
+        margin: 0 auto;
+    }
+    img{
+        width: 300px;
+        height: 300px;
+    }
+    .dropbox > h2{
+        position: absolute;
+        top: 50px;
+        left: 0;
+        z-index: 2;
+    }
+    .input-file{
+        position: absolute;
+        opacity: 0;
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+        z-index: 3;
+    }
 </style>

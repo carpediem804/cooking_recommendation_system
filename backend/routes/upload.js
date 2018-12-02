@@ -21,7 +21,9 @@ const upload = multer({
     storage: storage
 }).single('myfile');
 
-router.post('/:id', function(req, res,next){
+router.post('/', function(req, res,next){
+    var args = req.body
+    console.log(args);
     upload(function(req, res, err){
         if (err) console.log(err);
     });

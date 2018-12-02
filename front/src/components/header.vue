@@ -17,16 +17,18 @@ export default {}
 
 <style scoped>
 ul{
+    color: white;
     list-style-type: none;
     text-align: center;
     margin: 0;
 }
 li{
+    color: white;
     display: inline-block;
     margin: 0 10px;
 }
 a{
-    color: #fff;
+    color: white;
     text-decoration: none;
     padding: 6px 8px;
     border-radius: 10px;
