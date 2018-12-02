@@ -1,9 +1,17 @@
 <template>
     <div id="addProfile">
-        <input type="text" placeholder="이름" id="name">
-        <input type="text" placeholder="닉네임" id="nickName">
-        <input type="radio" name='sex' id="male" value="male">남자
-        <input type="radio" name='sex' id="female" value="female">여자
+        <div>
+            <input type="text" placeholder="이름" id="name">
+        </div>
+
+        <div>
+            <input type="text" placeholder="닉네임" id="nickName">
+        </div>
+
+        <div>
+            <input type="radio" name='sex' id="male" value="male">남자
+            <input type="radio" name='sex' id="female" value="female">여자
+        </div>
         <input type="button" value="등록" v-on:click="addInfo()">
     </div>
 </template>

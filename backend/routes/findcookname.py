@@ -6,11 +6,11 @@ import json
 from importlib import reload
 from sklearn.neighbors import NearestNeighbors
 
-data = pd.read_csv('./recipe_data_3.csv',encoding='cp949')
+data = pd.read_csv('C:\\Users\\carpe\\Desktop\\웹시설프로젝트\\gitgit\\backend\\routes\\recipe_data_3_1.csv', engine='python')
 
 b = data['recipeId'] #label
 a = data.loc[:,'햄'::] #data
-total_data = pd.concat([b,a],axis=1)
+#total_data = pd.concat([b,a],axis=1)
 column = a.columns
 
 check_item = sys.argv
@@ -22,10 +22,12 @@ for i in range(len(column)):
         #print("iii로들어옴")
         item[i] = 1;
 #받은 데이터로 배열 만들기
+#print(item);
 knn=neighbors.KNeighborsClassifier(n_neighbors=1)
 knn.fit(a, b)
 neigh = NearestNeighbors(n_neighbors=3)
 neigh.fit(a,b)
+#print("item :", item);
 answer2 = neigh.kneighbors([item])
 
 print(answer2[1]);

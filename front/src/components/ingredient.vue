@@ -271,15 +271,23 @@
                         체크한 이름 : {{ checkedNames }}
                         <br>
                         <input type="button" v-on:click="clear()" value=clear버튼>
+<<<<<<< HEAD
                         <input type="button" v-on:click="ingredients" value ="이 재료 추천 받기">
+=======
+                        <input type="button" v-on:click="ingredients()" value ="이 재료 추천 받기">
+
+
+>>>>>>> 33026076b9bcc5e821ecce93f2bb4a4e10774c95
                     </span>
 
-              
+              <recommend></recommend>
   </div>
     
 </template>
 
 <script>
+    import recommend from './recommend.vue'
+
 export default{
   name:'example_select',
   data(){
@@ -368,9 +376,10 @@ export default{
         this.checkedNames.splice(0,this.checkedNames.length)
     },
     ingredients:function(){
-      this.$http.post('http://localhost:8000/findcook/ ',{
+      this.$http.post('http://localhost:8000/findcook/',{
         checkedNames: this.checkedNames
       })
+<<<<<<< HEAD
       this.checkedNames.splice(0,this.checkedNames.length)
       
     },
@@ -385,6 +394,13 @@ export default{
 }
 
 
+=======
+    }
+},
+    components:{
+      recommend
+    }
+>>>>>>> 33026076b9bcc5e821ecce93f2bb4a4e10774c95
 }
 
 </script>
