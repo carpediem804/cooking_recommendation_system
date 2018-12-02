@@ -12,6 +12,7 @@
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.12",
     "mongoose-auto-increment": "^5.0.1",
-    "python-shell": "^1.0.6"
+    "python-shell": "^1.0.6",
+    "youtube-crawler": "0.0.3"
   }
 }

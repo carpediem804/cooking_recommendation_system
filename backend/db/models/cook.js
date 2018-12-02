@@ -5,23 +5,23 @@ const cookSchema = new mongoose.Schema({
         type: Number,
         unique: true
     },
-    name:{
+    title:{
         type:String
     },
     gradients:{
         type:String
     },
-    url:{
-        type:String
-    }
+   // url:{
+    //    type:String
+    //}d
     /* ... */
 })
 
 // doctorId를 Auto Increment 필드로 지정
-cookSchema.plugin(autoIncrement, {
-    model: 'cook',
-    field: 'recipeId',
-    startAt: 0
-})
+// cookSchema.plugin(autoIncrement, {
+//     model: 'cook',
+//     field: 'recipeId',
+//     startAt: 0
+// })
 
 module.exports = mongoose.model('cook', cookSchema)
