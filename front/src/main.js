@@ -3,6 +3,14 @@ import App from './App.vue'
 import router from './router'
 import firebase from 'firebase'
 import VModal from 'vue-js-modal'
+import axios from 'axios'
+import VueResource from 'vue-resource'
+
+Vue.prototype.$http = axios;
+
+// Use packages
+Vue.use(VueResource);
+
 
 Vue.config.productionTip = false
 var config = {

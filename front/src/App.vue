@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
+      <div>
+      <app-header></app-header>
+      <router-view></router-view>
+      </div>
       <router-link to="/">Home</router-link> |
       <router-link to="/signUp">회원가입테스트</router-link> |
       <router-link to="/addProfile">프로필추가테스트</router-link>
@@ -8,6 +12,21 @@
     <router-view/>
   </div>
 </template>
+<script>
+    // Imports
+    import header from './components/header.vue';
+    export default {
+        components: {
+            'app-header': header
+        },
+        data () {
+            return {
+            }
+        },
+        methods: {
+        }
+    }
+</script>
 
 <style>
 #app {
