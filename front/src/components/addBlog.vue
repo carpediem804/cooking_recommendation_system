@@ -72,7 +72,8 @@
         },
         methods: {
             post: function(){
-                this.$http.post('http://localhost:4000/posts', {
+                console.log("post 됨 ")
+                this.$http.post('http://localhost:8000/upload', {
                     title: this.blog.title,
                     body: this.blog.content,
                     category: this.blog.categories,
