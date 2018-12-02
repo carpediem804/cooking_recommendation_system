@@ -273,6 +273,7 @@
              
 
                     <span>
+                      <br>
                         체크한 이름 : {{ checkedNames }}
                         <br>
                         <input type="button" v-on:click="clear()" value=clear버튼>
@@ -375,11 +376,12 @@ export default{
     clear:function(){
         this.checkedNames.splice(0,this.checkedNames.length)
     },
-    
+
     ingredients:function(){
       this.$http.post('http://localhost:8000/findcook/',{
         checkedNames: this.checkedNames
-      })
+      }),
+      this.checkedNames.splice(0,this.checkedNames.length)
     },
 
     ingredients2:function(){
