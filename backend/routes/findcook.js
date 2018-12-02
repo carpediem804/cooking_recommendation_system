@@ -83,13 +83,14 @@ router.post('/',function(req,res,next){
                 send_data = send_data.concat(third_url)
 
             })
+        res.json({send_data})
 
     })//파이썬 쉘
 //console.log(answer);
     //배열로 만드것은 py파일로 보내서 결과값 출력하는거다!
 });
 
-router.get('/recommend',function(req,res){
-    res.json({send_data});
-});
+//router.get('/recommend',function(req,res){
+//    res.json({send_data});
+//});
 module.exports = router
