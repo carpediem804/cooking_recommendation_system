@@ -1,6 +1,6 @@
 <template>
  <div id ="example_select">
-<<<<<<< HEAD
+
                   <span>
                     <input type = "text" v-model ="ingredient" placeholder ="재료를 쓰시오.">
                     <input type ="button" v-on:click="ingredients2"
@@ -293,6 +293,7 @@ export default{
   name:'example_select',
   data(){
     return{
+      ingredient: " ",
       selected : " ",
       checkedNames:[],
       imageLink1:'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAZQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAwQBBQYCB//EADUQAAIBAwIEBAIHCQAAAAAAAAABAgMEERIhBTFBURMyYXEGIiM0gZGxwdEUM0JicoKSofD/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIEAwX/xAAfEQEBAAEDBQEAAAAAAAAAAAAAAQIRMUEDBBIhIjL/2gAMAwEAAhEDEQA/APttetCjFOb5tJe72/HBXfEKOMwzLrt22/VEt3QdeMUpuOHnbqRR4fRisb5wlnPYDLv6Sg28qS6GVf0G8an/AIswrKGqWqTcGuRmdjRlHT8yXuAfELdRUnN4foxG+pTlGNNSnKXRLkQPhcfEypvR2JqNlSo1FOOrUljdgWwYTMa1r09cZJqPQAKAAAAAAAAAAAw+WxyXxHdVra2jd1HOldYVJxozlpk25Yjy79emTrmcp8Y0a1S1WZYaqQqLT0UZdX/cvuOLvfwmWzRcN+Ja1rdXFporKuqcsUZTc9TWylFc1luOXy9De2HEL2XEbKhJutcVaHi1mmtMIOSxlpLpqw0t3g5OnZ1K3E76zt39PcVnlRjp0UXLEvmW6y1Jv+lHVcDtKNtdVa1rBU4ShFaIraK5pL0xp2OXt5nllJr6eeFrrEZK1Co2WT7Fmj0AARQAAAAAAAA1nHrb9osqkVzlTlFfav1wbMhusOk0+p49fHy6dhu4WxirK949ez28RUqNOXq9Un/qaOi4XRcLWDksSn8zXbsvsWClxCznJ0lKnDwYVFOUFLeT+7/sI3NrWp3EFOCx0cezOXsZ9fXCeOkWqENslg8wWEej6NutIAAigAAAAAAABDV3ml2JiCp+8Z59TZYpX0cplDhU3CrUj05mxvFszW2axcy9jmxx06ssauzoKMtUSQr2r2LB3VgABAAAAAAAAAIZ+dkxFU8xnKarFO6WzNfb/WJGwuuTNfa/WJexiY/TXDcWvIsla15Fk9qwAAgAAAAAAAAEVTzEpFU8wFK7ezKNovpJMu3jxBspWe+p+pnlrhubXyk5DbeRExu7sgAIAAAAAAAABFW2kiUhrvDXsBreITxTZBYr5Y+p44nUWVFc2yeyj5SY+61dm3oLFNEhiCxFIyVkAAAAAAAAAAAr3qfhOS/h5+xYPM1mLXdAcvTjO9u5zSfh0nu/XsbqxoYSbFnRSt5fz1G/y/IvRiorAx9RbXoABAAAAAAAAAAAAABFRgoKUVyUm1+JKeYrn6s9AAAAAAAAAAAAAAAAAAAAAAAAAAAB/9k=',
@@ -374,12 +375,13 @@ export default{
     clear:function(){
         this.checkedNames.splice(0,this.checkedNames.length)
     },
+    
     ingredients:function(){
       this.$http.post('http://localhost:8000/findcook/',{
         checkedNames: this.checkedNames
       })
     },
-<<<<<<< HEAD
+
     ingredients2:function(){
       this.$http.post('http://localhost:8000/findcook/ ',{
         ingrdient: this.ingredient
@@ -387,8 +389,8 @@ export default{
       this.ingredient=' '
 
       
-=======
-      test:function(){
+    },
+    test:function(){
           this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
               console.log("hi")
               console.log(res.data)
@@ -404,9 +406,9 @@ export default{
 },
     components:{
       recommend
->>>>>>> df87e076ecfb559b95f722b72956551b08732d51
     }
 }
+
 
 </script>
 
