@@ -393,9 +393,11 @@ export default{
 
     ingredients2:function(){
       this.$http.post('http://localhost:8000/findcook/ ',{
-        ingrdient: this.ingredient
+        ingredient: this.ingredient
       })
       this.ingredient=' '
+      
+
 
       
     },
