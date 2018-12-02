@@ -21,8 +21,10 @@ export default {
     },
     created() {
         this.$http.get('http://localhost:4000/').then(function(data){
+
             this.blogs = data.body.data;
             this.$store.state.blogs = this.blogs;
+
             this.$_.forEach(this.blogs, function (blog) {
               console.log(blog.title);
             });
