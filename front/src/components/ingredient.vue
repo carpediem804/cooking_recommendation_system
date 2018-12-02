@@ -15,15 +15,16 @@
                     
                     <input type ="checkbox" id="무" value="무"   v-model="checkedNames">
                     <label for="무" ><img v-bind:src = "imageLink1" width="50px" height="50px" /></label>
+
                     <input type ="checkbox" id="호박" value="호박" v-model="checkedNames">
                     <label for="호박"><img v-bind:src ="imageLink2" width="50px" height="50px"/>호박</label>
-                    <br>
+                    
                     <input type ="checkbox" id="감자" value="감자" v-model="checkedNames">
                     <label for="감자"><img v-bind:src ="imageLink3" width="50px" height="50px"/>감자</label>
                     <br>
                     <input type ="checkbox" id="고추" value="고추" v-model="checkedNames">
                     <label for="고추"><img v-bind:src ="imageLink4" width="50px" height="50px"/></label>
-                    <br>
+                    
                     <input type ="checkbox" id="숙주" value="숙주" v-model="checkedNames">
                     <label for="숙주"><img v-bind:src ="imageLink5" width="50px" height="50px"/></label>
                     
@@ -50,28 +51,33 @@
                     <br>
                     <input type ="checkbox" id="마늘" value="마늘" v-model="checkedNames">                    
                     <label for="마늘"><img v-bind:src ="imageLink13" width="50px" height="50px"/></label>
-                    <input type ="checkbox" id="콩나물" value="콩나물" v-model="checkedNames">
-                    <img v-bind:src ="imageLink14" width="50px" height="50px"/>
-                    <label for="콩나물">콩나물</label>
+
+                    <input type ="checkbox" id="콩나물" value="콩나물" v-model="checkedNames">                    
+                    <label for="콩나물"><img v-bind:src ="imageLink14" width="50px" height="50px"/></label>
+
                     <input type ="checkbox" id="토마토" value="토마토" v-model="checkedNames">
-                    <label for="토마토">토마토</label>
+                    <label for="토마토"><img v-bind:src ="imageLink15" width="50px" height="50px"/></label>
                     <br>
                     <input type ="checkbox" id="파프리카" value="파프리카" v-model="checkedNames">
-                    <label for="파프리카">파프리카</label>
+                    <label for="파프리카"><img v-bind:src ="imageLink16" width="50px" height="50px"/></label>
+
                     <input type ="checkbox" id="무순" value="무순" v-model="checkedNames">
-                    <label for="무순">무순</label>
+                    <label for="무순"><img v-bind:src ="imageLink17" width="50px" height="50px"/></label>
+
                     <input type ="checkbox" id="버섯" value="버섯" v-model="checkedNames">
-                    <label for="버섯">버섯</label>
+                    <label for="버섯"><img v-bind:src ="imageLink18" width="50px" height="50px"/></label>
                     <br>
                     <input type ="checkbox" id="부추" value="부추" v-model="checkedNames">
-                    <label for="부추">부추</label>
+                    <label for="부추"><img v-bind:src ="imageLink19" width="50px" height="50px"/></label>
+
                     <input type ="checkbox" id="브로콜리" value="브로콜리" v-model="checkedNames">
-                    <label for="브로콜리">브로콜리</label>
+                    <label for="브로콜리"><img v-bind:src ="imageLink20" width="50px" height="50px"/></label>
+
                     <input type ="checkbox" id="옥수수" value="옥수수" v-model="checkedNames">
-                    <label for="옥수수">옥수수</label>
+                    <label for="옥수수"><img v-bind:src ="imageLink21" width="50px" height="50px"/></label>
                     <br>
                     <input type ="checkbox" id="애호박" value="애호박" v-model="checkedNames">
-                    <label for="애호박">애호박</label>
+                    <label for="애호박"><img v-bind:src ="imageLink22" width="50px" height="50px"/></label>
                    
             
             
