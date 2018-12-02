@@ -268,7 +268,7 @@
                         <br>
                         <input type="button" v-on:click="clear()" value=clear버튼>
                         <input type="button" v-on:click="ingredients()" value ="이 재료 추천 받기">
-
+                        <input type="button" v-on:click="test" value="dddddd">
 
                     </span>
 
@@ -369,7 +369,20 @@ export default{
       this.$http.post('http://localhost:8000/findcook/',{
         checkedNames: this.checkedNames
       })
-    }
+    },
+      test:function(){
+          this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
+              console.log("hi")
+              console.log(res.data)
+              //요리이름
+              //이미지
+              //요리법
+              //url
+
+          }).catch(res=>{
+              console.log(res)
+          })
+      }
 },
     components:{
       recommend
