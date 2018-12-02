@@ -64,7 +64,7 @@
                     content: '',
                     categories: [],
                     author: '',
-                    imgFile: null
+                    imgFile: ''
                 },
                 authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
                 submitted: false
@@ -84,10 +84,14 @@
                 });
             },
             upload(name, files) {
+                console.log("upload되냐되냐 ");
                 const formData = new FormData();
+
                 formData.append(name, files[0], files[0].name);
+                console.log(formData);
                 this.createImage(files[0]);
-                imgFile = formData;
+                this.blog.imgFile = formData;
+                console.log(this.blog.imgFile);
 
                 //const url = "http://127.0.0.1:12010/upload/1";
                 //  axios.post(url, formData).then(response => {
