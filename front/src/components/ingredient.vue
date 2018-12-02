@@ -280,8 +280,9 @@
                         
 
                     </span>
+     <div id="recommend">
 
-              <recommend></recommend>
+     </div>
   </div>
     
 </template>
@@ -379,6 +380,13 @@ export default{
     ingredients:function(){
       this.$http.post('http://localhost:8000/findcook/',{
         checkedNames: this.checkedNames
+      }).then(res=>{
+          document.getElementById("recommend").innerHTML=""
+          for(let v=0;v<res.body.send_data.length;v+=2)
+          {
+              document.getElementById('recommend').innerHTML+=`
+              <h2>`+res.body.send_data[v].title+"</h2>"
+          }
       }),
       this.checkedNames.splice(0,this.checkedNames.length)
     },

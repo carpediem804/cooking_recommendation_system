@@ -8,6 +8,7 @@ const router = Router()
 /* ... */
 var send_data = []
 router.post('/',function(req,res,next){
+    send_data.splice(0,send_data.length)
     console.log("/들어옴")
     var args = req.body.checkedNames;
     console.log("args = ", args);
