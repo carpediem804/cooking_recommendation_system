@@ -271,16 +271,13 @@
                         체크한 이름 : {{ checkedNames }}
                         <br>
                         <input type="button" v-on:click="clear()" value=clear버튼>
-<<<<<<< HEAD
                         <input type="button" v-on:click="ingredients" value ="이 재료 추천 받기">
-=======
-                        <input type="button" v-on:click="ingredients()" value ="이 재료 추천 받기">
+                        
 
 
->>>>>>> 33026076b9bcc5e821ecce93f2bb4a4e10774c95
                     </span>
 
-              <recommend></recommend>
+              
   </div>
     
 </template>
