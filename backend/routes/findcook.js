@@ -23,7 +23,7 @@ router.post('/',function(req,res,next){
         args: args,//req.body
 
     };
-    ps.PythonShell.run('C:\\Users\\carpe\\Desktop\\웹시설프로젝트\\gitgit\\backend\\routes\\findcookname.py',options,function (err,result) {
+    ps.PythonShell.run('.\\routes\\findcookname.py',options,function (err,result) {
         if(err) throw err;
 
         console.log("results %j",result);
