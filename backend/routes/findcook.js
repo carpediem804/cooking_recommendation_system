@@ -47,7 +47,7 @@ router.post('/',function(req,res,next){
             .then(first =>{
                 console.log(first);
                 send_data = send_data.concat(first)
-                //console.log(first.title)
+
                 var first_url = "https://www.youtube.com/results?search_query="+first.title+"만드는법"
                 console.log(first_url);
                 send_data = send_data.concat(first_url)
