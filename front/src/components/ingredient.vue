@@ -279,17 +279,10 @@ export default{
         this.checkedNames.splice(0,this.checkedNames.length)
     },
     ingredients:function(event){
-      this.$http.post(' ',{
+      this.$http.post('http://localhost:8080/cook/ ',{
         checkedNames: this.checkedNames
       })
-      .then((response)=>{
-        if(response.data.result === 0){
-          alert('Error, please, try again')
-        }
-       })
-        .catch ( function(error){
-          alert('error')
-      })
+      
     }
 
 }
