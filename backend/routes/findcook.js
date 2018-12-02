@@ -6,9 +6,11 @@ var crawler = require('youtube-crawler');
 const router = Router()
 //var answer=0;
 /* ... */
-router.get('/',function(req,res,next){
-    var args = req.params.checkedNames;
-    console.log(args);
+var send_data = []
+router.post('/',function(req,res,next){
+    console.log("/들어옴")
+    var args = req.body.checkedNames;
+    console.log("args = ", args);
     var options = {
         mode: 'text',
 
@@ -18,46 +20,65 @@ router.get('/',function(req,res,next){
 
         scriptPath: '',
 
-        args: ['가나다','햄','감자','양파','대파','브로콜리'],//req.body
+        args: args,//req.body
 
     };
-ps.PythonShell.run('findcookname.py',options,function (err,result) {
-       if(err) throw err;
+    ps.PythonShell.run('C:\\Users\\carpe\\Desktop\\웹시설프로젝트\\gitgit\\backend\\routes\\findcookname.py',options,function (err,result) {
+        if(err) throw err;
 
-       console.log("results %j",result);
-       console.log("-------------------",result[0][0]);
-       var aaaa = result[0].replace("[[","");
-       //console.log(aaaa);
-       aaaa = aaaa.replace("]]","");
+        console.log("results %j",result);
+        console.log("------results 0 ----",result[0]);
+        var aaaa = result[0].replace("[[","");
+        //console.log(aaaa);
+        aaaa = aaaa.replace("]]","");
         aaaa = aaaa.replace("]","");
-         aaaa = aaaa.replace("[","");
+        aaaa = aaaa.replace("[","");
+        //aaaa = aaaa.replace(" ","");
         aaa = aaaa.split(' ');
-       console.log("14214214 result : ",aaa);
-        var find_first = aaa[1]
-        var find_second = aaa[3]
-        var find_third = aaa[4]
+        console.log("14214214 result : ",aaa);
+        console.log("result 1 : ",aaa[0]);
+        console.log("reusult 2 : ",aaa[1]);
+        console.log("reuslt 3 :", aaa[2]);
+        var find_first = aaa[0]
+        var find_second = aaa[1]
+        var find_third = aaa[2]
         cookModel.findOne({recipeId : Number(find_first)+1}).exec()
             .then(first =>{
                 console.log(first);
+                send_data = send_data.concat(first)
                 //console.log(first.title)
                 var first_url = "https://www.youtube.com/results?search_query="+first.title+"만드는법"
                 console.log(first_url);
+                send_data = send_data.concat(first_url)
+
             });
         cookModel.findOne({recipeId: Number(find_second)+1}).exec()
-        .then(second =>{
-            console.log(second);
-            var second_url = "https://www.youtube.com/results?search_query="+second.title+"만드는법"
-            console.log(second_url);
-        });
+            .then(second =>{
+                console.log(second);
+                send_data = send_data.concat(second)
+
+                var second_url = "https://www.youtube.com/results?search_query="+second.title+"만드는법"
+                console.log(second_url);
+                send_data = send_data.concat(second_url)
+
+            });
         cookModel.findOne({recipeId: Number(find_third)+1}).exec()
-        .then(third =>{
-            console.log(third);
-            var third_url = "https://www.youtube.com/results?search_query="+third.title+"만드는법"
-            console.log(third_url);
-        })
+            .then(third =>{
+                console.log(third);
+                send_data = send_data.concat(third)
+
+                var third_url = "https://www.youtube.com/results?search_query="+third.title+"만드는법"
+                console.log(third_url);
+                send_data = send_data.concat(third_url)
+
+            })
 
     })//파이썬 쉘
 //console.log(answer);
     //배열로 만드것은 py파일로 보내서 결과값 출력하는거다!
+});
+
+router.get('/recommend',function(req,res){
+    res.json({send_data});
 });
 module.exports = router
