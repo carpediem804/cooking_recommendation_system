@@ -8,6 +8,7 @@ const router = Router()
 /* ... */
 var send_data = []
 router.post('/',function(req,res,next){
+    send_data.splice(0,send_data.length);
     console.log("/들어옴")
     var args = req.body.checkedNames;
     console.log("args = ", args);
@@ -23,25 +24,35 @@ router.post('/',function(req,res,next){
         args: args,//req.body
 
     };
-    ps.PythonShell.run('C:\\Users\\carpe\\Desktop\\웹시설프로젝트\\gitgit\\backend\\routes\\findcookname.py',options,function (err,result) {
+    ps.PythonShell.run('C:\\Users\\carpe\\Desktop\\web_team\\team_project\\backend\\routes\\findcookname.py',options,function (err,result) {
         if(err) throw err;
 
         console.log("results %j",result);
         console.log("------results 0 ----",result[0]);
         var aaaa = result[0].replace("[[","");
+        var abc =[]
         //console.log(aaaa);
         aaaa = aaaa.replace("]]","");
         aaaa = aaaa.replace("]","");
         aaaa = aaaa.replace("[","");
         //aaaa = aaaa.replace(" ","");
         aaa = aaaa.split(' ');
-        console.log("14214214 result : ",aaa);
-        console.log("result 1 : ",aaa[0]);
-        console.log("reusult 2 : ",aaa[1]);
-        console.log("reuslt 3 :", aaa[2]);
-        var find_first = aaa[0]
-        var find_second = aaa[1]
-        var find_third = aaa[2]
+        for(var i=0;i<aaa.length;i++){
+            if(aaa[i]==''){
+
+            }else{
+                console.log("추가된거는",aaa[i]);
+                abc = abc.concat(aaa[i])
+            }
+        }
+
+        console.log("14214214 result : ",abc);
+        console.log("result 1 : ",abc[0]);
+        console.log("reusult 2 : ",abc[1]);
+        console.log("reuslt 3 :", abc[2]);
+        var find_first = abc[0]
+        var find_second = abc[1]
+        var find_third = abc[2]
         cookModel.findOne({recipeId : Number(find_first)+1}).exec()
             .then(first =>{
                 console.log(first);
