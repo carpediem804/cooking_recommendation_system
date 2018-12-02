@@ -1,7 +1,7 @@
 <template>
     <div id="recommend">
         <h2>요리 이름</h2>
-        {{test()}}
+
     </div>
 </template>
 
