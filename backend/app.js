@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 
 require('./db/mongo') //connect db
 const findcook = require('./routes/findcook')
-const patient = require('./routes/patient')
+const upload = require('./routes/upload')
 
 const app = express()
 app.use((req, res, next) =>{
@@ -12,9 +12,11 @@ app.use((req, res, next) =>{
     res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type")
     next()
 })
+app.use('/uploadImg', express.static('upload'));
+
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/findcook', findcook)
-app.use('/patient', patient)
+app.use('/upload', upload)
 
 module.exports = app
