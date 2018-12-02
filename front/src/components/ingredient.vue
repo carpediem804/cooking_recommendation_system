@@ -419,9 +419,7 @@ export default{
               console.log(res)
           })
       }*/
-=======
-    },
->>>>>>> 1e0429883fa5101debd7cd3946cebceebe351c3c
+
 },
 }
 
