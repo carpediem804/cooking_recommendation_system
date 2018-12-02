@@ -1,6 +1,6 @@
 const multer = require('multer');
-const { Router } = require('Express')
-const router = Router()
+const { Router } = require('Express');
+const router = Router();
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -20,8 +20,10 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage
 }).single('myfile');
-router.post('/:id', (req, res) => {
-    upload(req, res, err => {
+
+router.post('/:id', function(req, res,next){
+    upload(function(req, res, err){
         if (err) console.log(err);
     });
 })
+module.exports = router;

@@ -2,12 +2,13 @@ const { Router } = require('Express')
 const cookModel = require('../db/models/cook')
 //const patientModel = require('../db/models/patient')
 var ps = require('python-shell');
-var crawler = require('youtube-crawler');
+//var crawler = require('youtube-crawler');
 const router = Router()
 //var answer=0;
 /* ... */
 var send_data = []
 router.post('/',function(req,res,next){
+    send_data.splice(0,send_data.length)
     console.log("/들어옴")
     var args = req.body.checkedNames;
     console.log("args = ", args);

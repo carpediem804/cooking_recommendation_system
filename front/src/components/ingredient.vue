@@ -280,14 +280,14 @@
                         
 
                     </span>
+     <div id="recommend">
 
-              <recommend></recommend>
+     </div>
   </div>
     
 </template>
 
 <script>
-    import recommend from './recommend.vue'
 
 export default{
   name:'example_select',
@@ -379,6 +379,13 @@ export default{
     ingredients:function(){
       this.$http.post('http://localhost:8000/findcook/',{
         checkedNames: this.checkedNames
+      }).then(res=>{
+          document.getElementById("recommend").innerHTML=""
+          for(let v=0;v<res.body.send_data.length;v+=2)
+          {
+              document.getElementById('recommend').innerHTML+=`
+              <h2>`+res.body.send_data[v].title+"</h2>"
+          }
       }),
       this.checkedNames.splice(0,this.checkedNames.length)
     },
@@ -396,6 +403,7 @@ export default{
          
       }
       
+<<<<<<< HEAD
     }*/
     
     /*test:function(){
@@ -411,10 +419,10 @@ export default{
               console.log(res)
           })
       }*/
+=======
+    },
+>>>>>>> 1e0429883fa5101debd7cd3946cebceebe351c3c
 },
-    components:{
-      recommend
-    }
 }
 
 
