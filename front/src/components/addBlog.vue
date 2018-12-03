@@ -30,10 +30,10 @@
                 </div>
             </div>
 
-            <label>Author:</label>
-            <select v-model="blog.author">
+            <label>Author: {{blog.author}}</label><!--유저 정보 읽어서 이름 뽑도록 수정-->
+            <!--<select v-model="blog.author">
                 <option v-for="author in authors">{{ author }}</option>
-            </select>
+            </select>-->
             <hr />
             <button v-on:click.prevent="post">Add Blog</button>
         </form>
@@ -56,6 +56,7 @@
 
 <script>
     // Imports
+    import firebase from 'firebase'
     export default {
         data () {
             return {
@@ -108,6 +109,14 @@
                 };
                 reader.readAsDataURL(file);
             },
+            test:function(){
+                firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get().then(doc=>{
+                    this.blog.author=doc.data().name
+                })//행님 유저 정보 읽어오는 함수입니다
+            }
+        },
+        mounted(){
+            this.test()
         }
     }
 </script>
