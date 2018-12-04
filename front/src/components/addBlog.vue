@@ -30,10 +30,10 @@
                 </div>
             </div>
 
-            <label>Author:</label>
-            <select v-model="blog.author">
+            <label>Author: {{blog.author}}</label><!--유저 정보 읽어서 이름 뽑도록 수정-->
+            <!--<select v-model="blog.author">
                 <option v-for="author in authors">{{ author }}</option>
-            </select>
+            </select>-->
             <hr />
             <button v-on:click.prevent="post">Add Blog</button>
         </form>
@@ -56,6 +56,7 @@
 
 <script>
     // Imports
+    import firebase from 'firebase'
     export default {
         data () {
             return {
@@ -64,7 +65,7 @@
                     content: '',
                     categories: [],
                     author: '',
-                    imgFile: null
+                    imgFile: ''
                 },
                 authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
                 submitted: false
@@ -84,10 +85,14 @@
                 });
             },
             upload(name, files) {
+                console.log("upload되냐되냐 ");
                 const formData = new FormData();
+
                 formData.append(name, files[0], files[0].name);
+                console.log(formData);
                 this.createImage(files[0]);
-                imgFile = formData;
+                this.blog.imgFile = formData;
+                console.log(this.blog.imgFile);
 
                 //const url = "http://127.0.0.1:12010/upload/1";
                 //  axios.post(url, formData).then(response => {
@@ -104,6 +109,14 @@
                 };
                 reader.readAsDataURL(file);
             },
+            test:function(){
+                firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get().then(doc=>{
+                    this.blog.author=doc.data().name
+                })//행님 유저 정보 읽어오는 함수입니다
+            }
+        },
+        mounted(){
+            this.test()
         }
     }
 </script>
