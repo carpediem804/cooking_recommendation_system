@@ -1,7 +1,7 @@
 const multer = require('multer');
 const { Router } = require('Express');
 const router = Router();
-
+const blogModel = require('../db/models/blog')
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'upload/');
@@ -12,10 +12,6 @@ const storage = multer.diskStorage({
         cb(null, fileName);
     }
 });
-//const upload = multer({
-//    storage: storage
-//}).any();
-
 
 const upload = multer({
     storage: storage
@@ -24,8 +20,23 @@ const upload = multer({
 router.post('/', function(req, res,next){
     var args = req.body
     console.log(args);
-    upload(function(req, res, err){
-        if (err) console.log(err);
-    });
+    // upload(function(req, res, err){
+    //     if (err) console.log(err);
+    // });
+    let saveblog = blogModel({
+        blogId : req.body.blogId,
+        title : req.body.title,
+        category : req.body.category,
+        body : req.body.bodycotent,
+    })
+    saveblog.save(function (error,data) {
+        if(error){
+            console.log(error);
+        }else{
+            console.log(data);
+        }
+    })
+
+
 })
 module.exports = router;
