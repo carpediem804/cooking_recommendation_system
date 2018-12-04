@@ -76,7 +76,7 @@
                 console.log("post 됨 ")
                 this.$http.post('http://localhost:8000/upload', {
                     title: this.blog.title,
-                    body: this.blog.content,
+                    bodycotent: this.blog.content,
                     category: this.blog.categories,
                     imgFile: this.blog.imgFile,
                     blogId: this.$store.state.blogs.length + 1
@@ -87,12 +87,12 @@
             upload(name, files) {
                 console.log("upload되냐되냐 ");
                 const formData = new FormData();
-
+                console.log("값 넣기전 " + formData);
                 formData.append(name, files[0], files[0].name);
-                console.log(formData);
+                console.log("값넣은후 "+ formData);
                 this.createImage(files[0]);
                 this.blog.imgFile = formData;
-                console.log(this.blog.imgFile);
+                console.log(this.blog.imgFile.data);
 
                 //const url = "http://127.0.0.1:12010/upload/1";
                 //  axios.post(url, formData).then(response => {
