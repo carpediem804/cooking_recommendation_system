@@ -286,11 +286,9 @@
                 <div v-if="index%2==0" id="menu_image">
                     <h2>{{receive_data[index].title}}</h2>
                     <img :src=$url("'../../../backend/routes/cook_image/'+receive_data[index].recipeId+'.jpg'")>
-                    <!--<img src:require(''../../../backend/routes/cook_image/'+receive_data[index].recipeId+'.jpg'')>-->
                 </div>
-                <img src="../../../backend/routes/cook_image/14.jpg" height="367" width="513"/>
                 <div v-if="index%2==0">
-                    재료: {{rece....ive_data[index].ingredients}}
+                    재료: {{receive_data[index].ingredients}}
                 </div>
                 <div v-if="index%2!=0">
                     {{receive_data[index]}}
