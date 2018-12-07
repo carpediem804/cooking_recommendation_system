@@ -38,6 +38,9 @@ router.post('/', function(req, res,next){
 })
 router.post("/img", function(req, res) {
     console.log("img upload");
+    console.log(req.body);
+    console.log(req.params);
+    console.log(req.file);
     upload(req, res, function (err) {
         if(req.file == null || req.file == undefined || req.file == ""){
             res.json('No Image Set');
