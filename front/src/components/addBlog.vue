@@ -106,9 +106,9 @@
                 this.file = files[0]
                 let formData = new FormData()
                 formData.append('file', this.file)
-
+/*
                 alert("upLoad 함수 실행" );
-                /*
+
                                 axios.post(`http://localhost:8000/upload/img`, formData, {
 
                                     params: {
@@ -120,8 +120,8 @@
                                 }).catch(e => {
                                         this.errors.push(e)
                                     })
+*/
 
-                                    */
             },
             createImage(file) {
                 var image = new Image();
