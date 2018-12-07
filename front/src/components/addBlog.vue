@@ -75,13 +75,22 @@
         },
         methods: {
             post: function(){
-                console.log("post 됨 ")
-                this.$http.post('http://localhost:4000/posts', {
-                    title: this.blog.title,
-                    bodycotent: this.blog.content,
-                    category: this.blog.categories,
-                    imgFile: this.blog.imgFile,
-                    blogId: this.$store.state.blogs.length + 1
+                console.log("post 됨 ");
+
+                axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+
+                let formData = new FormData();
+                formData.append('file', this.file);
+
+                axios.post('http://localhost:8000/upload/img', formData,{
+
+                    params: {
+                        title: this.blog.title,
+                        bodycotent: this.blog.content,
+                        category: this.blog.categories,
+                        blogId: this.$store.state.blogs.length + 1
+                    }
+
                 }).then(function(data){
                     this.submitted = true;
                 });
@@ -90,31 +99,29 @@
 
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
-              //  const formData = new FormData();
-             //   formData.append(name, files[0], files[0].name);
+                //  const formData = new FormData();
+                //   formData.append(name, files[0], files[0].name);
                 this.createImage(files[0]);
 
                 this.file = files[0]
                 let formData = new FormData()
                 formData.append('file', this.file)
-
+/*
                 alert("upLoad 함수 실행" );
 
-                axios.post(`http://localhost:8000/upload/img`, formData, {
+                                axios.post(`http://localhost:8000/upload/img`, formData, {
 
-                    params: {
-                        user: '5c0a4266e1f4750640b389ab',
-                        title: this.blog.title,
-                        bodycotent: this.blog.content,
-                        category: this.blog.categories,
-                        imgFile: this.blog.imgFile,
-                        blogId: this.$store.state.blogs.length + 1
+                                    params: {
+                                        user: '5c0a4266e1f4750640b389ab',
+                                        title: this.blog.title,
 
-                    }
+                                    }
 
-                }).catch(e => {
-                        this.errors.push(e)
-                    })
+                                }).catch(e => {
+                                        this.errors.push(e)
+                                    })
+*/
+
             },
             createImage(file) {
                 var image = new Image();
