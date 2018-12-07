@@ -1,7 +1,7 @@
 <template>
 <div id='login'>
 
-    <form id="log_form" @click.self="$emit('update:showModal',false)" autocomplete="off"><!--v-show="showModal"-->
+    <form id="log_form" autocomplete="off">
         <h2>로그인</h2>
         <div>
             <input type="text" id="user_email" placeholder="이메일">
@@ -11,7 +11,7 @@
         </div>
         <input type="button" value="로그인" v-on:click="login()">
         <div>
-            <input type="button" value="취소" v-on:click="$emit('update:showModal',!showModal)">
+            <input type="button" value="취소">
         </div>
         <div>
             <a href="#">아이디 찾기</a>
