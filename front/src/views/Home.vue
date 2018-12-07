@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <log_form></log_form>
   </div>
 </template>
 
@@ -13,8 +12,11 @@ export default {
   name: 'home',
   components: {
     login,
-    firebase,
-    log_form
   },
+    data(){
+      return{
+          user:''
+      }
+    },
 }
 </script>

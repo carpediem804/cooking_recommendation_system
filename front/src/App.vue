@@ -2,8 +2,12 @@
   <div id="app">
     <div id="nav">
       <div>
+        <div>
+          아이디:{{this.$store.state.user.email}}
+        </div>
       <app-header></app-header>
       <router-view></router-view>
+
       </div>
     </div>
   </div>
@@ -20,6 +24,14 @@
             }
         },
         methods: {
+        },
+        created(){
+            let getUser=firebase.auth().currentUser
+            if(getUser !==null)
+            {
+                this.$store.state.user=getUser
+            }
+
         }
     }
 </script>

@@ -8,6 +8,7 @@ import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import { store } from './store/store'
 
+
 Vue.prototype.$http = axios;
 
 // Use packages
@@ -15,6 +16,7 @@ Vue.use(VueResource);
 
 
 Vue.config.productionTip = false;
+
 
 var config = {
   apiKey: "AIzaSyDVtLqIS4vhPmCG72CPhgb-84mjT0WoE-0",
@@ -25,9 +27,8 @@ var config = {
   messagingSenderId: "859832813634"
 };
 firebase.initializeApp(config);
+
 Vue.use(VModal,{dynamic:true});
-
-
 
 new Vue({
     router: router,

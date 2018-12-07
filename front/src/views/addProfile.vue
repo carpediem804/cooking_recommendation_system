@@ -12,7 +12,7 @@
             <input type="radio" name='sex' id="male" value="male">남자
             <input type="radio" name='sex' id="female" value="female">여자
         </div>
-        <input type="button" value="등록" v-on:click="addInfo()">
+        <input type="button" value="수정" v-on:click="addInfo()">
     </div>
 </template>
 
@@ -57,8 +57,18 @@ export default{
             sex:''
         }
     },
-    componenets:{
+    components:{
         firebase
+    },
+    mounted(){
+        (function(){
+           let user=firebase.auth().currentUser;
+           if(user==null)
+           {
+               alert("로그인부터 ㄱㄱ")
+               window.location.href="/"
+           }
+        })()
     }
 }
 </script>

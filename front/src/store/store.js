@@ -5,6 +5,12 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        blogs: []
+        blogs: [],
+        user:{}
+    },
+    getters:{
+        user:function(){
+            return this.state.user
+        }
     }
 });

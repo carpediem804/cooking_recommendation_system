@@ -7,6 +7,7 @@
             <li><router-link to="/add" exact>Add a new blog</router-link></li>
             <li>  <router-link to="/signUp" exact>회원가입테스트</router-link></li>
             <li> <router-link to="/addProfile" exact>프로필추가테스트</router-link></li>
+            <li><router-link to="/login" exact>로그인</router-link></li>
         </ul>
     </nav>
 </template>
