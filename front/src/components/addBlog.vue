@@ -57,6 +57,8 @@
 <script>
     // Imports
     import firebase from 'firebase'
+    import axios from 'axios'
+
     export default {
         data () {
             return {
@@ -90,9 +92,23 @@
                 console.log("값 넣기전 " + formData);
                 formData.append(name, files[0], files[0].name);
                 console.log("값넣은후 "+ formData);
-                this.createImage(files[0]);
-                this.blog.imgFile = formData;
-                console.log(this.blog.imgFile.data);
+
+                axios.post(`http://localhost:3000/uploads`, formData, {
+                    params: {
+                        user: this.user.userId
+                    }
+                })
+                    .then(response => {
+                        setTimeout(() => {
+                            this.loading = false
+                            this.getImages()
+                            this.$refs.uploadInput.value = undefined
+                        }, 900)
+                    })
+                    .catch(e => {
+                        this.errors.push(e)
+                    })
+
 
                 //const url = "http://127.0.0.1:12010/upload/1";
                 //  axios.post(url, formData).then(response => {
