@@ -46,6 +46,7 @@ router.post("/img", function(req, res) {
     upload(req, res, function (err) {
         if(req.file == null || req.file == undefined || req.file == ""){
             res.json('No Image Set');
+            console.log("이미지없음")
         }else{
             if (err) {
                 console.log(err);
@@ -58,10 +59,14 @@ router.post("/img", function(req, res) {
                 image.blogId = req.query.blogId;
                 image.save(()=>{
                     if (err) return next(err);
-                });
+                })
+                res.send("됫다됫다");
+                console.log("보냇음 보냇음");
+                //console.log(image);
             }
         }
     });
+    //res.send("저장완료");
 
 });
 
