@@ -76,12 +76,11 @@
         methods: {
             post: function(){
                 console.log("post 됨 ");
-
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-
                 let formData = new FormData();
                 formData.append('file', this.file);
                 console.log(this.blog.title);
+                this.submitted = true;
                 axios.post('http://localhost:8000/upload/img', formData,{
                     params: {
                         title: this.blog.title,
@@ -91,8 +90,11 @@
                     }
 
                 }).then(function(data){
-                    console.log(data);
                     this.submitted = true;
+                    console.log("submitted가 true 됨 ")
+                    console.log(data);
+                    //this.submitted = true;
+                    //console.log(this.submitted);
                 });
             },
             upload(name, files) {
