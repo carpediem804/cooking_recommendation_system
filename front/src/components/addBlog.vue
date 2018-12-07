@@ -19,7 +19,7 @@
             </div>
 
             <div class="dropbox">
-                <input class="input-file" type="file" name="myfile"
+                <input class="input-file" type="file" name="file"
                        @change="upload($event.target.name, $event.target.files)"
                        @drop="upload($event.target.name, $event.target.files)">
                 <div v-if="!imgFile">
@@ -67,7 +67,7 @@
                     content: '',
                     categories: [],
                     author: '',
-                    imgFile: ''
+                    file: ''
                 },
                 authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
                 submitted: false
@@ -76,7 +76,7 @@
         methods: {
             post: function(){
                 console.log("post 됨 ")
-                this.$http.post('http://localhost:8000/upload', {
+                this.$http.post('http://localhost:4000/posts', {
                     title: this.blog.title,
                     bodycotent: this.blog.content,
                     category: this.blog.categories,
@@ -87,33 +87,34 @@
                 });
             },
             upload(name, files) {
-                console.log("upload되냐되냐 ");
-                const formData = new FormData();
-                console.log("값 넣기전 " + formData);
-                formData.append(name, files[0], files[0].name);
-                console.log("값넣은후 "+ formData);
 
-                axios.post(`http://localhost:3000/uploads`, formData, {
+                axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+
+              //  const formData = new FormData();
+             //   formData.append(name, files[0], files[0].name);
+                this.createImage(files[0]);
+
+                this.file = files[0]
+                let formData = new FormData()
+                formData.append('file', this.file)
+
+                alert("upLoad 함수 실행" );
+
+                axios.post(`http://localhost:8000/upload/img`, formData, {
+
                     params: {
-                        user: this.user.userId
+                        user: '5c0a4266e1f4750640b389ab',
+                        title: this.blog.title,
+                        bodycotent: this.blog.content,
+                        category: this.blog.categories,
+                        imgFile: this.blog.imgFile,
+                        blogId: this.$store.state.blogs.length + 1
+
                     }
-                })
-                    .then(response => {
-                        setTimeout(() => {
-                            this.loading = false
-                            this.getImages()
-                            this.$refs.uploadInput.value = undefined
-                        }, 900)
-                    })
-                    .catch(e => {
+
+                }).catch(e => {
                         this.errors.push(e)
                     })
-
-
-                //const url = "http://127.0.0.1:12010/upload/1";
-                //  axios.post(url, formData).then(response => {
-                //    console.log(response);
-                //  })
             },
             createImage(file) {
                 var image = new Image();
