@@ -16,8 +16,13 @@ var imagesSchema = mongoose.Schema({
         type : String
     },
     blogId : {
-        type : Number
+        type : String
     }
 });
+//imagesSchema.plugin(autoIncrement, {
+//    model: 'image',
+//    field: 'blogId',
+//    startAt: 1
+//})
 
 module.exports = mongoose.model('Image', imagesSchema);

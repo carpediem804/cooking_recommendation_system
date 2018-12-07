@@ -81,9 +81,8 @@
 
                 let formData = new FormData();
                 formData.append('file', this.file);
-
+                console.log(this.blog.title);
                 axios.post('http://localhost:8000/upload/img', formData,{
-
                     params: {
                         title: this.blog.title,
                         bodycotent: this.blog.content,
@@ -92,6 +91,7 @@
                     }
 
                 }).then(function(data){
+                    console.log(data);
                     this.submitted = true;
                 });
             },

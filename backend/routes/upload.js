@@ -38,9 +38,11 @@ router.post('/', function(req, res,next){
 })
 router.post("/img", function(req, res) {
     console.log("img upload");
-    console.log(req.body);
-    console.log(req.params);
-    console.log(req.file);
+    //console.log(req.body.title);
+   // console.log(req);
+    console.log(req.query.title);
+    console.log(req.query.bodycotent);
+    //console.log(req.file);
     upload(req, res, function (err) {
         if(req.file == null || req.file == undefined || req.file == ""){
             res.json('No Image Set');
@@ -50,6 +52,10 @@ router.post("/img", function(req, res) {
             }else{
                 let image = new Image();
                 image.image = req.file.filename;
+                image.title = req.query.title;
+                image.body = req.query.bodycotent;
+                image.category = req.query.category;
+                image.blogId = req.query.blogId;
                 image.save(()=>{
                     if (err) return next(err);
                 });
