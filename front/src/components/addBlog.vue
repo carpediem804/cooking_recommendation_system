@@ -88,7 +88,6 @@
             },
             upload(name, files) {
 
-
                 axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
 
               //  const formData = new FormData();
@@ -101,10 +100,16 @@
 
                 alert("upLoad 함수 실행" );
 
-                axios.post(`http://localhost:3000/uploads`, formData, {
+                axios.post(`http://localhost:8000/upload/img`, formData, {
 
                     params: {
-                        user: '5c0a4266e1f4750640b389ab'
+                        user: '5c0a4266e1f4750640b389ab',
+                        title: this.blog.title,
+                        bodycotent: this.blog.content,
+                        category: this.blog.categories,
+                        imgFile: this.blog.imgFile,
+                        blogId: this.$store.state.blogs.length + 1
+
                     }
 
                 }).catch(e => {
