@@ -6,11 +6,15 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         blogs: [],
-        user:{}
+        user:{},
+        loggedIn:''
     },
     getters:{
-        user:function(){
-            return this.state.user
+        loggedIn:function(state){
+            return state.loggedIn
+        },
+        user:function(state){
+            return state.user
         }
     }
 });
