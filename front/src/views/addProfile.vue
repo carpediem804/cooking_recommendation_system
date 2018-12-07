@@ -23,12 +23,12 @@ export default{
     name:'addProfile',
     methods:{
         addInfo:function(){
-            let user=firebase.auth().currentUser
+            let user=this.$store.state.user
             var db=firebase.firestore();
 
             if(user===null)//로그인 상태가 아니면
             {
-              alert('로그인ㄱㄱ')  
+              alert('로그인ㄱㄱ')
             }
             else
             {
@@ -41,7 +41,7 @@ export default{
 
             db.collection('users').doc(user.email).get().then((doc)=>{
                 alert(doc.data().sex)
-            })   
+            })
         },
         /*db에서 읽는법
         readDb:function(){

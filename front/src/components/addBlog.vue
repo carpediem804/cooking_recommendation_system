@@ -127,7 +127,7 @@
                 reader.readAsDataURL(file);
             },
             test:function(){
-                firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get().then(doc=>{
+                firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then(doc=>{
                     this.blog.author=doc.data().name
                 })//행님 유저 정보 읽어오는 함수입니다
             }

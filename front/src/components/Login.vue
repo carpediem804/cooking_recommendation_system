@@ -59,8 +59,13 @@ export default{
                         break;
                     }
                 }
-            }).then(()=>{
-                this.$store.state.user=firebase.auth().currentUser
+            }).then((res)=>{
+                let user=res.user
+                this.$store.state.user=res.user
+                this.$store.state.loggedIn=true
+                localStorage.setItem('newUser',JSON.stringify(user))
+                localStorage.setItem('logState',this.$store.state.loggedIn)
+                alert("로그인")
             })
 
         },
@@ -68,7 +73,9 @@ export default{
             firebase.auth().signOut().catch(function(err){
                 alert(err)
             }).then(()=>{
+                localStorage.clear()
                 this.$store.state.user={}
+                this.$store.state.loggedIn=false
                 alert("로그아웃")
                 window.location.reload(true)
             })

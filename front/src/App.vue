@@ -2,8 +2,11 @@
   <div id="app">
     <div id="nav">
       <div>
-        <div>
+        <div v-if="loggedIn">
           아이디:{{this.$store.state.user.email}}
+        </div>
+        <div v-if="!loggedIn">
+          로그인 ㄴㄴ
         </div>
       <app-header></app-header>
       <router-view></router-view>
@@ -15,6 +18,7 @@
 <script>
     // Imports
     import header from './components/header.vue';
+    import { mapGetters } from 'vuex'
     export default {
         components: {
             'app-header': header
@@ -25,14 +29,24 @@
         },
         methods: {
         },
+        computed:{
+            ...mapGetters({
+                user:'user',
+                loggedIn:'loggedIn'
+            })
+        },
         created(){
-            let getUser=firebase.auth().currentUser
-            if(getUser !==null)
+            let getUser=JSON.parse(localStorage.getItem('newUser'))
+            let logState=JSON.parse(localStorage.getItem('logState'))
+            if(logState !==false)
             {
+                console.log(getUser)
+                this.$store.state.loggedIn=logState
                 this.$store.state.user=getUser
             }
 
-        }
+
+        },
     }
 </script>
 
