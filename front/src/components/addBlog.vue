@@ -106,9 +106,9 @@
                 this.file = files[0]
                 let formData = new FormData()
                 formData.append('file', this.file)
-
+/*
                 alert("upLoad 함수 실행" );
-                /*
+
                                 axios.post(`http://localhost:8000/upload/img`, formData, {
 
                                     params: {
@@ -120,8 +120,8 @@
                                 }).catch(e => {
                                         this.errors.push(e)
                                     })
+*/
 
-                                    */
             },
             createImage(file) {
                 var image = new Image();
@@ -134,7 +134,7 @@
                 reader.readAsDataURL(file);
             },
             test:function(){
-                firebase.firestore().collection('users').doc(firebase.auth().currentUser.email).get().then(doc=>{
+                firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then(doc=>{
                     this.blog.author=doc.data().name
                 })//행님 유저 정보 읽어오는 함수입니다
             }
