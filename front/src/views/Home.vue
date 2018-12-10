@@ -1,17 +1,16 @@
 <template>
   <div class="home">
-
+  <showContent></showContent>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import firebase from 'firebase'
-import login from '@/components/Login.vue'
+import showContent from '../components/showContent'
 export default {
   name: 'home',
   components: {
-    login,
+      showContent
   },
     data(){
       return{

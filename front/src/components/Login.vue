@@ -81,7 +81,4 @@ export default{
 </script>
 
 <style>
-#login{
-    max-width: 200px;
-}
 </style>
