@@ -7,6 +7,7 @@
         <ul v-for="c in titleList" v-bind:key="c.id" >
         <li>{{c}}<br></li>
         </ul>
+
     </div>
 
 </template>
@@ -43,7 +44,7 @@
                     //      image : {
                     //          label : 'Image'
                     // }
-                    hart : {
+                    heart : {
                           lable : "like number",
                         sortable : true
                     }
@@ -60,7 +61,7 @@
         methods : {
             myRowClickHandler(record, index) {
                 console.log("클릭된다된다 ");
-                
+
                 // 'record' will be the row data from items
                 // `index` will be the visible row number (available in the v-model 'shownItems')
                 console.log(record);

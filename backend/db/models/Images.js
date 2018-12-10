@@ -22,7 +22,7 @@ var imagesSchema = mongoose.Schema({
         type : String
     },
     comment_date: {type: Date, default: Date.now()},
-    hart : {
+    heart : {
         type : Number
     }
 });
