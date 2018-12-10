@@ -3,6 +3,7 @@
     <div id="nav">
       <div>
         <div class="navbar-menu">
+          <b>여기엔 홈페이지 제목</b>
           <div class="navbar-end">
             <a class="navbar-item" href="/">home</a>
             <button class="button is-warning is-normal" v-if="!loggedIn" @click="signUpPop=true">sign up</button>
