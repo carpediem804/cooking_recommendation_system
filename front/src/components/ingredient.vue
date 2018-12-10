@@ -1,6 +1,8 @@
 <template>
  <div id ="example_select">
-     <p class="content"><b>selected</b>: {{ selected }}</p>
+     <p class="content">
+         <b>selected</b>: {{ selected }}
+         <br>
       <b-select
               multiple
               native-size="6"
@@ -12,7 +14,7 @@
               <option>양념류</option>
               <option>기타</option>
       </b-select>
-
+     </p>
 <p class="category-list">
               <span v-if = "selected == '야채류' ">
                   <br>
@@ -387,7 +389,7 @@
                     재료: {{receive_data[index].ingredients}}
                 </div>
                 <div v-if="index%2!=0">
-                    {{receive_data[index]}}
+                    요리법 : <a v-bind:href="receive_data[index]"> click </a>
                 </div>
             </li>
         </ul>
@@ -400,7 +402,6 @@
 
     export default {
         name:'example_select',
-        components: {BField},
         data(){
             return{
                 ingredient: " ",
@@ -518,6 +519,14 @@
 </script>
 
 <style>
+    .content{
+        border : solid;
+
+    }
+    .category-list{
+        border :solid;
+
+    }
     li{
         list-style: none;
     }
