@@ -9,8 +9,12 @@
                 <b-input  v-model="name" id="name" maxlength="30"></b-input>
             </b-field>
 
+            <b-field label="Nickname" type="is-success" message="This username is available">
+                <b-input id="nickName" maxlength="30"></b-input>
+            </b-field>
+
             <b-field label="Password">
-                <b-input type="password" id="user_pwd" password-reveal></b-input>
+                <b-input type="password" v-model='password' id="user_pwd" password-reveal></b-input>
             </b-field>
             <b-field label="Password Check">
                 <b-input type="password" id="pwd_check" password-reveal></b-input>
@@ -72,8 +76,6 @@ export default{
         signUp:function(){
             let db=firebase.firestore();
 
-            console.log(document.getElementById('user_pwd').value)
-            console.log(document.getElementById('pwd_check').value)
             if(document.getElementById('user_pwd').value===document.getElementById('pwd_check').value)
             {
                 firebase.auth().createUserWithEmailAndPassword(this.email,this.password)
@@ -98,6 +100,8 @@ export default{
                         }
                     }
                 })
+                alert('회원가입 완료')
+                window.location.href='/'
             }
             else
             {
