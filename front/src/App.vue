@@ -64,7 +64,7 @@
 
 #nav a {
   font-weight: bold;
-  color: white;
+  color: deeppink;
 }
 
 #nav a.router-link-exact-active {
