@@ -45,6 +45,7 @@ router.post("/img", function(req, res) {
                 image.category = req.query.category;
                 //image.blogId = req.query.blogId;
                 image.authorname = req.query.author;
+                image.heart = 0;
                 console.log(image.authorname)
                 image.save(()=>{
                     if (err) return next(err);
