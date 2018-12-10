@@ -60,6 +60,7 @@ export default{
                 localStorage.setItem('newUser',JSON.stringify(user))
                 localStorage.setItem('logState',this.$store.state.loggedIn)
                 alert("로그인")
+                this.$parent.close()
             })
 
         },

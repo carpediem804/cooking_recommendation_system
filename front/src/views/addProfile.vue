@@ -1,10 +1,9 @@
 <template>
-    <div id="addProfile" class="modal-card">
+    <div id="addProfile" class="modal-card" style="width:300px">
+        <div class="modal-card-head">
+            <p>프로필 변경</p>
+        </div>
         <section class="modal-card-body">
-            <b-field>
-                <b-input type="text" id="name" placeholder="이름"></b-input>
-            </b-field>
-
             <b-field>
                 <b-input type="text" placeholder="닉네임" id="nickName"></b-input>
             </b-field>
@@ -42,15 +41,10 @@ export default{
             else
             {
                 db.collection('users').doc(user.email).update({
-                name:document.getElementById('name').value,
                 nickName:document.getElementById('nickName').value,
-                sex:document.querySelector('input[name="sex"]:checked').value
             })
             }
-
-            db.collection('users').doc(user.email).get().then((doc)=>{
-                alert(doc.data().sex)
-            })
+            alert('변경사항이 저장되었습니다.')
         },
         /*db에서 읽는법
         readDb:function(){

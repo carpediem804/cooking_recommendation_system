@@ -5,12 +5,20 @@
         <div class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item" href="/">home</a>
+            <button class="button is-warning is-normal" v-if="!loggedIn" @click="signUpPop=true">sign up</button>
             <button class="button is-primary is-normal" v-if="!loggedIn" @click="loginPop=true">login</button>
-
             <b-modal :active.sync="loginPop" has-modal-card>
               <login></login>
             </b-modal>
 
+            <b-modal :active.sync="signUpPop" has-modal-card>
+              <signUp></signUp>
+            </b-modal>
+
+            <b-modal :active.sync="profilePop" has-modal-card>
+              <addProfile></addProfile>
+            </b-modal>
+            <button class="button is-warning" v-if="loggedIn" @click="profilePop=true">프로필 수정</button>
             <button class="button is-link" v-if="loggedIn" v-on:click="logout()">logout</button>
           </div>
         </div>
@@ -34,16 +42,22 @@
     import firebase from 'firebase'
     import BModal from "buefy/src/components/modal/Modal";
     import login from './components/Login.vue'
+    import signUp from './views/SignUp.vue'
+    import addProfile from './views/addProfile.vue'
     export default {
         components: {
             BModal,
             'app-header': header,
             firebase,
-            login
+            login,
+            signUp,
+            addProfile
         },
         data () {
             return {
                 loginPop:false,
+                signUpPop:false,
+                profilePop:false
             }
         },
         methods: {
