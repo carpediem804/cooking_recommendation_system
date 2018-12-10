@@ -1,4 +1,4 @@
-import Vue from 'vue'
+//import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import firebase from 'firebase'
@@ -7,7 +7,11 @@ import axios from 'axios'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import { store } from './store/store'
+import Vue from 'vue'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
 
+Vue.use(Buefy)
 
 Vue.prototype.$http = axios;
 

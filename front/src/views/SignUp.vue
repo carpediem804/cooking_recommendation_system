@@ -11,6 +11,18 @@
             <div>
                 <input type="password" id="pwd_check" placeholder="비밀번호확인">
             </div>
+            <div>
+                <input type="text" placeholder="이름" id="name">
+            </div>
+
+            <div>
+                <input type="text" placeholder="닉네임" id="nickName">
+            </div>
+
+            <div>
+                <input type="radio" name='sex' id="male" value="male">남자
+                <input type="radio" name='sex' id="female" value="female">여자
+            </div>
             <input type="button" value="회원가입" v-on:click="signUp()">
         </form>
     </div>
@@ -38,16 +50,17 @@ export default{
                 firebase.auth().createUserWithEmailAndPassword(this.email,this.password)
                 .then((user)=>{
                     db.collection('users').doc(document.getElementById('user_email').value).set({
-                        name:'',
-                        nickName:'',
-                        sex:'',
-                        super:0
+                        name:document.getElementById('name').value,
+                        nickName:document.getElementById('nickName').value,
+                        sex:document.querySelector('input[name="sex"]:checked').value,
+                        super:0,
+                        pwd:document.getElementById('user_pwd').value
                     })
                 })
                 .catch((err)=>{
                     switch(err.code){
                         case "auth/invalid-email": {
-                            alert('유효하지 않은 메일입니다'); 
+                            alert('유효하지 않은 메일입니다');
                             break;
                         }
                         case "auth/wrong-password":{
