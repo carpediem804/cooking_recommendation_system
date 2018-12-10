@@ -1,22 +1,30 @@
 <template>
- <div id ="example_select">
-     <p class="content">
-         <b>selected</b>: {{ selected }}
-         <br>
-      <b-select
-              multiple
-              native-size="6"
-              v-model = "selected">
-              <option >야채류</option>
-              <option >해산물</option>
-              <option>육류</option>
-              <option>밀가루빵류/면류</option>
-              <option>양념류</option>
-              <option>기타</option>
-      </b-select>
-     </p>
-<p class="category-list">
-              <span v-if = "selected == '야채류' ">
+    <div id ="example_select">
+        <div class="tile is-ancestor">
+            <div class="tile">
+                <div class ="tile is_parent">
+                    <p class="content">
+                        <b-field>
+                            <b-select
+                                    multiple
+                                    native-size="6"
+                                    v-model = "selected">
+                                <option >야채류</option>
+                                <option >해산물</option>
+                                <option>육류</option>
+                                <option>밀가루빵류/면류</option>
+                                <option>양념류</option>
+                                <option>기타</option>
+                            </b-select>
+                        </b-field>
+                    </p>
+
+                </div>
+                <div class="tile">
+                <div class="tile is-parent">
+                    <div class="tile is-child">
+                        <p class="category-list">
+                            <span v-if = "selected == '야채류' ">
                   <br>
                   <b-field>
                       <b-checkbox-button v-model="checkedNames" native-value ="무">
@@ -105,7 +113,7 @@
                   <br>
               </span>
 
-              <span v-else-if = "selected == '해산물' ">
+                            <span v-else-if = "selected == '해산물' ">
                   <br>
                   <b-field>
                       <b-checkbox-button v-model="checkedNames" native-value ="고등어">
@@ -149,7 +157,7 @@
                   <br>
               </span>
 
-              <span v-else-if = "selected == '육류' ">
+                            <span v-else-if = "selected == '육류' ">
                   <br>
                   <b-field>
                       <b-checkbox-button v-model="checkedNames" native-value ="닭고기">
@@ -175,7 +183,7 @@
                   <br>
               </span>
 
-              <span v-else-if = "selected == '밀가루빵류/면류' ">
+                            <span v-else-if = "selected == '밀가루빵류/면류' ">
                   <br>
                   <b-field>
                       <b-checkbox-button v-model="checkedNames" native-value ="라면">
@@ -213,7 +221,7 @@
                   <br>
               </span>
 
-              <span v-else-if = "selected == '양념류' ">
+                            <span v-else-if = "selected == '양념류' ">
                   <br>
                   <b-field>
                       <b-checkbox-button v-model="checkedNames" native-value ="고추장">
@@ -303,9 +311,8 @@
 
               </span>
 
-              <span v-else-if = "selected == '기타' ">
-
-                  <br>
+                            <span v-else-if = "selected == '기타' ">
+                                <br>
                   <b-field>
                       <b-checkbox-button v-model="checkedNames" native-value ="녹말가루">
                           <img v-bind:src = "imageLink48" width= "50px" height="50px" />
@@ -362,13 +369,21 @@
 
 
               </span>
-    </p>
+
+
+
+                        </p>
+                    </div>
+
+
+                    </div>
+                </div>
 
 
 
 
-
-                    <span>
+<div class="tile">
+            <span>
                       <br>
                         체크한 이름 : {{ checkedNames }}
                         <br>
@@ -377,31 +392,37 @@
 
 
                     </span>
-     <div id="recommend">
-        <ul>
-            <li v-for="(data,index) in receive_data">
-                <div v-if="index%2==0" id="menu_image">
-                    <h2>{{receive_data[index].title}}</h2>
+</div>
+            <div id="recommend">
+                <ul>
+                    <li v-for="(data,index) in receive_data">
+                        <div v-if="index%2==0" id="menu_image">
+                            <h2>{{receive_data[index].title}}</h2>
 
-                    <img height='250' width="250" v-bind:src=$url(image_list[index])>
-                </div>
-                <div v-if="index%2==0">
-                    재료: {{receive_data[index].ingredients}}
-                </div>
-                <div v-if="index%2!=0">
-                    요리법 : <a v-bind:href="receive_data[index]"> click </a>
-                </div>
-            </li>
-        </ul>
-     </div>
-  </div>
+                            <img height='250' width="250" v-bind:src=$url(image_list[index])>
+                        </div>
+                        <div v-if="index%2==0">
+                            재료: {{receive_data[index].ingredients}}
+                        </div>
+                        <div v-if="index%2!=0">
+                            요리법 : <a v-bind:href="receive_data[index]"> click </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+    </div>
 
 </template>
 
 <script>
 
+    import BField from "buefy/src/components/field/Field";
     export default {
         name:'example_select',
+        components: {BField},
         data(){
             return{
                 ingredient: " ",
@@ -518,9 +539,10 @@
 
 </script>
 
-<style>
+<style scoped>
     .content{
         border : solid;
+
 
     }
     .category-list{
