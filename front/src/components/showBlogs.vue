@@ -1,7 +1,7 @@
 <template>
     <div id="show-blogs">
         <h1>요리 게시판</h1>
-        <input type="text" v-model="search" placeholder="search" />
+        <b-input type="text" v-model="search" placeholder="search"></b-input>
         <div v-for="blog in filteredBlogs" class="single-blog">
             <router-link v-bind:to="'/blog/' + blog.blogId"><h2>{{ blog.title }}</h2></router-link>
             <p>{{blog.category}}</p>

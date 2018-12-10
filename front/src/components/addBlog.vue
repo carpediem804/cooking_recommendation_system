@@ -1,42 +1,47 @@
 <template>
     <div id="add-blog">
-        <h2>게시판 글올리기</h2>
-        <form v-if="!submitted">
-            <label>제목:</label>
-            <input type="text" v-model.lazy="blog.title" required />
-            <label>내용:</label>
-            <textarea v-model.lazy.trim="blog.content"></textarea>
-            <div id="checkboxes">
-                <p>Categories:</p>
-                <label>한식</label>
-                <input type="checkbox" value="한식" v-model="blog.categories" />
-                <label>중식</label>
-                <input type="checkbox" value="중식" v-model="blog.categories" />
-                <label>일식</label>
-                <input type="checkbox" value="일식" v-model="blog.categories" />
-                <label>양식</label>
-                <input type="checkbox" value="양식" v-model="blog.categories" />
-            </div>
-
-            <div class="dropbox">
-                <input class="input-file" type="file" name="file"
-                       @change="upload($event.target.name, $event.target.files)"
-                       @drop="upload($event.target.name, $event.target.files)">
-                <div v-if="!imgFile">
-                    <h2>파일을 드래그해서 드랍해주세요. </h2>
+        <header class="card-header">
+            <h2 class="card-header-title">게시판 글올리기</h2>
+        </header>
+        <b-field-body>
+            <form v-if="!submitted">
+                <label>제목:</label>
+                <b-input type="text" v-model.lazy="blog.title" required></b-input>
+                <label>내용:</label>
+                <b-input type="textarea" v-model.lazy.trim="blog.content"></b-input>
+                <div id="checkboxes">
+                    <p>Categories:</p>
+                    <label>한식</label>
+                    <input type="checkbox" value="한식" v-model="blog.categories" />
+                    <label>중식</label>
+                    <input type="checkbox" value="중식" v-model="blog.categories" />
+                    <label>일식</label>
+                    <input type="checkbox" value="일식" v-model="blog.categories" />
+                    <label>양식</label>
+                    <input type="checkbox" value="양식" v-model="blog.categories" />
                 </div>
-                <div v-else>
-                    <img :src="imgFile" />
-                </div>
-            </div>
 
-            <label>Author: {{blog.author}}</label><!--유저 정보 읽어서 이름 뽑도록 수정-->
-            <!--<select v-model="blog.author">
-                <option v-for="author in authors">{{ author }}</option>
-            </select>-->
-            <hr />
-            <button v-on:click.prevent="post">Add Blog</button>
-        </form>
+                <div class="dropbox">
+                    <input class="input-file" type="file" name="file"
+                           @change="upload($event.target.name, $event.target.files)"
+                           @drop="upload($event.target.name, $event.target.files)">
+                    <div v-if="!imgFile">
+                        <h2>파일을 드래그해서 드랍해주세요. </h2>
+                    </div>
+                    <div v-else>
+                        <img :src="imgFile" />
+                    </div>
+                </div>
+
+                <label>Author: {{blog.author}}</label><!--유저 정보 읽어서 이름 뽑도록 수정-->
+                <!--<select v-model="blog.author">
+                    <option v-for="author in authors">{{ author }}</option>
+                </select>-->
+                <hr />
+                <button class="button is-primary" v-on:click.prevent="post">Add Blog</button>
+            </form>
+        </b-field-body>
+
         <div v-if="submitted">
             <h3>Thanks for adding your post</h3>
         </div>
@@ -58,8 +63,12 @@
     // Imports
     import firebase from 'firebase'
     import axios from 'axios'
+    import BInput from "buefy/src/components/input/Input";
+    import BTable from "buefy/src/components/table/Table";
+    import BFieldBody from "buefy/src/components/field/FieldBody";
 
     export default {
+        components: {BFieldBody, BTable, BInput},
         data () {
             return {
                 blog: {
@@ -68,8 +77,9 @@
                     categories: [],
                     author: '',
                     file: ''
+
                 },
-                authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
+                //authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
                 submitted: false
             }
         },
@@ -86,11 +96,12 @@
                         title: this.blog.title,
                         bodycotent: this.blog.content,
                         category: this.blog.categories,
-                        blogId: this.$store.state.blogs.length + 1,
+                       // blogId: this.$store.state.blogs.length + 1,
                         author : this.blog.author
                     }
 
                 }).then(function(data){
+                    //this.blog.blogId
                     this.submitted = true;
                     console.log("submitted가 true 됨 ")
                     console.log(data);

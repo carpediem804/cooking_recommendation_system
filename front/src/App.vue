@@ -1,7 +1,19 @@
 <template>
-  <div id="app">
+  <div id="app" class="container is-fluid">
     <div id="nav">
       <div>
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="/">home</a>
+            <button class="button is-primary is-normal" v-if="!loggedIn" @click="loginPop=true">login</button>
+
+            <b-modal :active.sync="loginPop" has-modal-card>
+              <login></login>
+            </b-modal>
+
+            <a class="navbar-item" v-if="loggedIn" v-on:click="logout()">logout</a>
+          </div>
+        </div>
         <div v-if="loggedIn">
           아이디:{{this.$store.state.user.email}}
         </div>
@@ -19,15 +31,33 @@
     // Imports
     import header from './components/header.vue';
     import { mapGetters } from 'vuex'
+    import firebase from 'firebase'
+    import BModal from "buefy/src/components/modal/Modal";
+    import login from './components/Login.vue'
     export default {
         components: {
-            'app-header': header
+            BModal,
+            'app-header': header,
+            firebase,
+            login
         },
         data () {
             return {
+                loginPop:false,
             }
         },
         methods: {
+            logout:function(){
+                firebase.auth().signOut().catch(function(err){
+                    alert(err)
+                }).then(()=>{
+                    localStorage.clear()
+                    this.$store.state.user={}
+                    this.$store.state.loggedIn=false
+                    alert("로그아웃")
+                    window.location.reload(true)
+                })
+            }
         },
         computed:{
             ...mapGetters({
@@ -64,7 +94,7 @@
 
 #nav a {
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 #nav a.router-link-exact-active {

@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+const { mongoose, autoIncrement } = require('../mongo')
 
 var imagesSchema = mongoose.Schema({
     image: {
@@ -16,13 +16,17 @@ var imagesSchema = mongoose.Schema({
         type : String
     },
     blogId : {
+        type : Number
+    },
+    authorname : {
         type : String
-    }
+    },
+    comment_date: {type: Date, default: Date.now()}
 });
-//imagesSchema.plugin(autoIncrement, {
-//    model: 'image',
-//    field: 'blogId',
-//    startAt: 1
-//})
+imagesSchema.plugin(autoIncrement, {
+    model: 'image',
+    field: 'blogId',
+    startAt: 1
+})
 
 module.exports = mongoose.model('Image', imagesSchema);

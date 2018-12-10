@@ -1,7 +1,6 @@
 const multer = require('multer');
 const { Router } = require('Express');
 const router = Router();
-const blogModel = require('../db/models/blog');
 const Image = require('../db/models/images');
 const upload = require('../multer/storage');
 
@@ -16,24 +15,11 @@ const storage = multer.diskStorage({
     }
 });
 
-router.post('/', function(req, res,next){
-    var args = req.body
-    console.log(args);
-    // upload(function(req, res, err){
-    //     if (err) console.log(err);
-    // });
-    let saveblog = blogModel({
-        blogId : req.body.blogId,
-        title : req.body.title,
-        category : req.body.category,
-        body : req.body.bodycotent,
-    })
-    saveblog.save(function (error,data) {
-        if(error){
-            console.log(error);
-        }else{
-            console.log(data);
-        }
+router.get('/img', function(req, res,next){
+    console.log("upload/img로 들어옴")
+    Image.find().then(dblist=>{
+        console.log(dblist);
+        res.json({bloglist : dblist});
     })
 })
 router.post("/img", function(req, res) {
@@ -42,6 +28,7 @@ router.post("/img", function(req, res) {
    // console.log(req);
     console.log(req.query.title);
     console.log(req.query.bodycotent);
+   // console.log("author : "+ req.query.author);
     //console.log(req.file);
     upload(req, res, function (err) {
         if(req.file == null || req.file == undefined || req.file == ""){
@@ -56,10 +43,12 @@ router.post("/img", function(req, res) {
                 image.title = req.query.title;
                 image.body = req.query.bodycotent;
                 image.category = req.query.category;
-                image.blogId = req.query.blogId;
+                //image.blogId = req.query.blogId;
+                image.authorname = req.query.author;
+                console.log(image.authorname)
                 image.save(()=>{
                     if (err) return next(err);
-                })
+                });
                 res.send("됫다됫다");
                 console.log("보냇음 보냇음");
                 //console.log(image);
