@@ -8,6 +8,7 @@ import showBlogs from './components/showBlogs.vue';
 import singleBlog from './components/singleBlog.vue';
 import ingredient from './components/ingredient.vue';
 import login from './components/Login.vue'
+import blogblog from './components/blogtest.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -46,6 +47,11 @@ export default new Router({
         path:'/login',
           name:'login',
           component:login
+      },
+      {
+        path:'/testtest',
+          name:'blogblog',
+          component:blogblog
       }
   ]
 })
