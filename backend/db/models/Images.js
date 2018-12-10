@@ -21,7 +21,10 @@ var imagesSchema = mongoose.Schema({
     authorname : {
         type : String
     },
-    comment_date: {type: Date, default: Date.now()}
+    comment_date: {type: Date, default: Date.now()},
+    hart : {
+        type : Number
+    }
 });
 imagesSchema.plugin(autoIncrement, {
     model: 'image',
