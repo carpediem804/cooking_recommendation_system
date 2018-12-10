@@ -1,7 +1,31 @@
 <template>
     <div id="SignUp">
-        <h2>회원가입</h2>
-        <form id="sign_form" autocomplete="off" method="POST" action="#">
+        <section>
+            <b-field label="Email" type="is-danger" message="This email is invalid">
+                <b-input type="email" v-model="email" id="user_email" maxlength="30"></b-input>
+            </b-field>
+
+            <b-field label="Username" type="is-success" message="This username is available">
+                <b-input  v-model="name" id="name" maxlength="30"></b-input>
+            </b-field>
+
+            <b-field label="Password">
+                <b-input type="password" id="user_pwd" password-reveal></b-input>
+            </b-field>
+            <b-field label="Password Check">
+                <b-input type="password" id="pwd_check" password-reveal></b-input>
+            </b-field>
+            <b-field>
+                <b-radio name="sex" native-value="male" id="male">남자</b-radio>
+                <b-radio name="sex" native-value="female" id="female">여자</b-radio>
+            </b-field>
+            <input class="button is-link" type="button" value="회원가입" v-on:click="signUp()">
+
+        </section>
+
+
+
+       <!-- <form id="sign_form" autocomplete="off" method="POST" action="#">
             <div>
                 <input v-model="email" type="text" id="user_email" placeholder="이메일">
             </div>
@@ -24,17 +48,22 @@
                 <input type="radio" name='sex' id="female" value="female">여자
             </div>
             <input type="button" value="회원가입" v-on:click="signUp()">
-        </form>
+        </form>-->
     </div>
 </template>
 
 <script>
 import firebase from 'firebase'
+import BField from "buefy/src/components/field/Field";
+import BInput from "buefy/src/components/input/Input";
+import BRadio from "buefy/src/components/radio/Radio";
 
 export default{
     name:"SignUp",
+    components: {BRadio, BInput, BField},
     data(){
         return{
+            name:'',
             email:'',
             password:'',
         }

@@ -1,29 +1,24 @@
 <template>
 <div id='login'>
+    <div class="modal-card" id="log_form" autocomplete="off">
+        <header class="modal-card-head"><h2 class="modal-card-title">로그인</h2></header>
+        <section class="modal-card-body">
+            <b-field>
+                <b-input type="text" id="user_email" placeholder="이메일"></b-input>
+            </b-field>
+            <b-field>
+                <b-input type="password" id="user_password" placeholder="비밀번호"></b-input>
+            </b-field>
+        </section>
+        <footer class="modal-card-foot">
+            <b-field>
+                <input class="button is-link" type="button" value="로그인" v-on:click="login()"></input>
+                <button class="button" type="button" @click="$parent.close()">취소</button>
+            </b-field>
 
-    <form id="log_form" autocomplete="off">
-        <h2>로그인</h2>
-        <div>
-            <input type="text" id="user_email" placeholder="이메일">
-        </div>
-        <div>
-            <input type="password" id="user_password" placeholder="비밀번호">
-        </div>
-        <input type="button" value="로그인" v-on:click="login()">
-        <div>
-            <input type="button" value="취소">
-        </div>
-        <div>
-            <a href="#">아이디 찾기</a>
-            <span> | </span>
-            <a href="#">비밀번호 찾기</a>
-            <span> | </span>
-            <a href="/signUp">회원가입</a>
-        </div>
-        <div>
-            <input type="button" value="로그아웃" v-on:click="logout()">
-        </div>
-    </form>
+        </footer>
+
+    </div>
 
 
 </div>
@@ -31,11 +26,12 @@
 
 <script>
 import firebase from 'firebase'
+import BField from "buefy/src/components/field/Field";
 
 export default{
     name:'login',
+    components: {BField},
     props:{
-        showModal:false,
     },
     data(){
         return{
@@ -85,20 +81,7 @@ export default{
 </script>
 
 <style>
-#log_form{
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    background: azure;
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid gray;
-
-}
-#log_form div a{
-    text-decoration: none;
-    color: black;
+#login{
+    max-width: 200px;
 }
 </style>
