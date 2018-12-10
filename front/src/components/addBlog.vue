@@ -77,8 +77,9 @@
                     categories: [],
                     author: '',
                     file: ''
+
                 },
-                authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
+                //authors: ['The Net Ninja', 'The Angular Avenger', 'The Vue Vindicator'],
                 submitted: false
             }
         },
@@ -95,11 +96,12 @@
                         title: this.blog.title,
                         bodycotent: this.blog.content,
                         category: this.blog.categories,
-                        blogId: this.$store.state.blogs.length + 1,
+                       // blogId: this.$store.state.blogs.length + 1,
                         author : this.blog.author
                     }
 
                 }).then(function(data){
+                    //this.blog.blogId
                     this.submitted = true;
                     console.log("submitted가 true 됨 ")
                     console.log(data);
