@@ -11,7 +11,7 @@
               <login></login>
             </b-modal>
 
-            <a class="navbar-item" v-if="loggedIn" v-on:click="logout()">logout</a>
+            <button class="button is-link" v-if="loggedIn" v-on:click="logout()">logout</button>
           </div>
         </div>
         <div v-if="loggedIn">
@@ -55,7 +55,6 @@
                     this.$store.state.user={}
                     this.$store.state.loggedIn=false
                     alert("로그아웃")
-                    window.location.reload(true)
                 })
             }
         },

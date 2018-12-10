@@ -1,23 +1,32 @@
 <template>
-    <div id="addProfile">
-        <div>
-            <input type="text" placeholder="이름" id="name">
-        </div>
+    <div id="addProfile" class="modal-card">
+        <section class="modal-card-body">
+            <b-field>
+                <b-input type="text" id="name" placeholder="이름"></b-input>
+            </b-field>
 
-        <div>
-            <input type="text" placeholder="닉네임" id="nickName">
-        </div>
+            <b-field>
+                <b-input type="text" placeholder="닉네임" id="nickName"></b-input>
+            </b-field>
 
-        <div>
-            <input type="radio" name='sex' id="male" value="male">남자
-            <input type="radio" name='sex' id="female" value="female">여자
-        </div>
-        <input type="button" value="수정" v-on:click="addInfo()">
+            <b-field>
+                <textarea class="textarea" placeholder="자기소개" id="self"></textarea>
+            </b-field>
+            <b-field>
+                <button class="button" value="수정" v-on:click="addInfo()">수정</button>
+            </b-field>
+        </section>
+
+
     </div>
+
 </template>
 
 <script>
 import firebase from 'firebase'
+import BField from "buefy/src/components/field/Field";
+import BFieldBody from "buefy/src/components/field/FieldBody";
+import BInput from "buefy/src/components/input/Input";
 
 export default{
     name:'addProfile',
@@ -58,6 +67,9 @@ export default{
         }
     },
     components:{
+        BInput,
+        BFieldBody,
+        BField,
         firebase
     },
     mounted(){

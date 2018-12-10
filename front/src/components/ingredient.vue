@@ -518,7 +518,7 @@
 
 </script>
 
-<style>
+<style scoped>
     .content{
         border : solid;
 

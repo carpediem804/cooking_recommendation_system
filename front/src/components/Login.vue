@@ -1,25 +1,22 @@
 <template>
-<div id='login'>
-    <div class="modal-card" id="log_form" autocomplete="off">
+<div>
+    <div class="modal-card" id="log_form">
         <header class="modal-card-head"><h2 class="modal-card-title">로그인</h2></header>
         <section class="modal-card-body">
             <b-field>
-                <b-input type="text" id="user_email" placeholder="이메일"></b-input>
+                <b-input type="text" id="user_email" placeholder="이메일" autocomplete="off"></b-input>
             </b-field>
             <b-field>
                 <b-input type="password" id="user_password" placeholder="비밀번호"></b-input>
             </b-field>
         </section>
         <footer class="modal-card-foot">
-            <b-field>
-                <input class="button is-link" type="button" value="로그인" v-on:click="login()"></input>
+            <b-field id="button_center">
+                <button class="button is-link" type="button" value="로그인" v-on:click="login()">로그인</button>
                 <button class="button" type="button" @click="$parent.close()">취소</button>
             </b-field>
-
         </footer>
-
     </div>
-
 
 </div>
 </template>
@@ -27,10 +24,11 @@
 <script>
 import firebase from 'firebase'
 import BField from "buefy/src/components/field/Field";
+import BInput from "buefy/src/components/input/Input";
 
 export default{
     name:'login',
-    components: {BField},
+    components: {BField,BInput},
     props:{
     },
     data(){
@@ -80,5 +78,12 @@ export default{
 }
 </script>
 
-<style>
+<style scoped>
+    #log_form{
+        margin:auto;
+        width:250px;
+    }
+    #button_center{
+        margin:auto;
+    }
 </style>
