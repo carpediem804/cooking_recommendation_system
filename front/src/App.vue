@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
     <div id="nav">
       <div>
         <div class="navbar-menu">
@@ -31,9 +32,6 @@
                 </b-dropdown-item>
                 <b-dropdown-item value="home">
                     Home
-                </b-dropdown-item>
-                <b-dropdown-item value="products">
-                    Products
                 </b-dropdown-item>
                 <b-dropdown-item value="blog" disabled>
                     Blog
