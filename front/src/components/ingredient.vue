@@ -2,12 +2,12 @@
     <div id ="example_select">
         <div class="tile is-ancestor">
             <div class="tile">
-                <div class ="tile is_parent">
+                <div class ="tile is-vertical is-4 is_parent">
                     <p class="content">
                         <b-field>
                             <b-select
                                     multiple
-                                    native-size="6"
+                                    native-size="10"
                                     v-model = "selected">
                                 <option >야채류</option>
                                 <option >해산물</option>
