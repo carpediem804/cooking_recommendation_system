@@ -1,5 +1,5 @@
 <template>
-<div style="width:800px; margin:auto">
+<div class="modal-card" style="width:700px; margin:auto">
     대현행님 글작성 테스트 창입니다 원본 그대로 있습니다요
     <header class="modal-card-head">
         <b-input type="text" v-model.lazy="blog.title" style="width:100%" required placeholder="제목"></b-input>
@@ -8,7 +8,7 @@
         <div class="tile is-ancestor">
             <div class="tile is-vertical is-8">
                 <div class="tile">
-                    <article class="tile is-child notification">
+                    <article class="tile is-child">
                         사진
                         <div class="dropbox">
                             <input class="input-file" type="file" name="file"
@@ -24,61 +24,35 @@
                     </article>
                 </div>
                 <div class="tile">
-                    <article class="media" style="width:100%">
-                        <figure class="media-left">
-                            <p class="image is-64x64">
-                                <img src="https://bulma.io/images/placeholders/128x128.png"><!--유저 이미지 -->
-                            </p>
-                        </figure>
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                    <strong>{{blog.author}}</strong> <small>({{this.$store.state.user.email}})</small> <!--유저 정보 -->
-                                    <br>
-                                    <label>내용:</label>
-                                    <b-input type="textarea" v-model.lazy.trim="blog.content"></b-input>
-                                    <div id="checkboxes">
-                                        <p>Categories:</p>
-                                        <label>한식</label>
-                                        <input type="checkbox" value="한식" v-model="blog.categories" />
-                                        <label>중식</label>
-                                        <input type="checkbox" value="중식" v-model="blog.categories" />
-                                        <label>일식</label>
-                                        <input type="checkbox" value="일식" v-model="blog.categories" />
-                                        <label>양식</label>
-                                        <input type="checkbox" value="양식" v-model="blog.categories" />
-                                    </div>
-                                </p>
-                            </div>
-                            <nav class="level is-mobile">
-                                <div class="level-left">
-                                    <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                                    </a>
-                                    <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                                    </a>
-                                    <a class="level-item">
-                                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                                    </a>
-                                </div>
-                            </nav>
+                    <div class="content" style="width:100%;">
+                        <strong>{{blog.author}}</strong> <small>({{this.$store.state.user.email}})</small> <!--유저 정보 -->
+                        <br>
+                        <label>내용:</label>
+                        <textarea class="textarea" rows="10" v-model.lazy.trim="blog.content"></textarea>
+                        <div id="checkboxes">
+                            <p>Categories:</p>
+                            <label>한식</label>
+                            <input type="checkbox" value="한식" v-model="blog.categories" />
+                            <label>중식</label>
+                            <input type="checkbox" value="중식" v-model="blog.categories" />
+                            <label>일식</label>
+                            <input type="checkbox" value="일식" v-model="blog.categories" />
+                            <label>양식</label>
+                            <input type="checkbox" value="양식" v-model="blog.categories" />
                         </div>
-                    </article>
-                </div>
-                <div>
-                    <hr />
-                    <button class="button is-primary" v-on:click="post()">Add Blog</button>
+                    </div>
                 </div>
             </div>
             <div class="tile">
                 <article class="tile notification is-warning">
-                    테스트 창
+                    요리 재료 선택해서 태그 추가하는거??
                 </article>
             </div>
         </div>
     </section>
-
+    <footer class="modal-card-foot" style="width: 100%">
+        <button class="button is-primary" style="margin: auto" v-on:click="post()">Add Blog</button>
+    </footer>
     </div>
 
 </template>
@@ -183,7 +157,7 @@ export default{
 }
 
 </script>
-<style>
+<style scoped>
     .dropbox {
         outline: 2px dashed #aaa;
         background: #7fb4dd;

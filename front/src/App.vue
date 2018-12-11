@@ -19,7 +19,12 @@
             <b-modal :active.sync="profilePop" has-modal-card>
               <addProfile></addProfile>
             </b-modal>
+
+            <b-modal :active.sync="writePop" has-modal-card>
+              <showContent></showContent>
+            </b-modal>
             <button class="button is-warning" v-if="loggedIn" @click="profilePop=true">프로필 수정</button>
+            <button class="button is-light" v-if="loggedIn" @click="writePop=true">글쓰기</button>
             <button class="button is-link" v-if="loggedIn" v-on:click="logout()">logout</button>
           </div>
         </div>
@@ -45,6 +50,7 @@
     import login from './components/Login.vue'
     import signUp from './views/SignUp.vue'
     import addProfile from './views/addProfile.vue'
+    import showContent from './components/showContent'
     export default {
         components: {
             BModal,
@@ -52,13 +58,15 @@
             firebase,
             login,
             signUp,
-            addProfile
+            addProfile,
+            showContent
         },
         data () {
             return {
                 loginPop:false,
                 signUpPop:false,
-                profilePop:false
+                profilePop:false,
+                writePop:false
             }
         },
         methods: {
