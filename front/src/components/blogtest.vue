@@ -27,6 +27,7 @@
         <li>{{c}}<br></li>
         </ul>
         </b-container>
+        <img src="http://localhost:8000/file-1544187170205.jpg">
     </div>
 
 </template>
