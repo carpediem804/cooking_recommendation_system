@@ -24,6 +24,9 @@ var imagesSchema = mongoose.Schema({
     comment_date: {type: Date, default: Date.now()},
     heart : {
         type : Number
+    },
+    likeuserId : {
+        type : String
     }
 });
 imagesSchema.plugin(autoIncrement, {
