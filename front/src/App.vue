@@ -134,10 +134,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-    background-image: url("../public/bg.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+
 }
 #nav {
   padding: 30px;
