@@ -14,36 +14,40 @@
                 </b-form-group>
             </b-col>
 
-            <b-col md="6" class="my-1">
-                <b-form-group horizontal label="Per page" class="mb-0">
-                    <b-form-select :options="pageOptions" v-model="perPage" />
-                </b-form-group>
-            </b-col>
+            <!--<b-col md="6" class="my-1">-->
+                <!--<b-form-group horizontal label="Per page" class="mb-0">-->
+                    <!--<b-form-select :options="pageOptions" v-model="perPage" />-->
+                <!--</b-form-group>-->
+            <!--</b-col>-->
         </b-row>
-        <b-table striped hover :items="titleList" :fields="fields"  @row-clicked="myRowClickHandler" @filtered="onFiltered" :filter="filter" stacked="md">
-            <b-table-column label="Actions">
-                <button class="button is-small is-light" @click.prevent="onEdit(props.row)">
-                    <b-icon icon="edit" size="is-small"></b-icon>
-                </button>
-                <button class="button is-small is-danger" @click.prevent="onDelete(props.row)">
-                    <b-icon icon="delete" size="is-small"></b-icon>
-                </button>
-            </b-table-column>
-            <template slot="actions" slot-scope="row">
+        <b-table striped hover :items="titleList" :fields="fields"  @row-clicked="myRowClickHandler" @filtered="onFiltered" :filter="filter" style="margin:auto">
+            <template slot="action" slot-scope="row">
                 <!-- We use @click.stop here to prevent a 'row-clicked' event from also happening -->
-                <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mr-1">
-                    Info modal
+                <b-button size="sm" @click.stop="row.toggleDetails">
+                    {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
                 </b-button>
-                <!--<b-button size="sm" @click.stop="row.toggleDetails">-->
-                    <!--{{ row.detailsShowing ? 'Hide' : 'Show' }} Details-->
-                <!--</b-button>-->
             </template>
+            <template slot="row-details" slot-scope="row">
+                <b-card>
+                    <ul>
+                        <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value}}</li>
+                    </ul>
+                </b-card>
+            </template>
+            <template slot="remove" slot-scope="row">
+                <b-button size="lg" variant="Delete" @click="deletedata(row)">
+                    delete
+                </b-button>
+            </template>
+
+
         </b-table>
+
         <!--<ul v-for="c in titleList" v-bind:key="c.id" >-->
         <!--<li>{{c}}<br></li>-->
         <!--</ul>-->
         </b-container>
-        <img src="http://localhost:8000/file-1544187170205.jpg">
+        <!--<img src="http://localhost:8000/file-1544187170205.jpg">-->
     </div>
 
 </template>
@@ -55,10 +59,6 @@
         data :function(){
             return{
                 fields: {
-                    // comment_date:{
-                    // label : 'Date',
-                    //     sortable: true
-                    // },
                       blogId : {
                           label : 'BlogNumber',
                           sortable : true
@@ -66,9 +66,6 @@
                       title : {
                        label : 'Title'
                        },
-              // body : {
-              //       label : 'Content'
-              // },
                       category : {
                           label : 'Category',
                           sortable : true,
@@ -77,21 +74,22 @@
                          label : 'Author',
                          sortable : true,
                     },
-                    //      image : {
-                    //          label : 'Image'
-                    // }
                     heart : {
                           lable : "like number",
                         sortable : true
                     },
+                    action : {
 
+                    },
+                    remove : {
 
+                    }
             },
                 titleList : [],
                 currentPage: 1,
-                perPage: 5,
+                //perPage: 5,
                // totalRows: titleList.length,
-                pageOptions: [ 5, 10, 15 ],
+               // pageOptions: [ 5, 10, 15 ],
                // sortBy: null,
                // sortDesc: false,
                // sortDirection: 'asc',
@@ -117,6 +115,23 @@
                 // Trigger pagination to update the number of buttons/pages due to filtering
                 this.totalRows = filteredItems.length
                 this.currentPage = 1
+            },
+            deletedata(data){
+                let deleteid = data.item._id;
+                this.$http.post('http://localhost:8000/delete/',{
+                    removeId: deleteid
+                }).then(res=>{
+                    console.log(res);
+                    console.log("res응답욈");
+                    console.log(res)
+                    this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                        this.titleList = res.data.bloglist;
+                    })
+                })
+
+                //console.log("data : "+data);
+
+
             }
         }
     }
