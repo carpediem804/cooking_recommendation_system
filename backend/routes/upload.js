@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 router.get('/img', function(req, res,next){
     console.log("upload/img로 들어옴")
     Image.find().then(dblist=>{
-        console.log(dblist);
+       // console.log(dblist);
         res.json({bloglist : dblist});
     })
 })
