@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container is-fluid">
+  <div id="app">
     <div id="nav">
       <div>
         <div class="navbar-menu">
@@ -23,6 +23,29 @@
             <b-modal :active.sync="writePop" has-modal-card>
               <showContent></showContent>
             </b-modal>
+            <b-dropdown class="navbar-item">
+                <p slot="trigger">test</p>
+                <b-dropdown-item has-link>
+                        Google (link)
+                    </a>
+                </b-dropdown-item>
+                <b-dropdown-item value="home">
+                    Home
+                </b-dropdown-item>
+                <b-dropdown-item value="products">
+                    Products
+                </b-dropdown-item>
+                <b-dropdown-item value="blog" disabled>
+                    Blog
+                </b-dropdown-item>
+                <hr class="dropdown-divider">
+                <b-dropdown-item value="settings">
+                    Settings
+                </b-dropdown-item>
+                <b-dropdown-item value="logout">
+                    Logout
+                </b-dropdown-item>
+            </b-dropdown>
             <button class="button is-warning" v-if="loggedIn" @click="profilePop=true">프로필 수정</button>
             <button class="button is-light" v-if="loggedIn" @click="writePop=true">글쓰기</button>
             <button class="button is-link" v-if="loggedIn" v-on:click="logout()">logout</button>
@@ -51,8 +74,10 @@
     import signUp from './views/SignUp.vue'
     import addProfile from './views/addProfile.vue'
     import showContent from './components/showContent'
+    import BDropdown from "buefy/src/components/dropdown/Dropdown";
     export default {
         components: {
+            BDropdown,
             BModal,
             'app-header': header,
             firebase,
@@ -109,6 +134,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+    background-image: url("../public/bg.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 #nav {
   padding: 30px;

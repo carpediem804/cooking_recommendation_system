@@ -175,4 +175,7 @@ export default{
         left:0;
         z-index: 3;
     }
+    .modal-background{
+        background-color: gray;
+    }
 </style>
