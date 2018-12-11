@@ -20,12 +20,28 @@
                 </b-form-group>
             </b-col>
         </b-row>
-        <b-table striped hover :items="titleList" :fields="fields"  @row-clicked="myRowClickHandler" @filtered="onFiltered" :filter="filter">
-
+        <b-table striped hover :items="titleList" :fields="fields"  @row-clicked="myRowClickHandler" @filtered="onFiltered" :filter="filter" stacked="md">
+            <b-table-column label="Actions">
+                <button class="button is-small is-light" @click.prevent="onEdit(props.row)">
+                    <b-icon icon="edit" size="is-small"></b-icon>
+                </button>
+                <button class="button is-small is-danger" @click.prevent="onDelete(props.row)">
+                    <b-icon icon="delete" size="is-small"></b-icon>
+                </button>
+            </b-table-column>
+            <template slot="actions" slot-scope="row">
+                <!-- We use @click.stop here to prevent a 'row-clicked' event from also happening -->
+                <b-button size="sm" @click.stop="info(row.item, row.index, $event.target)" class="mr-1">
+                    Info modal
+                </b-button>
+                <!--<b-button size="sm" @click.stop="row.toggleDetails">-->
+                    <!--{{ row.detailsShowing ? 'Hide' : 'Show' }} Details-->
+                <!--</b-button>-->
+            </template>
         </b-table>
-        <ul v-for="c in titleList" v-bind:key="c.id" >
-        <li>{{c}}<br></li>
-        </ul>
+        <!--<ul v-for="c in titleList" v-bind:key="c.id" >-->
+        <!--<li>{{c}}<br></li>-->
+        <!--</ul>-->
         </b-container>
         <img src="http://localhost:8000/file-1544187170205.jpg">
     </div>
@@ -67,7 +83,8 @@
                     heart : {
                           lable : "like number",
                         sortable : true
-                    }
+                    },
+
 
             },
                 titleList : [],
