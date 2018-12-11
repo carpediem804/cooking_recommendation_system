@@ -1,58 +1,37 @@
 <template>
     <div id="SignUp">
-        <section>
-            <b-field label="Email" type="is-danger" message="This email is invalid">
-                <b-input type="email" v-model="email" id="user_email" maxlength="30"></b-input>
-            </b-field>
+        <section class="modal-card" style="width:300px">
+            <div class="modal-card-body">
+                <b-field label="Email" type="is-danger" message="This email is invalid">
+                    <b-input type="email" v-model="email" id="user_email" maxlength="30" autocomplete="off"></b-input>
+                </b-field>
 
-            <b-field label="Username" type="is-success" message="This username is available">
-                <b-input  v-model="name" id="name" maxlength="30"></b-input>
-            </b-field>
+                <b-field label="Username" type="is-success" message="This username is available">
+                    <b-input  v-model="name" id="name" maxlength="30" autocomplete="off"></b-input>
+                </b-field>
 
-            <b-field label="Nickname" type="is-success" message="This username is available">
-                <b-input id="nickName" maxlength="30"></b-input>
-            </b-field>
+                <b-field label="Nickname" type="is-success" message="This username is available">
+                    <b-input id="nickName" maxlength="30" autocomplete="off"></b-input>
+                </b-field>
 
-            <b-field label="Password">
-                <b-input type="password" v-model='password' id="user_pwd" password-reveal></b-input>
-            </b-field>
-            <b-field label="Password Check">
-                <b-input type="password" id="pwd_check" password-reveal></b-input>
-            </b-field>
-            <b-field>
-                <b-radio name="sex" native-value="male" id="male">남자</b-radio>
-                <b-radio name="sex" native-value="female" id="female">여자</b-radio>
-            </b-field>
-            <input class="button is-link" type="button" value="회원가입" v-on:click="signUp()">
+                <b-field label="Password">
+                    <b-input type="password" v-model='password' id="user_pwd" password-reveal></b-input>
+                </b-field>
+                <b-field label="Password Check">
+                    <b-input type="password" id="pwd_check" password-reveal></b-input>
+                </b-field>
+                <div id="sex-center">
+                    <b-radio name="sex" native-value="male" id="male">남자</b-radio>
+                    <b-radio name="sex" native-value="female" id="female">여자</b-radio>
+                </div>
+                <b-field>
+                    <input class="button is-link" type="button" value="회원가입" v-on:click="signUp()">
+                </b-field>
+            </div>
+
 
         </section>
 
-
-
-       <!-- <form id="sign_form" autocomplete="off" method="POST" action="#">
-            <div>
-                <input v-model="email" type="text" id="user_email" placeholder="이메일">
-            </div>
-            <div>
-                <input v-model="password" id="user_pwd" type="password" placeholder="비밀번호">
-            </div>
-            <div>
-                <input type="password" id="pwd_check" placeholder="비밀번호확인">
-            </div>
-            <div>
-                <input type="text" placeholder="이름" id="name">
-            </div>
-
-            <div>
-                <input type="text" placeholder="닉네임" id="nickName">
-            </div>
-
-            <div>
-                <input type="radio" name='sex' id="male" value="male">남자
-                <input type="radio" name='sex' id="female" value="female">여자
-            </div>
-            <input type="button" value="회원가입" v-on:click="signUp()">
-        </form>-->
     </div>
 </template>
 
@@ -116,4 +95,8 @@ export default{
 #SignUp{
     display:inline-block;
 }
+    #sex-center{
+        margin:auto;
+        margin-bottom: 10px;
+    }
 </style>
