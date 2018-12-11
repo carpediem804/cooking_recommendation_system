@@ -13,12 +13,13 @@
                     <figure class="media-left"> <!--사진-->
                         <p class="image is-128x128">
                             <img src="../../public/cook-image/1.jpg">
+                            <b>{{item.authorname}}</b>
                         </p>
                     </figure>
                     <div class="media-content">
                         <nav class="navbar-menu"><!-- 이름,댓글,좋아요 -->
                             <b-field>
-                                <b>{{item.authorname}}</b>
+                                <b>{{item.title}}</b>
                             </b-field>
                             <div class="navbar-end">
                                 <a class="navbar-item" @click="like(item)"><i class="far fa-thumbs-up"></i>:{{item.heart}}</a>
@@ -26,14 +27,13 @@
                             </div>
 
                         </nav>
-                        <div class="content" style="background-color: white;">
-
-                            <b-field-body>
-                                {{item.body}}
-                            </b-field-body>
+                        <div class="content">
                             <b-field>
-                                <img width="parent" height="parent" v-bind:src=$url(item.image)>
+                                <img width="parent" height="auto" v-bind:src=$url(item.image)>
                             </b-field>
+                            <b-field-body style="background-color: lightyellow; height:30">
+                                <textarea class="textarea" readonly>{{item.body}}</textarea>
+                            </b-field-body>
                         </div>
                     </div>
                 </article>
@@ -63,7 +63,7 @@
                     id : item._id,
                     uid:this.$store.state.user.uid
                 }).then((res)=>{
-                    if(res.data=="11111")
+                    if(res.data=="reject")
                     {
                         alert("이미 추천하셨습니다.")
                     }

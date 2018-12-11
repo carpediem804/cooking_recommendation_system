@@ -25,24 +25,24 @@
               <showContent></showContent>
             </b-modal>
             <b-dropdown class="navbar-item">
-                <p slot="trigger">test</p>
-                <b-dropdown-item has-link>
-                        Google (link)
-                    </a>
-                </b-dropdown-item>
-                <b-dropdown-item value="home">
-                    Home
-                </b-dropdown-item>
-                <b-dropdown-item value="blog" disabled>
-                    Blog
-                </b-dropdown-item>
-                <hr class="dropdown-divider">
-                <b-dropdown-item value="settings">
-                    Settings
-                </b-dropdown-item>
-                <b-dropdown-item value="logout">
-                    Logout
-                </b-dropdown-item>
+                <i class="fas fa-bars" slot="trigger"></i>
+                <div v-if="loggedIn">
+                    <b-dropdown-item value="blog" disabled>
+                        Blog
+                    </b-dropdown-item>
+                    <hr class="dropdown-divider">
+                    <b-dropdown-item value="settings">
+                        Settings
+                    </b-dropdown-item>
+                    <b-dropdown-item value="logout">
+                        <a @click="logout">로그아웃</a>
+                    </b-dropdown-item>
+                </div>
+                <div v-if="!loggedIn">
+                    <b-dropdown-item>
+                        <a @click="loginPop=true">로그인</a>
+                    </b-dropdown-item>
+                </div>
             </b-dropdown>
             <button class="button is-warning" v-if="loggedIn" @click="profilePop=true">프로필 수정</button>
             <button class="button is-light" v-if="loggedIn" @click="writePop=true">글쓰기</button>
@@ -73,8 +73,10 @@
     import addProfile from './views/addProfile.vue'
     import showContent from './components/showContent'
     import BDropdown from "buefy/src/components/dropdown/Dropdown";
+    import BDropdownItem from "buefy/src/components/dropdown/DropdownItem";
     export default {
         components: {
+            BDropdownItem,
             BDropdown,
             BModal,
             'app-header': header,
