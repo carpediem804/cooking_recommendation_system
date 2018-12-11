@@ -1,20 +1,19 @@
 <template>
   <div class="home">
-  <showContent></showContent>
+    <talk></talk>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import showContent from '../components/showContent'
+import talk from '../components/talk'
 export default {
   name: 'home',
   components: {
-      showContent
+      talk
   },
     data(){
       return{
-          user:''
       }
     },
 }
