@@ -57,17 +57,21 @@
         },
         methods:{
             like:function(item){
-                console.log(item)
                 this.$http.post('http://localhost:8000/like',{
                     heart:item.heart,
-                    id:item._id
+                    id : item._id
+
                 }).then((res)=>{
-                    this.list = res.data.bloglist;
-                    for(let i=0;i<this.list.length;i++)
-                    {
-                        this.list[i].image='http://localhost:8000/'+this.list[i].image;
-                    }
+                    this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                        this.list = res.data.bloglist;
+                        console.log(this.list)
+                        for(let i=0;i<this.list.length;i++)
+                        {
+                            this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                        }
+                    })
                 })
+                this.reList()
             },
             reList:function () {
                 this.$http.get("http://localhost:8000/upload/img").then((res)=>{

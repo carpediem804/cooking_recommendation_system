@@ -20,7 +20,9 @@ Vue.prototype.$http = axios;
 
 // Use packages
 Vue.use(VueResource);
-
+Vue.use(Buefy, {
+    defaultIconPack: 'fas',
+})
 
 Vue.config.productionTip = false;
 

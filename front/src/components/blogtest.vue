@@ -14,11 +14,6 @@
                 </b-form-group>
             </b-col>
 
-            <!--<b-col md="6" class="my-1">-->
-                <!--<b-form-group horizontal label="Per page" class="mb-0">-->
-                    <!--<b-form-select :options="pageOptions" v-model="perPage" />-->
-                <!--</b-form-group>-->
-            <!--</b-col>-->
         </b-row>
         <b-table striped hover :items="titleList" :fields="fields"  @row-clicked="myRowClickHandler" @filtered="onFiltered" :filter="filter" style="margin:auto" :striped="striped">
             <template slot="action" slot-scope="row">
