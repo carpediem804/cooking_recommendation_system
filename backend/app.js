@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 require('./db/mongo') //connect db
 const findcook = require('./routes/findcook')
 const upload = require('./routes/upload')
-//const blogimage = require('/routes/blogimage')
+const deletepost = require('./routes/removeblog')
 const app = express()
 
 app.use((req, res, next) =>{
@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/findcook', findcook)
 app.use('/upload', upload)
+app.use('/delete',deletepost);
 //app.use('/blogimage',express.static('blogimage'))
 
 module.exports = app
