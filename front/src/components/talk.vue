@@ -57,8 +57,10 @@
         },
         methods:{
             like:function(item){
-                this.$http.get('http://localhost:8000/like',{
-                    heart:item._id
+                console.log(item)
+                this.$http.post('http://localhost:8000/like',{
+                    heart:item.heart,
+                    id:item._id
                 }).then((res)=>{
                     this.list = res.data.bloglist;
                     for(let i=0;i<this.list.length;i++)
