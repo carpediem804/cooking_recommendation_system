@@ -5,6 +5,7 @@ require('./db/mongo') //connect db
 const findcook = require('./routes/findcook')
 const upload = require('./routes/upload')
 const deletepost = require('./routes/removeblog')
+const like = require('./routes/like')
 const app = express()
 
 app.use((req, res, next) =>{
@@ -21,6 +22,7 @@ app.use(bodyParser.json())
 app.use('/findcook', findcook)
 app.use('/upload', upload)
 app.use('/delete',deletepost);
+app.use('/like',like);
 //app.use('/blogimage',express.static('blogimage'))
 
 module.exports = app
