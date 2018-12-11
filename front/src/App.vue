@@ -134,7 +134,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-    background-color: #EEE;
+
 }
 #nav {
   padding: 30px;
