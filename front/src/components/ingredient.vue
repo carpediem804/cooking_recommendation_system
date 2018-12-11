@@ -1,13 +1,14 @@
 <template>
     <div id ="example_select">
-        <div class="tile is-ancestor">
-            <div class="tile">
-                <div class ="tile is-vertical is-4 is_parent">
-                    <p class="content">
+        <div class="tile is ancestor">
+            <div class="tile is-parent">
+
+
+                    <div class="content">
                         <b-field>
                             <b-select
                                     multiple
-                                    native-size="10"
+                                    native-size="6"
                                     v-model = "selected">
                                 <option >야채류</option>
                                 <option >해산물</option>
@@ -17,18 +18,17 @@
                                 <option>기타</option>
                             </b-select>
                         </b-field>
-                    </p>
+                    </div>
+            </div>
 
-                </div>
-                <div class="tile">
-                <div class="tile is-parent">
-                    <div class="tile is-child">
-                        <p class="category-list">
-                            <span v-if = "selected == '야채류' ">
-                  <br>
+
+
+<div class="tile is-parent">
+                        <div class="category-list">
+                            <span v-if = "selected == '야채류'  " >
                   <b-field>
                       <b-checkbox-button v-model="checkedNames" native-value ="무">
-                          <img v-bind:src = "imageLink1" width="50px" height="50px" />
+                          <img v-bind:src = "imageLink1"  width="50px" height="50px" margin="auto"/>
                       </b-checkbox-button>
 
                       <b-checkbox-button v-model="checkedNames"native-value ="호박">
@@ -372,27 +372,29 @@
 
 
 
-                        </p>
-                    </div>
-
-
-                    </div>
-                </div>
+                        </div>
+</div>
 
 
 
 
-<div class="tile">
+
+
+
+<div class="tile  is-parent">
+    <div class="showing">
             <span>
                       <br>
-                        체크한 이름 : {{ checkedNames }}
+                체크한 이름 : <p class="screen">{{ checkedNames }}</p>
                         <br>
-                        <input type="button" v-on:click="clear()" value="clear버튼">
-                        <input type="button" v-on:click="ingredients()" value ="이 재료 추천 받기">
+                        <input type="button" v-on:click="clear()" value="clear버튼" class="clear">
+                        <input type="button" v-on:click="ingredients()" value ="이 재료 추천 받기" class="clickButton">
 
 
                     </span>
+    </div>
 </div>
+
             <div id="recommend">
                 <ul>
                     <li v-for="(data,index) in receive_data">
@@ -410,9 +412,8 @@
                     </li>
                 </ul>
             </div>
-        </div>
-        </div>
 
+    </div>
     </div>
 
 </template>
@@ -523,10 +524,7 @@
                 //this.checkedNames.splice(0,this.checkedNames.length)
             },
 
-            search:function(){
 
-
-            },
             test:function(id){
                 this.testurl='../../../backend/routes/cook_image/'+id+'.jpg'
             }
@@ -540,15 +538,57 @@
 </script>
 
 <style scoped>
+
     .content{
-        border : solid;
+        margin: auto;
+        height :300px;
+        box-sizing: border-box;
+
+
+
+
+
 
 
     }
     .category-list{
-        border :solid;
+        margin: auto;
+
+        height : 300px;
+        width :300px;
+        box-sizing: border-box;
+
+
+
+
+
+
+
 
     }
+    .showing{
+        margin: auto;
+
+
+
+
+    }
+    .clickButton{
+        margin: auto;
+        float: right;
+
+    }
+    .screen {
+        margin: auto;
+
+        width: 200px;
+        height: 200px;
+        text-align: center;
+    }
+
+
+
+
     li{
         list-style: none;
     }
