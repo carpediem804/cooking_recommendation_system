@@ -21,7 +21,7 @@
                                 <b>{{item.authorname}}</b>
                             </b-field>
                             <div class="navbar-end">
-                                <a class="navbar-item" @click="like(idx)">좋아욧!:{{item.heart}}</a>
+                                <a class="navbar-item" @click="like(item)">좋아욧!:{{item.heart}}</a>
                                 <a class="navbar-item" @click="">댓글</a>
                             </div>
 
@@ -56,8 +56,18 @@
             }
         },
         methods:{
-            like:function(idx){
+            like:function(item){
+                this.$http.post('http://localhost:8000/like',{
+                    heart:item.heart,
+                    id : item._id
 
+                }).then((res)=>{
+                    this.list = res.data.bloglist;
+                    for(let i=0;i<this.list.length;i++)
+                    {
+                        this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                    }
+                })
             },
             reList:function () {
                 this.$http.get("http://localhost:8000/upload/img").then((res)=>{
