@@ -16,12 +16,18 @@ var snsSchema = mongoose.Schema({
     },
     likeuserId : {
         type : String
+    },
+    nickname : {
+        type : String
+    },
+    snsId : {
+        type :Number
     }
 });
-// snsSchema.plugin(autoIncrement, {
-//     model: 'image',
-//     field: 'blogId',
-//     startAt: 1
-// })
+ snsSchema.plugin(autoIncrement, {
+     model: 'sns',
+     field: 'snsId',
+     startAt: 1
+ })
 
 module.exports = mongoose.model('sns', snsSchema);

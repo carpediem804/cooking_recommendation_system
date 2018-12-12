@@ -42,13 +42,13 @@
         },
         methods:{
             postThink:function() { //행님 글 post 하는 함수인데 user 는 유저 정보를 body 는 글 내용을 보냅니다요
-                this.nickName=firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then(doc=>{
-                    this.blog.author=doc.data().nickName
+                firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then((doc)=>{
+                    this.nickName=doc.data().nickName
                 })
                 this.$http.post('http://localhost:8000/upload/userThink',{
                     nickName:this.nickName,
                     uid:this.$store.state.user.uid,
-                    body:this.body
+                    content:this.body
                 }).then((res)=>{
                     if(res.data)
                     {
