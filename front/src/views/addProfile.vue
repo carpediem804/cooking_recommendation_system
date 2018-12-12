@@ -70,7 +70,7 @@ export default{
             formData.append('file', this.file);
             axios.post('http://localhost:8000/upload/userimg', formData,{
                 params: {
-                        uid : this.$store.state.user
+                        uid : this.$store.state.user.uid
                 }}).then((res)=>{
                 if(res.data)
                 {

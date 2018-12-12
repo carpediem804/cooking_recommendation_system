@@ -54,8 +54,11 @@ router.post("/img", function(req, res) {
 });
 router.post("/userimg",function(req, res) {
     console.log("userimg로들어옴");
-    console.log(req.query);
-    console.log(req);
+    //console.log(req.query);
+    console.log(req.query.uid);
+    //console.log(req.query.uid)
+    //console.log(req.body.uid);
+
     upload(req, res, function (err) {
         if (req.file == null || req.file == undefined || req.file == "") {
             res.json('No Image Set');
@@ -66,7 +69,18 @@ router.post("/userimg",function(req, res) {
             } else {
                 let putsns = new sns();
                 putsns.image = req.file.filename;
-               // putsns.body =
+                putsns.body = req.query.uid;
+                putsns.title = '';
+                putsns.heart = 0;
+                putsns.likeuserId = "";
+                putsns.save(()=>{
+                    if (err) {
+                        res.send("false");
+                        return next(err)
+                    }
+
+                });
+                res.send("true");
             }
         }
     })//upload
