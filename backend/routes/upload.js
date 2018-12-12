@@ -6,7 +6,19 @@ const sns = require('../db/models/sns');
 const upload = require('../multer/storage');
 
 
-
+router.post('/myuser', function(req, res,next){
+    console.log("upload/myuser 들어옴")
+    console.log(req.body);
+    console.log(req.body.mymynick)
+    Image.find({authorname : req.body.mymynick}).then(mylist=>{
+        res.json({myarticle : mylist})
+    })
+    //console.log(req);
+    // Image.find().then(dblist=>{
+    //     // console.log(dblist);
+    //     res.json({bloglist : dblist});
+    // })
+})
 router.get('/img', function(req, res,next){
     console.log("upload/img로 들어옴")
     Image.find().then(dblist=>{

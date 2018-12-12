@@ -541,6 +541,7 @@
             <div id="recommend">
                 <ul>
                     <li v-for="(data,index) in receive_data">
+
                             <div v-if="index%2==0" id="menu_image">
                                 <h2>{{receive_data[index].title}}</h2>
 
@@ -551,7 +552,46 @@
                             </div>
                             <div v-if="index%2!=0">
                                 요리법 : <a v-bind:href="receive_data[index]"> click </a>
+                                <section>
+                                   <button class="button is-small"
+                                            @click="showModal">
+                                        요리법
+                                    </button>
+
+                                    <b-modal ref="myModalRef" :width="640" >
+                                        <div class="card">
+                                            <div class="card-image">
+                                                <figure class="image is-4by3">
+                                                    <img v-bind:src=$url(image_list[index])>
+                                                </figure>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <figure class="image is-48x48">
+                                                            <img height='250' width="250" v-bind:src=$url(image_list[index])>
+                                                        </figure>
+                                                    </div>
+                                                    <div class="media-content">
+                                                        <h2>{{receive_data[index].title}}</h2>
+
+                                                        <p class="title is-4">요리이름:{{receive_data[index].title}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="recipe">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                    Phasellus nec iaculis mauris.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </b-modal>
+                                </section>
                             </div>
+
+
+
+
                         <div>
                             <!--<b-btn v-b-modal="myModal">요리법 보기</b-btn>-->
                             <!--<b-modal id="myModal">-->
@@ -559,6 +599,7 @@
                             <!--</b-modal>-->
                         </div>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -579,6 +620,7 @@
         components: {BModal, BField},
         data(){
             return{
+                isCardModalActive: false,
                 ingredient: " ",
                 selected : " ",
                 checkedNames:[],
@@ -676,12 +718,15 @@
                 })
                 //this.checkedNames.splice(0,this.checkedNames.length)
             },
-
+            showModal () {
+                this.$refs.myModalRef.show()
+            },
 
 
             test:function(id){
                 this.testurl='../../../backend/routes/cook_image/'+id+'.jpg'
             }
+
 
 
         }
@@ -719,13 +764,16 @@
         width :auto;
         box-sizing: border-box;
     }
-    p{
+    .category-list p{
         text-align: center;
         font-size: x-small ;
     }
     .스파게티소스{
         text-align: center;
         font-size: xx-small ;
+    }
+    p{
+        text-align: center;
     }
 
 
@@ -758,6 +806,7 @@
     }
     .screen {
         margin: auto;
+        font-size: medium;
 
         width: 200px;
         height: 200px;

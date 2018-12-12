@@ -127,20 +127,26 @@
             }
         },
         created(){
-            firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then((doc)=>{
-                    this.mynickName=doc.data().nickName
-                    console.log(this.mynickName)
+            firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then((doc)=> {
+
+                this.mynickName = doc.data().nickName
+                console.log(this.mynickName)
+                this.$http.post("http://localhost:8000/upload/myuser",{
+                    mymynick : this.mynickName
+                }).then((res) => {
+                    this.titleList = res.data.myarticle
+                })
             })
 
-            this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                for(let i =0 ; i<res.data.bloglist.length;i++){
-                    if(res.data.bloglist[i].authorname == this.mynickName){
-                        
-                    }
-                }
-                this.titleList = res.data.bloglist;
-                console.log(res.data.bloglist)
-            })
+            // this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+            //     for(let i =0 ; i<res.data.bloglist.length;i++){
+            //         if(res.data.bloglist[i].authorname == this.mynickName){
+            //             this.titleList
+            //         }
+            //     }
+            //     this.titleList = res.data.bloglist;
+            //     console.log(res.data.bloglist)
+            // })
         },
         methods : {
             myRowClickHandler(record, index) {
