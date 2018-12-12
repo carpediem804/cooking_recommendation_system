@@ -98,6 +98,13 @@ router.post("/userThink",function(req, res) {
     })
 
 })
+router.get('/userThink',function(req,res){
+    console.log("userthink 데이터가져가기로 로 들어옴")
+    sns.find().then(dblist=>{
+        // console.log(dblist);
+        res.json({snslist : dblist});
+    })
+})
 
 
 
