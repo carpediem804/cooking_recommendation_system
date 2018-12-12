@@ -2,7 +2,7 @@
 import App from './App.vue'
 import router from './router'
 import firebase from 'firebase'
-import VModal from 'vue-js-modal'
+//import VModal from 'vue-js-modal'
 import axios from 'axios'
 import VueResource from 'vue-resource'
 //import VueRouter from 'vue-router'
@@ -12,7 +12,9 @@ import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+import VModal from 'vue-js-modal'
 
+Vue.use(VModal, { dynamic: true })
 Vue.use(BootstrapVue);
 Vue.use(Buefy)
 

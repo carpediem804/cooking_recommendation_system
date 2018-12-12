@@ -1,14 +1,6 @@
 <template>
     <div id="blogtest">
         <h1>게시글 리스트</h1>
-        <b-icon icon="account"></b-icon>
-        <b-icon icon="menu-down" />
-        <b-icon icon=""></b-icon>
-        <b-icon
-                pack="fas"
-                icon="user"
-                size="is-small">
-        </b-icon>
         <b-container fluid>
             <b-icon
                     pack="fas"
