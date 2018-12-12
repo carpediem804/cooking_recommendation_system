@@ -24,7 +24,7 @@
                 </span>
             </div>
             <b-field>
-                <b-input type="text" placeholder="닉네임" vmodel="nickName" id="nickName"></b-input>
+                <b-input type="text" placeholder="닉네임" v-model="nickName" id="nickName"></b-input>
             </b-field>
             <b-field class="has-text-centered">
                 <button class="button" value="수정" v-on:click="addInfo()">수정</button>
@@ -65,8 +65,14 @@ export default{
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
             let formData = new FormData();
             formData.append('file', this.file);
+            db.collection('users').doc(user.email).get().then((doc)=>{
+                this.nickName=doc.data().nickName
+                console.log(this.nickName);
+            })
+
             axios.post('http://localhost:8000/upload/userimg', formData,{
                 params: {
+                        nickName:this.nickName,
                         uid : this.$store.state.user.uid
                 }}).then((res)=>{
                 if(res.data)

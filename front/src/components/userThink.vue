@@ -49,7 +49,7 @@
                 this.$http.post('http://localhost:8000/upload/userThink',{
                     nickName:this.nickName,
                     uid:this.$store.state.user.uid,
-                    body:this.body
+                    content:this.body
                 }).then((res)=>{
                     if(res.data)
                     {
