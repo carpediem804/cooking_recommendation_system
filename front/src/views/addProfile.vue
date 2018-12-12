@@ -3,16 +3,34 @@
         <div class="modal-card-head">
             <p>프로필 변경</p>
         </div>
-        <section class="modal-card-body">
+        <section class="modal-card-body" >
             <b-field>
-                <b-input type="text" placeholder="닉네임" id="nickName"></b-input>
-            </b-field>
+                <div class="dropbox">
+                    <input class="input-file" type="file" name="file"
+                           @change="upload($event.target.name, $event.target.files)"
+                           @drop="upload($event.target.name, $event.target.files)">
+                    <div class="content has-text-centered" v-if="!imageUp">
+                        <i class="fas fa-image fa-3x"></i>
+                    </div>
+                    <div v-else>
+                        <img :src="imgFile" />
+                    </div>
+                </div>
 
+            </b-field>
+            <div v-if="dropFiles">
+                <span class="file-name">
+                    {{ dropFiles.name }}
+                </span>
+            </div>
             <b-field>
-                <textarea class="textarea" placeholder="자기소개" id="self"></textarea>
+                <b-input type="text" placeholder="닉네임" vmodel="nickName" id="nickName"></b-input>
             </b-field>
             <b-field>
                 <button class="button" value="수정" v-on:click="addInfo()">수정</button>
+            </b-field>
+            <b-field>
+                <button class="button" value="테스트" @click="test()">테스트</button>
             </b-field>
         </section>
 
@@ -26,6 +44,8 @@ import firebase from 'firebase'
 import BField from "buefy/src/components/field/Field";
 import BFieldBody from "buefy/src/components/field/FieldBody";
 import BInput from "buefy/src/components/input/Input";
+import axios from 'axios'
+import BUpload from "buefy/src/components/upload/Upload";
 
 export default{
     name:'addProfile',
@@ -44,8 +64,52 @@ export default{
                 nickName:document.getElementById('nickName').value,
             })
             }
-            alert('변경사항이 저장되었습니다.')
+
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            let formData = new FormData();
+            formData.append('file', this.file);
+            axios.post('http://localhost:8000/upload/userimg', formData,{
+                params: {
+                        uid : this.$store.state.user
+                }}).then((res)=>{
+                if(res.data)
+                {
+
+                }
+                else
+                {
+
+                }
+            });
+
         },
+        upload(name, files) {
+
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+
+            //  const formData = new FormData();
+            //   formData.append(name, files[0], files[0].name);
+            this.createImage(files[0]);
+            console.log(files)
+            this.file = files[0]
+            let formData = new FormData()
+            formData.append('file', this.file)
+            this.imageUp=true
+
+        },
+        createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = (e) => {
+                vm.imgFile = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        test(){
+
+        }
         /*db에서 읽는법
         readDb:function(){
         var db=firebase.firestore();
@@ -56,11 +120,14 @@ export default{
     },
     data(){
         return{
-            name:'',
-            sex:''
+            nickName:'',
+            sex:'',
+            dropFiles:null,
+            imageUp:false
         }
     },
     components:{
+        BUpload,
         BInput,
         BFieldBody,
         BField,
@@ -75,6 +142,26 @@ export default{
                window.location.href="/"
            }
         })()
-    }
+    },
 }
 </script>
+
+<style>
+    .dropbox {
+        outline: 2px dashed #aaa;
+        background: #7fb4dd;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        margin: 0 auto;
+    }
+    .input-file{
+        position: absolute;
+        opacity: 0;
+        width:100%;
+        height:100%;
+        top:0;
+        left:0;
+        z-index: 3;
+    }
+</style>

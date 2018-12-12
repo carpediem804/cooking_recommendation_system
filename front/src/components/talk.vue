@@ -1,6 +1,6 @@
 <template>
-<div id="talk">
-    <div class="tile is is-ancestor is-7" style="margin: auto;">
+<div id="talk" style="margin-top: 20px">
+    <div class="tile is is-ancestor is-6" style="margin: auto;">
         <div class="tile is-vertical">
             <div class="tile">
                 <article class="tile notification is-warning">
@@ -85,6 +85,7 @@
                                 this.list[i].image='http://localhost:8000/'+this.list[i].image;
                             }
                         })
+                        alert("추천하셨습니다")
                     }
                 })
                 this.reList()

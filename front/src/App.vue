@@ -27,13 +27,10 @@
             <b-dropdown class="navbar-item">
                 <i class="fas fa-bars" slot="trigger"></i>
                 <div v-if="loggedIn">
-                    <b-dropdown-item value="blog" disabled>
-                        Blog
+                    <b-dropdown-item value="blog">
+                        <a>내가 쓴 글 관리</a>
                     </b-dropdown-item>
                     <hr class="dropdown-divider">
-                    <b-dropdown-item value="settings">
-                        Settings
-                    </b-dropdown-item>
                     <b-dropdown-item value="logout">
                         <a @click="logout">로그아웃</a>
                     </b-dropdown-item>
@@ -121,6 +118,7 @@
                 this.$store.state.loggedIn=logState
                 this.$store.state.user=getUser
             }
+            console.log(this.$store.state.user)
 
 
         },

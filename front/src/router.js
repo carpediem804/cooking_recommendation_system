@@ -59,6 +59,6 @@ export default new Router({
         path:'/testtest',
           name:'blogblog',
           component:blogblog
-      }
+      },
   ]
 })
