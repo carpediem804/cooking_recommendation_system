@@ -1,15 +1,13 @@
 <template>
 <div class="modal-card" style="width:700px; margin:auto">
-    대현행님 글작성 테스트 창입니다 원본 그대로 있습니다요
     <header class="modal-card-head">
         <b-input type="text" v-model.lazy="blog.title" style="width:100%" required placeholder="제목"></b-input>
     </header>
     <section class="modal-card-body">
         <div class="tile is-ancestor">
-            <div class="tile is-vertical is-8">
+            <div class="tile is-vertical">
                 <div class="tile">
                     <article class="tile is-child">
-                        사진
                         <div class="dropbox">
                             <input class="input-file" type="file" name="file"
                                    @change="upload($event.target.name, $event.target.files)"
@@ -27,8 +25,7 @@
                     <div class="content" style="width:100%;">
                         <strong>{{blog.author}}</strong> <small>({{this.$store.state.user.email}})</small> <!--유저 정보 -->
                         <br>
-                        <label>내용:</label>
-                        <textarea class="textarea" rows="10" v-model.lazy.trim="blog.content"></textarea>
+                        <textarea placeholder="내용을 입력해주세요" class="textarea" rows="10" v-model.lazy.trim="blog.content"></textarea>
                         <div id="checkboxes">
                             <p>Categories:</p>
                             <label>한식</label>
@@ -42,11 +39,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="tile">
-                <article class="tile notification is-warning">
-                    요리 재료 선택해서 태그 추가하는거??
-                </article>
             </div>
         </div>
     </section>
@@ -105,6 +97,8 @@ export default{
                 //this.submitted = true;
                 //console.log(this.submitted);
             });
+            alert("글이 등록되었습니다.")
+            this.$parent.close()
         },
         upload(name, files) {
 

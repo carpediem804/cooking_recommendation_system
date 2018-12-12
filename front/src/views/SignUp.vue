@@ -2,11 +2,11 @@
     <div id="SignUp">
         <section class="modal-card" style="width:300px">
             <div class="modal-card-body">
-                <b-field label="이메일" type="is-danger" message="This email is invalid">
+                <b-field label="이메일" type="is-danger">
                     <b-input type="email" v-model="email" id="user_email" maxlength="30" autocomplete="off"></b-input>
                 </b-field>
 
-                <b-field label="이름" type="is-success" message="This username is available">
+                <b-field label="이름" type="is-success">
                     <b-input  v-model="name" id="name" maxlength="30" autocomplete="off"></b-input>
                 </b-field>
 

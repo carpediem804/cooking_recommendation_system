@@ -4,9 +4,7 @@
     <div id="nav">
       <div>
         <div class="navbar-menu">
-          <b>여기엔 홈페이지 제목</b>
           <div class="navbar-end">
-            <a class="navbar-item" href="/">home</a>
             <button class="button is-warning is-normal" v-if="!loggedIn" @click="signUpPop=true">sign up</button>
             <button class="button is-primary is-normal" v-if="!loggedIn" @click="loginPop=true">login</button>
             <b-modal :active.sync="loginPop" has-modal-card>
@@ -24,24 +22,6 @@
             <b-modal :active.sync="writePop" has-modal-card>
               <showContent></showContent>
             </b-modal>
-            <b-dropdown class="navbar-item">
-                <i class="fas fa-bars" slot="trigger"></i>
-                <div v-if="loggedIn">
-                    <b-dropdown-item value="blog">
-                        <router-link to="/mine" exact>내가 쓴 글 관리</router-link>
-                        <!--<a href="/mine">내가 쓴 글 관리</a>-->
-                    </b-dropdown-item>
-                    <hr class="dropdown-divider">
-                    <b-dropdown-item value="logout">
-                        <a @click="logout">로그아웃</a>
-                    </b-dropdown-item>
-                </div>
-                <div v-if="!loggedIn">
-                    <b-dropdown-item>
-                        <a @click="loginPop=true">로그인</a>
-                    </b-dropdown-item>
-                </div>
-            </b-dropdown>
             <button class="button is-warning" v-if="loggedIn" @click="profilePop=true">프로필 수정</button>
             <button class="button is-light" v-if="loggedIn" @click="writePop=true">글쓰기</button>
             <button class="button is-link" v-if="loggedIn" v-on:click="logout()">logout</button>
@@ -50,11 +30,10 @@
         <div v-if="loggedIn">
           아이디:{{this.$store.state.user.email}}
         </div>
-        <div v-if="!loggedIn">
-          로그인 ㄴㄴ
-        </div>
-      <app-header></app-header>
-      <router-view></router-view>
+          <div class="card" style="width:70%; margin: auto">
+              <app-header></app-header>
+              <router-view></router-view>
+          </div>
 
       </div>
     </div>
@@ -133,6 +112,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+    background-color: #EEE;
+    background-size: cover;
+    height: 1000px;
 
 }
 #nav {

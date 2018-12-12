@@ -1,11 +1,12 @@
 <template>
-    <nav>
-        <ul>
+    <nav class="tile" style="margin: auto;">
+        <ul style="margin: auto">
             <li><router-link to="/" exact>Home</router-link></li>
-            <li> <router-link to="/ingredient" exact>현민이꺼</router-link></li>
-            <li><router-link to="/testtest" exact>게시판테스트</router-link></li>
-            <li><router-link to="/showBlogs" exact>Blog</router-link></li>
-            <li><router-link to="/comment" exact>com</router-link></li>
+            <li> <router-link to="/ingredient" exact>메뉴 추천</router-link></li>
+            <li><router-link to="/testtest" exact>게시판</router-link></li>
+            <div class="navbar-end">
+
+            </div>
         </ul>
     </nav>
 </template>
@@ -33,7 +34,7 @@ a{
     border-radius: 10px;
 }
 nav{
-    background: #444;
+    background: hotpink;
     padding: 14px 0;
     margin-bottom: 40px;
 }
