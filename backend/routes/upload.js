@@ -85,6 +85,10 @@ router.post("/userimg",function(req, res) {
         }
     })//upload
 })//router
+router.post("/userimg",function(req, res) {
+    console.log(req.body);
+})
+
 
 
 module.exports = router;
