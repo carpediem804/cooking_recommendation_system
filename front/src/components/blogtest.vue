@@ -1,7 +1,20 @@
 <template>
     <div id="blogtest">
         <h1>게시글 리스트</h1>
+        <b-icon icon="account"></b-icon>
+        <b-icon icon="menu-down" />
+        <b-icon icon=""></b-icon>
+        <b-icon
+                pack="fas"
+                icon="user"
+                size="is-small">
+        </b-icon>
         <b-container fluid>
+            <b-icon
+                    pack="fas"
+                    icon="user"
+                    size="is-small">
+            </b-icon>
         <b-row>
             <b-col md="6" class="my-1">
                 <b-form-group horizontal label="Filter" class="mb-0">
@@ -76,8 +89,10 @@
 
 <script>
 
+    import BIcon from "buefy/src/components/icon/Icon";
     export default {
         name: "blogtest",
+        components: {BIcon},
         data :function(){
             return{
                 fields: {

@@ -410,6 +410,13 @@
                         <div v-if="index%2!=0">
                             요리법 : <a v-bind:href="receive_data[index]"> click </a>
                         </div>
+                        <div>
+
+                            <!--<b-btn v-b-modal="myModal">요리법 보기</b-btn>-->
+                            <!--<b-modal id="myModal">-->
+                                <!--재료: {{receive_data[index].ingredients}}-->
+                            <!--</b-modal>-->
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -422,9 +429,10 @@
 <script>
 
     import BField from "buefy/src/components/field/Field";
+    import BModal from "buefy/src/components/modal/Modal";
     export default {
         name:'example_select',
-        components: {BField},
+        components: {BModal, BField},
         data(){
             return{
                 ingredient: " ",
