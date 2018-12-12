@@ -9,7 +9,7 @@ from sklearn.neighbors import NearestNeighbors
 data = pd.read_csv('.\\routes\\recipe_data_3_1.csv', engine='python')
 
 b = data['recipeId'] #label
-a = data.loc[:,'햄'::] #data
+a = data.loc[:,'ham'::] #data
 #total_data = pd.concat([b,a],axis=1)
 column = a.columns
 

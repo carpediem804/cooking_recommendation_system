@@ -1,6 +1,6 @@
-const { Router } = require('Express');
+const { Router } = require('express');
 const router = Router();
-const blogdata = require('../db/models/images');
+const blogdata = require('../db/models/Images');
 
 router.post('/', function(req, res,next){
     console.log("remove로 들어옴");
