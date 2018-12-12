@@ -65,6 +65,7 @@ export default new Router({
         path:'/mine',
           name:'mywrite',
           component:my
-      }
+      },
+
   ]
 })
