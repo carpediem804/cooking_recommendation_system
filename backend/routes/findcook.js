@@ -12,7 +12,7 @@ var send_data = []
 router.post('/recipe', function(req, res){
     console.log("/recipe로 들어옴")
 
-    recipeModel.findOne({recipeId: req.body.recipeId}).exec()
+    recipeModel.findOne({title: req.body.title}).exec()
         .then(recipe =>{
             console.log(recipe);
             res.json({recipe});
