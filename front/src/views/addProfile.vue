@@ -26,11 +26,8 @@
             <b-field>
                 <b-input type="text" placeholder="닉네임" vmodel="nickName" id="nickName"></b-input>
             </b-field>
-            <b-field>
+            <b-field class="has-text-centered">
                 <button class="button" value="수정" v-on:click="addInfo()">수정</button>
-            </b-field>
-            <b-field>
-                <button class="button" value="테스트" @click="test()">테스트</button>
             </b-field>
         </section>
 
@@ -74,11 +71,11 @@ export default{
                 }}).then((res)=>{
                 if(res.data)
                 {
-
+                    alert("수정되었습니다")
                 }
                 else
                 {
-
+                    alert("수정 실패")
                 }
             });
 
@@ -107,9 +104,6 @@ export default{
             };
             reader.readAsDataURL(file);
         },
-        test(){
-
-        }
         /*db에서 읽는법
         readDb:function(){
         var db=firebase.firestore();
