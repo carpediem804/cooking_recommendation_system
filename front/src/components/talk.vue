@@ -13,13 +13,18 @@
                     <figure class="media-left"> <!--사진-->
                         <p class="image is-128x128">
                             <img width="parent" height="auto" v-bind:src=$url(item.image)>
-                            <b>{{item.authorname}}</b>
+                            <b>{{item.nickname}}</b>
                         </p>
                     </figure>
                     <div class="media-content">
+                        <div class="content">
+                            <b-field-body style="background-color: lightyellow; height:30">
+                                <textarea class="textarea" readonly>{{item.title}}</textarea>
+                            </b-field-body>
+                        </div>
                         <nav class="navbar-menu"><!-- 이름,댓글,좋아요 -->
                             <b-field>
-                                <b>{{item.title}}</b>
+                                <b></b>
                             </b-field>
                             <div class="navbar-end">
                                 <a class="navbar-item" @click="like(item)"><i class="far fa-thumbs-up"></i>:{{item.heart}}</a>
@@ -27,14 +32,6 @@
                             </div>
 
                         </nav>
-                        <div class="content">
-                            <b-field>
-                                <img width="parent" height="auto" v-bind:src=$url(item.image)>
-                            </b-field>
-                            <b-field-body style="background-color: lightyellow; height:30">
-                                <textarea class="textarea" readonly>{{item.body}}</textarea>
-                            </b-field-body>
-                        </div>
                     </div>
                 </article>
             </div>
@@ -53,6 +50,7 @@
         data(){
             return{
                 list:[],
+                items:[]
             }
         },
         methods:{
@@ -101,23 +99,14 @@
             }
         },
         created(){
-            this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                for(let i=res.data.bloglist.length;i>0;i--)
-                {
-                    this.list.push(res.data.bloglist[i-1])
-                }
-
-                for(let i=0;i<this.list.length;i++)
-                {
-                    this.list[i].image='http://localhost:8000/'+this.list[i].image;
-                }
-            })
-
             this.$http.get('http://localhost:8000/upload/userThink').then((res)=>{
-                this.list=res.data
-                for(let i=res.data.bloglist.length;i>0;i--)
+                for(let i=res.data.snslist.length;i>0;i--)
                 {
-                    this.list.push(res.data.bloglist[i-1])
+                   console.log(res.data.snslist[0].title)
+                    if(res.data.snslist[i-1].title!=='')
+                    {
+                        this.list.push(res.data.snslist[i-1])
+                    }
                 }
 
                 for(let i=0;i<this.list.length;i++)
