@@ -101,19 +101,8 @@
             }
         },
         created(){
-            this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                for(let i=res.data.bloglist.length;i>0;i--)
-                {
-                    this.list.push(res.data.bloglist[i-1])
-                }
-
-                for(let i=0;i<this.list.length;i++)
-                {
-                    this.list[i].image='http://localhost:8000/'+this.list[i].image;
-                }
-            })
-
             this.$http.get('http://localhost:8000/upload/userThink').then((res)=>{
+                console.log(res.data.snslist)
                 for(let i=res.data.snslist.length;i>0;i--)
                 {
                     this.list.push(res.data.snslist[i-1])
