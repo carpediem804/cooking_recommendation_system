@@ -1,8 +1,9 @@
 <template>
     <div id ="example_select">
         <div class="tile is ancestor">
-            <div class="tile is-parent">
 
+
+            <div class="tile  is-4 is-parent ">
 
                     <div class="content">
                         <b-field >
@@ -23,9 +24,13 @@
 
 
 
-<div class="tile is-parent">
+
+<div class="tile   is-parent">
+
                         <div class="category-list">
                             <span v-if = "selected == '야채류'  " >
+
+
                   <b-field class="small-sort">
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="무" >
                           <img v-bind:src = "imageLink1"  />
@@ -361,6 +366,8 @@
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="생크림">
                               <img v-bind:src = "imageLink67"  />
                       </b-checkbox-button>
+                       </b-field>
+                  <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="치즈">
                               <img v-bind:src = "imageLink68"  />
@@ -373,14 +380,13 @@
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="우유">
                               <img v-bind:src = "imageLink70"  />
                       </b-checkbox-button>
+                       </b-field>
+                  <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="떡">
                               <img v-bind:src = "imageLink71"  />
                       </b-checkbox-button>
 
-                  </b-field>
-
-                  <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="밥">
                               <img v-bind:src = "imageLink72"  />
                       </b-checkbox-button>
@@ -394,16 +400,13 @@
 
 
 
-                        </div>
+
+</div>
+
 </div>
 
 
-
-
-
-
-
-<div class="tile  is-parent">
+            <div class="tile  is-parent">
     <div class="showing">
             <span>
                       <br>
@@ -416,8 +419,15 @@
                     </span>
     </div>
 </div>
+            </div>
 
-            <div id="recommend">
+
+
+        <div class="tile is-ancestor ">
+            <div class="tile is-4 is-parent"></div>
+
+<div class="tile is-parent">
+            <div id="recommend" >
                 <ul>
                     <li v-for="(data,index) in receive_data">
                         <div v-if="index%2==0" id="menu_image">
@@ -430,18 +440,23 @@
                         </div>
                         <div v-if="index%2!=0">
                             요리법 : <a v-bind:href="receive_data[index]"> click </a>
-
                         </div>
-                        <div v-if="index%2!=0">
-                            <b-button variant="success" class="button is-info" @click="howtocook(index)"> 요리법 보기</b-button>
-                        </div>
+                        <div>
 
+                            <!--<b-btn v-b-modal="myModal">요리법 보기</b-btn>-->
+                            <!--<b-modal id="myModal">-->
+                            <!--재료: {{receive_data[index].ingredients}}-->
+                            <!--</b-modal>-->
+                        </div>
                     </li>
                 </ul>
             </div>
+        </div>
+            <div class="tile is-parent"></div>
+        </div>
 
     </div>
-    </div>
+
 
 </template>
 
@@ -555,15 +570,6 @@
 
             test:function(id){
                 this.testurl='../../../backend/routes/cook_image/'+id+'.jpg'
-            },
-            howtocook:function(data){
-                console.log("howtocook ");
-                console.log(data);
-                var index = data-1;
-                console.log(this.receive_data);
-                console.log(this.receive_data[1]);
-                console.log(this.receive_data[index]);
-                console.log(this.receive_data[index].ingredients);
             }
 
 
@@ -582,9 +588,7 @@
         height:30px;
         font-size: 30px;
     }
-    .small sort{
-        height: 100px;
-    }
+
 
     .content{
         margin: auto;
@@ -599,31 +603,27 @@
         width :auto;
         box-sizing: border-box;
     }
-    b-checkbox-button{
-        top: 100px;
-    }
 
 
 
 
-    img{
+
+   .category-list img{
         height: 53px;
         width: 80px;
 
 
     }
+   #recommend{
+       margin: auto;
+   }
 
     .showing{
         margin: auto;
-
-
-
-
     }
     .clickButton{
         margin: auto;
         float: right;
-
     }
     .screen {
         margin: auto;
