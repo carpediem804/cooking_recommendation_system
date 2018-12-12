@@ -16,7 +16,7 @@ export default {
     },
     methods:{
         test:function(){
-            this.$http.get('http://localhost:8000/findcook/recommend').then(res=>{
+            this.$http.get('http://54.190.129.64:8000/findcook/recommend').then(res=>{
                 console.log("hi")
                 console.log(res)
                 //요리이름

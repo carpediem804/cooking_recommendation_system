@@ -58,7 +58,7 @@
         methods:{
             like:function(item){
                 console.log(this.$store.state.user)
-                this.$http.post('http://localhost:8000/like',{
+                this.$http.post('http://54.190.129.64:8000/like',{
                     heart:item.heart,
                     id : item._id,
                     uid:this.$store.state.user.uid
@@ -66,12 +66,12 @@
                     if(res.data=="reject")
                     {
                         alert("이미 추천하셨습니다.")
-                        this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                        this.$http.get("http://54.190.129.64:8000/upload/img").then((res)=>{
                             this.list = res.data.bloglist;
                             console.log(this.list)
                             for(let i=0;i<this.list.length;i++)
                             {
-                                this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                                this.list[i].image='http://54.190.129.64:8000/'+this.list[i].image;
                             }
                         })
                     }

@@ -125,11 +125,11 @@
                 filter: null,
                 modalInfo: { title: '', content: '' },
 
-                test : 'http://localhost:8000/'
+                test : 'http://54.190.129.64:8000/'
             }
         },
         created(){
-            this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+            this.$http.get("http://54.190.129.64:8000/upload/img").then((res)=>{
                 this.titleList = res.data.bloglist;
 
             })
@@ -150,13 +150,13 @@
             },
             deletedata(data){
                 let deleteid = data.item._id;
-                this.$http.post('http://localhost:8000/delete/',{
+                this.$http.post('http://54.190.129.64:8000/delete/',{
                     removeId: deleteid
                 }).then(res=>{
                     console.log(res);
                     console.log("res응답욈");
                     console.log(res)
-                    this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                    this.$http.get("http://54.190.129.64:8000/upload/img").then((res)=>{
                         this.titleList = res.data.bloglist;
                     })
                 })

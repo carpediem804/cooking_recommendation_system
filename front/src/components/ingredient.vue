@@ -555,7 +555,7 @@
             },
 
             ingredients:function(){
-                this.$http.post('http://localhost:8000/findcook/',{
+                this.$http.post('http://54.190.129.64:8000/findcook/',{
                     checkedNames: this.checkedNames
                 }).then(res=>{
                     this.receive_data=res.body.send_data

@@ -45,7 +45,7 @@
                 this.nickName=firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then(doc=>{
                     this.blog.author=doc.data().nickName
                 })
-                this.$http.post('http://localhost:8000/upload/userThink',{
+                this.$http.post('http://54.190.129.64:8000/upload/userThink',{
                     nickName:this.nickName,
                     img:'',
                     body:this.body
