@@ -146,7 +146,7 @@ export default{
         },
         test:function(){
             firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then(doc=>{
-                this.blog.author=doc.data().name
+                this.blog.author=doc.data().nickName
             })//행님 유저 정보 읽어오는 함수입니다
         }
     },

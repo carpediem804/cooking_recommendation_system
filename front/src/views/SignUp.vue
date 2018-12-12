@@ -80,7 +80,6 @@ export default{
                     }
                 })
                 alert('회원가입 완료')
-                window.location.href='/'
             }
             else
             {
