@@ -1,5 +1,5 @@
 const multer = require('multer');
-const { Router } = require('Express');
+const { Router } = require('express');
 const router = Router();
 const Image = require('../db/models/images');
 const upload = require('../multer/storage');

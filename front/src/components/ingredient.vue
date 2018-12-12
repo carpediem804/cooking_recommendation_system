@@ -28,7 +28,8 @@
                             <span v-if = "selected == '야채류'  " >
                   <b-field class="small-sort">
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="무">
-                          <img v-bind:src = "imageLink1"  />
+                          <b-img v-bind:src = "imageLink1"  fluid alt="Responsive image"/>
+                          <br>무
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="호박">
@@ -399,9 +400,9 @@
             <div id="recommend">
                 <ul>
                     <li v-for="(data,index) in receive_data">
+
                         <div v-if="index%2==0" id="menu_image">
                             <h2>{{receive_data[index].title}}</h2>
-
                             <img height='250' width="250" v-bind:src=$url(image_list[index])>
                         </div>
                         <div v-if="index%2==0">
@@ -410,14 +411,9 @@
                         <div v-if="index%2!=0">
                             요리법 : <a v-bind:href="receive_data[index]"> click </a>
                         </div>
-                        <div>
-
-                            <!--<b-btn v-b-modal="myModal">요리법 보기</b-btn>-->
-                            <!--<b-modal id="myModal">-->
-                                <!--재료: {{receive_data[index].ingredients}}-->
-                            <!--</b-modal>-->
-                        </div>
+                        <b-button variant="success" class="button is-info">요리법 보기</b-button>
                     </li>
+
                 </ul>
             </div>
 
@@ -536,6 +532,9 @@
 
             test:function(id){
                 this.testurl='../../../backend/routes/cook_image/'+id+'.jpg'
+            },
+            del_data:function(){
+                console.log("del로들어옴 ");
             }
 
 

@@ -1,4 +1,4 @@
-const { Router } = require('Express');
+const { Router } = require('express');
 const router = Router();
 const blogdata = require('../db/models/images');
 
