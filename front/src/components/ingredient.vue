@@ -554,11 +554,11 @@
                                 요리법 : <a v-bind:href="receive_data[index]"> click </a>
                                 <section>
                                    <button class="button is-small"
-                                            @click="isCardModalActive = true">
+                                            @click="showModal">
                                         요리법
                                     </button>
 
-                                    <b-modal :active.sync="isCardModalActive" :width="640" >
+                                    <b-modal ref="myModalRef" :width="640" >
                                         <div class="card">
                                             <div class="card-image">
                                                 <figure class="image is-4by3">
@@ -718,7 +718,9 @@
                 })
                 //this.checkedNames.splice(0,this.checkedNames.length)
             },
-
+            showModal () {
+                this.$refs.myModalRef.show()
+            },
 
 
             test:function(id){

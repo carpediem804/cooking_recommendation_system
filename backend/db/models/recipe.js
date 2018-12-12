@@ -15,4 +15,4 @@ const recipeSchma = new mongoose.Schema({
 })
 
 
-module.exports = mongoose.model('cook', recipeSchma)
+module.exports = mongoose.model('recipe', recipeSchma)
