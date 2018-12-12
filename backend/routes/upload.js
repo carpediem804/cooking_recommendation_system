@@ -7,7 +7,7 @@ const upload = require('../multer/storage');
 
 
 
-router.get('/img', function(req, res,next){
+router.get('/img', function(req, res){
     console.log("upload/img로 들어옴")
     Image.find().then(dblist=>{
        // console.log(dblist);
