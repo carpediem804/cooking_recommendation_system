@@ -45,6 +45,7 @@
                 firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then((doc)=>{
                     this.nickName=doc.data().nickName
                 })
+
                 this.$http.post('http://localhost:8000/upload/userThink',{
                     nickName:this.nickName,
                     uid:this.$store.state.user.uid,

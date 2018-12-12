@@ -49,6 +49,8 @@ export default{
             name:'',
             email:'',
             password:'',
+            dbData:{},
+            test:''
         }
     },
     methods:{
@@ -64,8 +66,24 @@ export default{
                         nickName:document.getElementById('nickName').value,
                         sex:document.querySelector('input[name="sex"]:checked').value,
                         super:0,
-                        pwd:document.getElementById('user_pwd').value
+                        pwd:document.getElementById('user_pwd').value,
+                        uid:user.user.uid
                     })
+
+                    this.$http.post('http://localhost:8000/signup',{
+                        params:{
+                            name:document.getElementById('name').value,
+                            nickName:document.getElementById('nickName').value,
+                            sex:document.querySelector('input[name="sex"]:checked').value,
+                            super:0,
+                            pwd:document.getElementById('user_pwd').value,
+                            uid:user.user.uid
+                        }
+                    }).then((res)=>{
+
+                    })
+
+                    alert('회원가입 완료')
                 })
                 .catch((err)=>{
                     switch(err.code){
@@ -79,7 +97,6 @@ export default{
                         }
                     }
                 })
-                alert('회원가입 완료')
             }
             else
             {
