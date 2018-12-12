@@ -62,11 +62,12 @@
                         <!--</ul>-->
                         <!--</b-card>-->
                     </template>
-                    <template slot="remove" slot-scope="row" >
+
+                         <template  v-if="admini==1" slot="remove" slot-scope="row" >
                         <b-button size="lg" variant="Delete" class ="button is-danger" @click="deletedata(row)">
                             delete
                         </b-button>
-                    </template>
+                        </template>
 
 
                 </b-table>
@@ -84,9 +85,10 @@
 <script>
 
     import BIcon from "buefy/src/components/icon/Icon";
+    import firebase from 'firebase'
     export default {
         name: "blogtest",
-        components: {BIcon},
+        components: {BIcon,firebase},
         data :function(){
             return{
                 fields: {
@@ -113,17 +115,12 @@
 
                     },
                     remove : {
-
+                         label : ''
                     }
             },
                 titleList : [],
                 currentPage: 1,
-                //perPage: 5,
-               // totalRows: titleList.length,
-               // pageOptions: [ 5, 10, 15 ],
-               // sortBy: null,
-               // sortDesc: false,
-               // sortDirection: 'asc',
+                admini : 0,
                 filter: null,
                 modalInfo: { title: '', content: '' },
 
@@ -131,10 +128,18 @@
             }
         },
         created(){
-            this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                this.titleList = res.data.bloglist;
+            firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then((doc)=> {
+                //console.log("dkljfalksdjflkasjflkasjfklasjkasldfjewagjoiwaghoawieghaweghaelkgjsdlk")
+                var ananan = doc.data().super
+                this.admini = Number(ananan)
+                console.log(this.admini)
+                this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                    this.titleList = res.data.bloglist;
 
+                })
             })
+
+
         },
         methods : {
             myRowClickHandler(record, index) {
