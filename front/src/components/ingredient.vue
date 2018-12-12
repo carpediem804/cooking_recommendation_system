@@ -583,9 +583,7 @@
                 })
                 //this.checkedNames.splice(0,this.checkedNames.length)
             },
-            checking:function(){
-                checkedNames: '무'
-            },
+
 
 
             test:function(id){
