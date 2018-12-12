@@ -9,7 +9,7 @@ const router = Router()
 /* ... */
 var send_data = []
 
-router.get('/recipe', function(req, res){
+router.post('/recipe', function(req, res){
     console.log("/recipe로 들어옴")
 
     recipeModel.findOne({recipeId: req.body.recipeId}).exec()
