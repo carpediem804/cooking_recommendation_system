@@ -427,22 +427,21 @@
             <div class="tile is-4 is-parent"></div>
 
 <div class="tile is-parent">
-            <div id="recommend" >
+            <div id="recommend">
                 <ul>
                     <li v-for="(data,index) in receive_data">
-                        <div v-if="index%2==0" id="menu_image">
-                            <h2>{{receive_data[index].title}}</h2>
+                            <div v-if="index%2==0" id="menu_image">
+                                <h2>{{receive_data[index].title}}</h2>
 
-                            <img height='250' width="250" v-bind:src=$url(image_list[index])>
-                        </div>
-                        <div v-if="index%2==0">
-                            재료: {{receive_data[index].ingredients}}
-                        </div>
-                        <div v-if="index%2!=0">
-                            요리법 : <a v-bind:href="receive_data[index]"> click </a>
-                        </div>
+                                <img height='250' width="250" v-bind:src=$url(image_list[index])>
+                            </div>
+                            <div v-if="index%2==0">
+                                재료: {{receive_data[index].ingredients}}
+                            </div>
+                            <div v-if="index%2!=0">
+                                요리법 : <a v-bind:href="receive_data[index]"> click </a>
+                            </div>
                         <div>
-
                             <!--<b-btn v-b-modal="myModal">요리법 보기</b-btn>-->
                             <!--<b-modal id="myModal">-->
                             <!--재료: {{receive_data[index].ingredients}}-->

@@ -114,10 +114,9 @@
             })
 
             this.$http.get('http://localhost:8000/upload/userThink').then((res)=>{
-                this.list=res.data
-                for(let i=res.data.bloglist.length;i>0;i--)
+                for(let i=res.data.snslist.length;i>0;i--)
                 {
-                    this.list.push(res.data.bloglist[i-1])
+                    this.list.push(res.data.snslist[i-1])
                 }
 
                 for(let i=0;i<this.list.length;i++)
