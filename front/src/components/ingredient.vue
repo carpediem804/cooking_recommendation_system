@@ -553,7 +553,7 @@
                             <div v-if="index%2!=0">
                                 요리법 : <a v-bind:href="receive_data[index]"> click </a>
                                 <section>
-                                   <button class="button is-primary is-medium"
+                                   <button class="button is-small"
                                             @click="isCardModalActive = true">
                                         요리법
                                     </button>
