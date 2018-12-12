@@ -84,6 +84,7 @@ export default{
                     })
 
                     alert('회원가입 완료')
+                    this.$parent.close();
                 })
                 .catch((err)=>{
                     switch(err.code){
