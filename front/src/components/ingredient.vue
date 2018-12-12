@@ -430,8 +430,12 @@
                         </div>
                         <div v-if="index%2!=0">
                             요리법 : <a v-bind:href="receive_data[index]"> click </a>
+
                         </div>
-                        <b-button variant="success" class="button is-info"> 요리법 보기</b-button>
+                        <div v-if="index%2!=0">
+                            <b-button variant="success" class="button is-info" @click="howtocook(index)"> 요리법 보기</b-button>
+                        </div>
+
                     </li>
                 </ul>
             </div>
@@ -552,8 +556,14 @@
             test:function(id){
                 this.testurl='../../../backend/routes/cook_image/'+id+'.jpg'
             },
-            del_data:function(){
-                console.log("del로들어옴 ");
+            howtocook:function(data){
+                console.log("howtocook ");
+                console.log(data);
+                var index = data-1;
+                console.log(this.receive_data);
+                console.log(this.receive_data[1]);
+                console.log(this.receive_data[index]);
+                console.log(this.receive_data[index].ingredients);
             }
 
 

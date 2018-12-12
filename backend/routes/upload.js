@@ -1,19 +1,11 @@
-const multer = require('multer');
+//const multer = require('multer');
 const { Router } = require('express');
 const router = Router();
 const Image = require('../db/models/Images');
+const sns = require('../db/models/sns');
 const upload = require('../multer/storage');
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'upload/');
-    },
-    filename: (req, file, cb) => {
-        console.log(file)
-        const fileName = "흠냐" + req.params.id + ".jpg";
-        cb(null, fileName);
-    }
-});
+
 
 router.get('/img', function(req, res,next){
     console.log("upload/img로 들어옴")
@@ -46,7 +38,8 @@ router.post("/img", function(req, res) {
                 //image.blogId = req.query.blogId;
                 image.authorname = req.query.author;
                 image.heart = 0;
-                console.log(image.authorname)
+                image.likeuserId = "";
+                console.log(image.authorname);
                 image.save(()=>{
                     if (err) return next(err);
                 });
@@ -59,6 +52,25 @@ router.post("/img", function(req, res) {
     //res.send("저장완료");
 
 });
+router.post("/userimg",function(req, res) {
+    console.log("userimg로들어옴");
+    console.log(req.query);
+    console.log(req);
+    upload(req, res, function (err) {
+        if (req.file == null || req.file == undefined || req.file == "") {
+            res.json('No Image Set');
+            console.log("이미지없음")
+        } else {
+            if (err) {
+                console.log(err);
+            } else {
+                let putsns = new sns();
+                putsns.image = req.file.filename;
+               // putsns.body =
+            }
+        }
+    })//upload
+})//router
 
 
 module.exports = router;
