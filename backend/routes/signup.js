@@ -13,7 +13,7 @@ router.post('/', function(req, res,next){
     putsns.nickname = req.body.params.nickName
     putsns.title = '';
     putsns.heart = 0;
-    putsns.likeuserId = "";
+    putsns.likeuserId = "_";
     putsns.save(function(err,data){
         if(err){
             console.log(err);

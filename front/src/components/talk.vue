@@ -54,40 +54,7 @@
             }
         },
         methods:{
-            like:function(item){
-                console.log(this.$store.state.user)
-                this.$http.post('http://localhost:8000/like/talk',{
-                    heart:item.heart,
-                    id : item._id,
-                    uid:this.$store.state.user.uid
-                }).then((res)=>{
-                    if(res.data=="reject")
-                    {
-                        alert("이미 추천하셨습니다.")
-                        this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                            this.list = res.data.bloglist;
-                            console.log(this.list)
-                            for(let i=0;i<this.list.length;i++)
-                            {
-                                this.list[i].image='http://localhost:8000/'+this.list[i].image;
-                            }
-                        })
-                    }
-                    else
-                    {
-                        this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                            this.list = res.data.bloglist;
-                            console.log(this.list)
-                            for(let i=0;i<this.list.length;i++)
-                            {
-                                this.list[i].image='http://localhost:8000/'+this.list[i].image;
-                            }
-                        })
-                        alert("추천하셨습니다")
-                    }
-                })
-                this.reList()
-            },
+
             reList:function () {
                 this.$http.get("http://localhost:8000/upload/img").then((res)=>{
                     this.list = res.data.bloglist;

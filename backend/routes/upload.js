@@ -69,7 +69,7 @@ router.post("/userimg",function(req, res) {
                 console.log(err);
             } else {
 
-                sns.findOneAndUpdate({user:req.query.uid},{$set : {nickname : req.query.nickName , image : req.file.filename }},function(err,tank){
+                sns.findOneAndUpdate({user:req.query.uid},{$set : {nickname : req.query.nickName , image : req.file.filename  }},function(err,tank){
                     if(err) {
                         res.send('false');
                         return console.log(err);
@@ -83,7 +83,7 @@ router.post("/userimg",function(req, res) {
 })//router
 router.post("/userThink",function(req, res) {
     console.log("user Think 들어옴");
-    //console.log(req.body);
+    console.log(req.body);
     var uid = req.body.uid;
     console.log(uid);
     var putitle = req.body.content;
@@ -93,6 +93,8 @@ router.post("/userThink",function(req, res) {
     upgradsns.user = uid;
     upgradsns.nickname = req.body.nickName;
     upgradsns.title = putitle;
+    upgradsns.heart = 0;
+    upgradsns.likeuserId = '_';
     sns.findOne({user:uid},'image',function(err,imagename){
         //console.log(imagename);
         //var imageurl = imagename;

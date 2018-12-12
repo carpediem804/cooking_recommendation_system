@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const likedata = require('../db/models/Images');
-
+const snsdata = require('../db/models/sns');
 router.post('/', function(req, res,next){
     console.log("remove로 들어옴");
     //console.log(req);
@@ -37,10 +37,6 @@ router.post('/', function(req, res,next){
     })
 
 })
-router.post('/talk', function(req, res,next){
-    //console.log(req);
-    console.log(req.body);
 
-})
 
 module.exports = router;
