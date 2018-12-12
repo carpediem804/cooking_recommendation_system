@@ -2,11 +2,25 @@ const { Router } = require('express')
 const cookModel = require('../db/models/cook')
 //const patientModel = require('../db/models/patient')
 var ps = require('python-shell');
+const recipeModel = require('../db/models/recipe')
 //var crawler = require('youtube-crawler');
 const router = Router()
 //var answer=0;
 /* ... */
 var send_data = []
+
+router.get('/recipe', function(req, res){
+    console.log("/recipe로 들어옴")
+
+    recipeModel.findOne({recipeId: req.body.recipeId}).exec()
+        .then(recipe =>{
+            console.log(recipe);
+            res.json({recipe});
+        })
+})
+
+
+
 router.post('/',function(req,res,next){
     send_data.splice(0,send_data.length)
     console.log("/들어옴")
