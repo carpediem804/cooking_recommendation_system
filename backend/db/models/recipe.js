@@ -1,14 +1,14 @@
 const { mongoose } = require('../mongo')
 
 const recipeSchma = new mongoose.Schema({
-    recipeId: {
+    justindex: {
         type: Number,
         unique: true
     },
-    title:{
+    titles:{
         type:String
     },
-    recipe:{
+    howtocook:{
         type:String
     },
 

@@ -560,20 +560,24 @@
 
                                     <b-modal :active.sync="isCardModalActive" :width="640" >
                                         <div class="card">
+                                            <div class="title is-4by3">
 
                                             <div class="card-content">
                                                 <div class="media">
                                                     <div class="media-content">
                                                         <p class="title is-4">요리이름:{{recipeTitle}}</p>
+                                                        <img height='250' width="250" v-bind:src=$url(sazin)>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            </div>
 
                                                 <div class="recipeTxt">
                                                     {{recipeModal}}
 
 
                                                 </div>
-                                            </div>
+
                                         </div>
                                     </b-modal>
                                 </section>
@@ -690,7 +694,8 @@
                 image_url: "./cook-image/",
                 image_list:[],
                 recipeTitle :'',
-                recipeModal: ''
+                recipeModal: '',
+                sazin: ''
             }
         },
         methods:{
@@ -714,15 +719,16 @@
             clickModal(data){
                 this.isCardModalActive = true;
                 this.recipeTitle = this.receive_data[data-1].title;
+                this.sazin = this.image_list[data-1];
 
 
-                this.$http.get('http://54.190.129.64:8000/findcook/recipe',{
+                this.$http.post('http://localhost:8000/findcook/recipe',{
 
-                    title: this.recipeTitle
+                    titles: this.recipeTitle
 
                 }).then(res=>{
 
-                    this.recipeModal= res.data.recipe;
+                    this.recipeModal= res.data.recipe.howtocook;
 
                 })
 

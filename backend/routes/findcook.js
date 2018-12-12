@@ -11,8 +11,8 @@ var send_data = []
 
 router.post('/recipe', function(req, res){
     console.log("/recipe로 들어옴")
-
-    recipeModel.findOne({title: req.body.title}).exec()
+    console.log(req.body.titles);
+    recipeModel.findOne({titles: req.body.titles}).exec()
         .then(recipe =>{
             console.log(recipe);
             res.json({recipe});
