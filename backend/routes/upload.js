@@ -89,13 +89,35 @@ router.post("/userThink",function(req, res) {
     var putitle = req.body.content;
     console.log(putitle)
     //var nickname = req.body.nickName;
-    sns.findOneAndUpdate({user:uid},{$set : {title : putitle }},function(err,tank){
-        if(err) {
-            res.send('false');
-            return console.log(err);
-        }
-        res.send('true');
+    let upgradsns = new sns();
+    upgradsns.user = uid;
+    upgradsns.nickname = req.body.nickName;
+    upgradsns.title = putitle;
+    sns.findOne({user:uid},'image',function(err,imagename){
+        //console.log(imagename);
+        //var imageurl = imagename;
+
+    }).then(aa =>{
+
+        upgradsns.image = aa.image;
+
+        upgradsns.save(function(err,data){
+            if(err){
+                console.log(err);
+            }
+        });
+
     })
+
+
+
+    // sns.findOneAndUpdate({user:uid},{$set : {title : putitle }},function(err,tank){
+    //     if(err) {
+    //         res.send('false');
+    //         return console.log(err);
+    //     }
+    //     res.send('true');
+    // })
 
 })
 router.get('/userThink',function(req,res){
