@@ -4,7 +4,7 @@
         <div class="tile is-vertical">
             <div class="tile">
                 <article class="tile notification is-warning">
-                    토크의 전체 글을 볼 수 있어요.
+                    한줄 토크의 모든 내용을 볼 수 있어요.
                     <a class="navbar-end" @click="reList()">새로고침</a>
                 </article>
             </div>
@@ -12,7 +12,7 @@
                 <article class="media" style="width: 100%"> <!-- v-for 적용 -->
                     <figure class="media-left"> <!--사진-->
                         <p class="image is-128x128">
-                            <img src="../../public/cook-image/1.jpg">
+                            <img width="parent" height="auto" v-bind:src=$url(item.image)>
                             <b>{{item.authorname}}</b>
                         </p>
                     </figure>
@@ -52,7 +52,7 @@
         components: {BIcon, BFieldBody, BField},
         data(){
             return{
-                list:{},
+                list:[],
             }
         },
         methods:{
@@ -102,8 +102,24 @@
         },
         created(){
             this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                this.list = res.data.bloglist;
-                console.log(this.list)
+                for(let i=res.data.bloglist.length;i>0;i--)
+                {
+                    this.list.push(res.data.bloglist[i-1])
+                }
+
+                for(let i=0;i<this.list.length;i++)
+                {
+                    this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                }
+            })
+
+            this.$http.get('http://localhost:8000/upload/userThink').then((res)=>{
+                this.list=res.data
+                for(let i=res.data.bloglist.length;i>0;i--)
+                {
+                    this.list.push(res.data.bloglist[i-1])
+                }
+
                 for(let i=0;i<this.list.length;i++)
                 {
                     this.list[i].image='http://localhost:8000/'+this.list[i].image;

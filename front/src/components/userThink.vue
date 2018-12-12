@@ -4,7 +4,7 @@
             <div class="tile is-6" style="margin: auto">
                 <div class="card" style="width: 100%">
                     <div class="card-header">
-                        <p class="card-header-title">게시물 만들기</p>
+                        <p class="card-header-title">한줄 토크</p>
                     </div>
                     <div class="card-body">
 
@@ -47,10 +47,17 @@
                 })
                 this.$http.post('http://localhost:8000/upload/userThink',{
                     nickName:this.nickName,
-                    img:'',
+                    uid:this.$store.state.user.uid,
                     body:this.body
                 }).then((res)=>{
-
+                    if(res.data)
+                    {
+                        alert("등록되었습니다")
+                    }
+                    else
+                    {
+                        alert("오류")
+                    }
                 })
             }
         }
