@@ -3,9 +3,12 @@ const { mongoose, autoIncrement } = require('../mongo')
 var snsSchema = mongoose.Schema({
     image: {
         type: String,
+        //required: true
+    },
+    user: {
+        type : String,
         required: true
     },
-    user: String,
     title : {
         type : String
     },

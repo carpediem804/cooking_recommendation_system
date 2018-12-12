@@ -6,6 +6,7 @@ const findcook = require('./routes/findcook')
 const upload = require('./routes/upload')
 const deletepost = require('./routes/removeblog')
 const like = require('./routes/like')
+const signup = require('./routes/signup')
 const app = express()
 
 app.use((req, res, next) =>{
@@ -23,6 +24,7 @@ app.use('/findcook', findcook)
 app.use('/upload', upload)
 app.use('/delete',deletepost);
 app.use('/like',like);
+app.use('/signup',signup);
 //app.use('/blogimage',express.static('blogimage'))
 
 module.exports = app

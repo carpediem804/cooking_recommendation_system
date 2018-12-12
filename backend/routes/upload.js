@@ -68,34 +68,28 @@ router.post("/userimg",function(req, res) {
             if (err) {
                 console.log(err);
             } else {
-                let putsns = new sns();
-                putsns.image = req.file.filename;
-                putsns.user = req.query.uid;
-                putsns.nickname = req.query.nickName
-                putsns.title = '';
-                putsns.heart = 0;
-                putsns.likeuserId = "";
-                putsns.save(()=>{
-                    if (err) {
-                        res.send("false");
-                        return next(err)
-                    }
 
-                });
-                res.send("true");
+                sns.findOneAndUpdate({user:req.query.uid},{$set : {nickname : req.query.nickName , image : req.file.filename }},function(err,tank){
+                    if(err) {
+                        res.send('false');
+                        return console.log(err);
+                    }
+                    res.send('true');
+                })
+
             }
         }
     })//upload
 })//router
 router.post("/userThink",function(req, res) {
-    console.log("user img로 들어옴");
+    console.log("user Think 들어옴");
     //console.log(req.body);
     var uid = req.body.uid;
     console.log(uid);
     var putitle = req.body.content;
     console.log(putitle)
     //var nickname = req.body.nickName;
-    sns.findAndUpdate({user:uid},{$set : {title : putitle }},function(err,tank){
+    sns.findOneAndUpdate({user:uid},{$set : {title : putitle }},function(err,tank){
         if(err) {
             res.send('false');
             return console.log(err);
