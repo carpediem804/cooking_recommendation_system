@@ -68,7 +68,7 @@ export default{
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
             let formData = new FormData();
             formData.append('file', this.file);
-            axios.post('http://localhost:8000/upload/userimg', formData,{
+            axios.post('http://54.190.129.64:8000/upload/userimg', formData,{
                 params: {
                         uid : this.$store.state.user.uid
                 }}).then((res)=>{

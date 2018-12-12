@@ -7,6 +7,11 @@ const router = Router()
 //var answer=0;
 /* ... */
 var send_data = []
+
+router.get('/', function(req, res,next){
+    console.log("/현민이껄로 들어옴")
+})
+
 router.post('/',function(req,res,next){
     send_data.splice(0,send_data.length)
     console.log("/들어옴")
