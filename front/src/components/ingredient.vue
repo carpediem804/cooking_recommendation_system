@@ -21,122 +21,131 @@
                         </b-field>
                     </div>
             </div>
-            <div>
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-
-
-
-
 
 <div class="tile   is-parent">
 
                         <div class="category-list">
-                            <span v-if = "selected == '야채류'  " >
+                            <span v-if = "selected == '야채류'  " class="col4">
 
 
-                  <b-field class="small-sort">
-                      <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="무"  class="무">
-                          <img v-bind:src="imageLink1" />
+
+                                <b-field >
+                      <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="무"  >
+                          <img v-bind:src = "imageLink1"  />
+                          <p>무</p>
                       </b-checkbox-button>
+
 
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="호박">
                           <img v-bind:src = "imageLink2"  />
+                          <p>호박</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="감자">
                           <img v-bind:src = "imageLink3"  />
+                           <p>감자</p>
                       </b-checkbox-button>
-                  </b-field>
 
-                                <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="고추">
                           <img v-bind:src = "imageLink4"  />
+                           <p>고추</p>
                       </b-checkbox-button>
+                                    </b-field>
+
+                                <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="숙주">
                           <img v-bind:src = "imageLink5"  />
+                           <p>숙주</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="깻잎">
                           <img v-bind:src = "imageLink6"  />
+                           <p>깻잎</p>
                       </b-checkbox-button>
- </b-field>
-                  <b-field>
+
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="양배추">
                           <img v-bind:src = "imageLink7"  />
+                           <p>양배추</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="양파">
                           <img v-bind:src = "imageLink8"  />
+                           <p>양파</p>
                       </b-checkbox-button>
+                                    </b-field>
+
+                                <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="당근">
                           <img v-bind:src = "imageLink9"  />
+                           <p>당근</p>
                       </b-checkbox-button>
-                       </b-field>
-                  <b-field>
-                      <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="오이">
+                                    <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="오이">
                           <img v-bind:src = "imageLink10"  />
+                                         <p>오이</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="대파">
                           <img v-bind:src = "imageLink11" width="50px" height="50px" />
+                           <p>대파</p>
                       </b-checkbox-button>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="두부">
                           <img v-bind:src = "imageLink12" />
+                           <p>두부</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="마늘">
                           <img v-bind:src = "imageLink13"  />
+                           <p>마늘</p>
                       </b-checkbox-button>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="콩나물">
                           <img v-bind:src = "imageLink14"  />
+                           <p >콩나물</p>
                       </b-checkbox-button>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="토마토">
                           <img v-bind:src = "imageLink15"  />
+                           <p >토마토</p>
                       </b-checkbox-button>
-                  </b-field>
-                  <b-field>
+
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="파프리카">
                           <img v-bind:src = "imageLink16"  />
+                           <p >파프리카</p>
                       </b-checkbox-button>
+                      </b-field>
+
+                                <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="무순">
                           <img v-bind:src = "imageLink17"  />
+                           <p>무순</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="버섯">
                           <img v-bind:src = "imageLink18"  />
+                           <p>버섯</p>
                       </b-checkbox-button>
-                       </b-field>
-                  <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="부추">
                           <img v-bind:src = "imageLink19"  />
+                           <p>부추</p>
                       </b-checkbox-button>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="브로콜리">
                           <img v-bind:src = "imageLink20"  />
+                           <p >브로콜리</p>
                       </b-checkbox-button>
+                                    </b-field>
+
+                                <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames"native-value ="옥수수">
                           <img v-bind:src = "imageLink21"  />
+                           <p>옥수수</p>
                       </b-checkbox-button>
-                       </b-field>
-                  <b-field>
+
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="애호박">
                           <img v-bind:src = "imageLink22"  />
+                           <p>애호박</p>
                       </b-checkbox-button>
 
                   </b-field>
@@ -149,43 +158,52 @@
                   <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="고등어">
                           <img v-bind:src = "imageLink23"  />
+                          <p>고등어</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button  size="is-large" v-model="checkedNames" native-value ="어묵">
                           <img v-bind:src = "imageLink24"  />
+                          <p>어묵</p>
                       </b-checkbox-button>
 
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="연어">
                           <img v-bind:src = "imageLink25"  />
+                          <p>연어</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="새우">
                           <img v-bind:src = "imageLink26"  />
+                          <p>새우</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="다시마">
                           <img v-bind:src = "imageLink27"  />
+                          <p>다시마</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="참치">
                           <img v-bind:src = "imageLink28"  />
+                          <p>참치</p>
                       </b-checkbox-button>
                       </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="맛살">
                           <img v-bind:src = "imageLink29"  />
+                          <p>맛살</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="멸치">
                           <img v-bind:src = "imageLink30"  />
+                          <p>멸치</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="미역">
                           <img v-bind:src = "imageLink31"  />
+                          <p>미역</p>
                       </b-checkbox-button>
                   </b-field>
                   <br>
@@ -196,23 +214,28 @@
                   <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="닭고기">
                           <img v-bind:src = "imageLink32"  />
+                          <p>닭고기</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="돼지고기">
                           <img v-bind:src = "imageLink33"  />
+                          <p>돼지고기</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large"  v-model="checkedNames" native-value ="소세지">
                           <img v-bind:src = "imageLink34"  />
+                          <p>소세지</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="베이컨">
                           <img v-bind:src = "imageLink35"  />
+                          <p>베이컨</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="소고기">
                           <img v-bind:src = "imageLink36"  />
+                          <p>소고기</p>
                       </b-checkbox-button>
                   </b-field>
                   <br>
@@ -223,34 +246,41 @@
                   <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="라면">
                               <img v-bind:src = "imageLink37"  />
+                          <p>라면</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="파스타면">
                               <img v-bind:src = "imageLink38"  />
+                          <p>파스타면</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="빵가루">
                               <img v-bind:src = "imageLink39"  />
+                          <p>빵가루</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="만두피">
                               <img v-bind:src = "imageLink40"  />
+                          <p>만두피</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="비스켓">
                               <img v-bind:src = "imageLink41"  />
+                          <p>비스켓</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="식빵">
                               <img v-bind:src = "imageLink42"  />
+                          <p>식빵</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="소면">
                               <img v-bind:src = "imageLink43"  />
+                          <p>소면</p>
                       </b-checkbox-button>
 
 
@@ -258,96 +288,109 @@
                   <br>
               </span>
 
-                            <span v-else-if = "selected == '양념류' ">
+                            <span v-else-if = "selected == '양념류' " class="col4">
                   <br>
                   <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="고추장">
                               <img v-bind:src = "imageLink44"  />
+                          <p>고추장</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="고춧가루">
                               <img v-bind:src = "imageLink45"  />
+                          <p>고춧가루</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="고추냉이">
                               <img v-bind:src = "imageLink46"  />
+                          <p>고추냉이</p>
                       </b-checkbox-button>
-                       </b-field>
-                  <b-field>
+
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="꿀">
                               <img v-bind:src = "imageLink47"  />
-                      </b-checkbox-button>
-
-                      <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="된장">
-                              <img v-bind:src = "imageLink49"  />
-                      </b-checkbox-button>
-
-                      <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="녹말가루">
-                              <img v-bind:src = "imageLink48"  />
+                          <p>꿀</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
 
+                      <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="된장">
+                              <img v-bind:src = "imageLink49"  />
+                          <p>된장</p>
+                      </b-checkbox-button>
+
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="매실청">
                               <img v-bind:src = "imageLink50"  />
+                          <p>매실청</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="스파게티소스">
                               <img v-bind:src = "imageLink51"  />
+                          <p class="스파게티소스">스파게티<br>소스</p>
                       </b-checkbox-button>
+
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="초고추장">
                               <img v-bind:src = "imageLink52"  />
+                          <p>초고추장</p>
                       </b-checkbox-button>
-                       </b-field>
+ </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="카레">
                               <img v-bind:src = "imageLink53"  />
+                          <p>카레</p>
                       </b-checkbox-button>
 
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="레몬즙">
                               <img v-bind:src = "imageLink54"  />
+                          <p>레몬즙</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="마요네즈">
                               <img v-bind:src = "imageLink55"  />
+                          <p>마요네즈</p>
                       </b-checkbox-button>
-                       </b-field>
-                  <b-field>
+
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="소주">
                               <img v-bind:src = "imageLink56"  />
+                          <p>소주</p>
                       </b-checkbox-button>
-
+</b-field>
+                  <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="새우젓">
                               <img v-bind:src = "imageLink57"  />
+                          <p>새우젓</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="케찹">
                               <img v-bind:src = "imageLink58"  />
+                          <p>케찹</p>
                       </b-checkbox-button>
-                  </b-field>
 
-                  <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="버터">
                               <img v-bind:src = "imageLink59"  />
+                          <p>버터</p>
                       </b-checkbox-button>
+
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="올리고당">
                               <img v-bind:src = "imageLink60"  />
+                          <p>올리고당</p>
                       </b-checkbox-button>
-
+  </b-field>
+                  <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="소금">
                               <img v-bind:src = "imageLink61"  />
+                          <p>소금</p>
                       </b-checkbox-button>
-                       </b-field>
-                  <b-field>
+
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="들깨가루">
                               <img v-bind:src = "imageLink62"  />
+                          <p>들깨가루</p>
                       </b-checkbox-button>
 
                   </b-field>
@@ -360,52 +403,63 @@
                   <b-field>
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="녹말가루">
                           <img v-bind:src = "imageLink48"  />
+                          <p>녹말가루</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="전분가루">
                           <img v-bind:src = "imageLink63"  />
+                          <p>전분가루</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="부침가루">
                           <img v-bind:src = "imageLink64"  />
+                          <p>부침가루</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="튀김가루">
                           <img v-bind:src = "imageLink65"  />
+                          <p>튀김가루</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="밀가루">
                           <img v-bind:src = "imageLink66"  />
+                          <p>밀가루</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="생크림">
                               <img v-bind:src = "imageLink67"  />
+                          <p>생크림</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="치즈">
                               <img v-bind:src = "imageLink68"  />
+                          <p>치즈</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="계란">
                               <img v-bind:src = "imageLink69"  />
+                          <p>계란</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="우유">
                               <img v-bind:src = "imageLink70"  />
+                          <p>우유</p>
                       </b-checkbox-button>
                        </b-field>
                   <b-field>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="떡">
                               <img v-bind:src = "imageLink71"  />
+                          <p>떡</p>
                       </b-checkbox-button>
 
                       <b-checkbox-button size="is-large" v-model="checkedNames" native-value ="밥">
                               <img v-bind:src = "imageLink72"  />
+                          <p>밥</p>
                       </b-checkbox-button>
 
                   </b-field>
@@ -626,16 +680,28 @@
         width :auto;
         box-sizing: border-box;
     }
+    p{
+        text-align: center;
+        font-size: x-small ;
+    }
+    .스파게티소스{
+        text-align: center;
+        font-size: xx-small ;
+    }
 
 
 
 
 
-
-
-
-   .category-list img{
+    .category-list img{
         height: 53px;
+        width: 80px;
+
+
+    }
+
+   .category-list .col4 img{
+        height: 47px;
         width: 80px;
 
 
