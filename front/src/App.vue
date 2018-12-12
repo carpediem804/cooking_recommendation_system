@@ -114,7 +114,7 @@
   color: #2c3e50;
     background-color: #EEE;
     background-size: cover;
-    height: 1000px;
+    height: 1500px;
 
 }
 #nav {
