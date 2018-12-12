@@ -1,7 +1,7 @@
 <template>
     <div id="mywrite">
         <div class="card">
-            <h1>내 게시글 리스트</h1>
+            <h1>게시글 리스트</h1>
             <b-container fluid>
                 <b-icon
                         pack="fas"
@@ -51,7 +51,16 @@
                             </b-row>
                             <b-button size="sm" class="button is-success" @click="row.toggleDetails">Hide Details</b-button>
                         </b-card>
-
+                        <!--<b-card>-->
+                        <!--<ul>-->
+                        <!--<li v-for="(value, key) in row.item" :key="key">-->
+                        <!--<h1> {{key}}</h1>:<b>{{value}}</b>>-->
+                        <!--<div v-if="key==='image'">-->
+                        <!--<img v-bind:src=$url(test+value)>-->
+                        <!--</div>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+                        <!--</b-card>-->
                     </template>
                     <template slot="remove" slot-scope="row" >
                         <b-button size="lg" variant="Delete" class ="button is-danger" @click="deletedata(row)">
@@ -62,21 +71,23 @@
 
                 </b-table>
 
+                <!--<ul v-for="c in titleList" v-bind:key="c.id" >-->
+                <!--<li>{{c}}<br></li>-->
+                <!--</ul>-->
             </b-container>
-
+            <!--<img src="http://localhost:8000/file-1544187170205.jpg">-->
         </div>
     </div>
 
 </template>
 
 <script>
-
-    import BIcon from "buefy/src/components/icon/Icon";
     import firebase from 'firebase'
-
+    import BIcon from "buefy/src/components/icon/Icon";
     export default {
         name: "mywrite",
-        components: {BIcon},
+        components: {BIcon,firebase},
+
         data :function(){
             return{
                 fields: {
@@ -108,21 +119,27 @@
                 },
                 titleList : [],
                 currentPage: 1,
-                mynickName : '',
+
                 filter: null,
                 modalInfo: { title: '', content: '' },
-
+                mynickName : '',
                 test : 'http://localhost:8000/'
             }
         },
         created(){
-            this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                //console.log(res.data.bloglist)
-                this.titleList = res.data.bloglist;
+            firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then((doc)=>{
+                    this.mynickName=doc.data().nickName
+                    console.log(this.mynickName)
             })
-            firebase.firestore().collection('users').doc(this.$store.state.user.email).get().then((doc)=> {
-                this.mynickName = doc.data().nickName
 
+            this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                for(let i =0 ; i<res.data.bloglist.length;i++){
+                    if(res.data.bloglist[i].authorname == this.mynickName){
+                        
+                    }
+                }
+                this.titleList = res.data.bloglist;
+                console.log(res.data.bloglist)
             })
         },
         methods : {
