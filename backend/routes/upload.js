@@ -118,9 +118,9 @@ router.post("/userThink",function(req, res) {
         upgradsns.save(function(err,data){
             if(err){
                 console.log(err);
-
+                res.send('false')
             }
-
+            res.send('true')
         });
 
     })

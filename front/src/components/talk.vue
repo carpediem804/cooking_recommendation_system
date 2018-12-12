@@ -1,11 +1,11 @@
 <template>
 <div id="talk" style="margin-top: 20px">
-    <div class="tile is is-ancestor is-6" style="margin: auto;">
+    <div class="tile is is-ancestor is-5" style="margin: auto;">
         <div class="tile is-vertical">
             <div class="tile">
                 <article class="tile notification is-warning">
                     한줄 토크의 모든 내용을 볼 수 있어요.
-                    <a class="navbar-end" @click="reList()">새로고침</a>
+                    <router-link to="/." exact class="navbar-end">새로고침</router-link>
                 </article>
             </div>
             <div class="tile notification" v-for="(item,idx) in list">
@@ -13,7 +13,7 @@
                     <figure class="media-left"> <!--사진-->
                         <p class="image is-128x128">
                             <img width="parent" height="auto" v-bind:src=$url(item.image)>
-                            <b>{{item.nickname}}</b>
+                            <b>{{nickNames[idx]}}</b>
                         </p>
                     </figure>
                     <div class="media-content">
@@ -26,10 +26,6 @@
                             <b-field>
                                 <b></b>
                             </b-field>
-                            <div class="navbar-end">
-                                <a class="navbar-item" @click="like(item)"><i class="far fa-thumbs-up"></i>:{{item.heart}}</a>
-                                <a class="navbar-item" @click="">댓글</a>
-                            </div>
 
                         </nav>
                     </div>
@@ -44,13 +40,15 @@
     import BField from "buefy/src/components/field/Field";
     import BFieldBody from "buefy/src/components/field/FieldBody";
     import BIcon from "buefy/src/components/icon/Icon";
+    import firebase from 'firebase'
     export default{
         name:'',
-        components: {BIcon, BFieldBody, BField},
+        components: {BIcon, BFieldBody, BField,firebase},
         data(){
             return{
                 list:[],
-                items:[]
+                items:[],
+                nickNames:[]
             }
         },
         methods:{
@@ -89,11 +87,14 @@
                // this.reList()
             },
             reList:function () {
-                this.$http.get("http://localhost:8000/upload/img").then((res)=>{
-                    this.list = res.data.bloglist;
+                this.$http.get("http://localhost:8000/upload/userThink").then((res)=>{
+                    this.list = res.data.snslist;
                     for(let i=0;i<this.list.length;i++)
                     {
-                        this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                        if(res.data.snslist[i].title!=='')
+                        {
+                            this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                        }
                     }
                 })
             }
@@ -102,15 +103,21 @@
             this.$http.get('http://localhost:8000/upload/userThink').then((res)=>{
                 for(let i=res.data.snslist.length;i>0;i--)
                 {
-                   console.log(res.data.snslist[0].title)
                     if(res.data.snslist[i-1].title!=='')
                     {
                         this.list.push(res.data.snslist[i-1])
                     }
                 }
-
                 for(let i=0;i<this.list.length;i++)
                 {
+                    firebase.firestore().collection("users").get().then((querySnapshot)=> {
+                        querySnapshot.forEach((doc) =>{
+                            if(doc.data().uid==this.list[i].user)
+                            {
+                                this.nickNames.push(doc.data().nickName)
+                            }
+                        });
+                    });
                     this.list[i].image='http://localhost:8000/'+this.list[i].image;
                 }
             })

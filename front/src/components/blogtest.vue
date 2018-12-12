@@ -3,11 +3,6 @@
         <div class="card">
             <h1>게시글 리스트</h1>
             <b-container fluid>
-                <b-icon
-                        pack="fas"
-                        icon="user"
-                        size="is-small">
-                </b-icon>
                 <b-row>
                     <b-col md="6" class="my-1">
                         <b-form-group horizontal label="Filter" class="mb-0">
