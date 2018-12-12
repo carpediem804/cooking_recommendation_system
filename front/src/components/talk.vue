@@ -58,7 +58,7 @@
         methods:{
             like:function(item){
                 console.log(this.$store.state.user)
-                this.$http.post('http://localhost:8000/like',{
+                this.$http.post('http://localhost:8000/like/talk',{
                     heart:item.heart,
                     id : item._id,
                     uid:this.$store.state.user.uid
