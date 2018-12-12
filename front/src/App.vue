@@ -28,7 +28,7 @@
                 <i class="fas fa-bars" slot="trigger"></i>
                 <div v-if="loggedIn">
                     <b-dropdown-item value="blog">
-                        <a>내가 쓴 글 관리</a>
+                        <a href="/mine">내가 쓴 글 관리</a>
                     </b-dropdown-item>
                     <hr class="dropdown-divider">
                     <b-dropdown-item value="logout">

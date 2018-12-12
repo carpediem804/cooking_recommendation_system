@@ -10,6 +10,7 @@ import ingredient from './components/ingredient.vue';
 import login from './components/Login.vue'
 import blogblog from './components/blogtest.vue'
 import comment from './components/Comment.vue'
+import my from './components/mywrite.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -60,5 +61,10 @@ export default new Router({
           name:'blogblog',
           component:blogblog
       },
+      {
+        path:'/mine',
+          name:'mywrite',
+          component:my
+      }
   ]
 })
