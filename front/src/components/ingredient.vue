@@ -1,6 +1,10 @@
 <template>
     <div id ="example_select">
-        <div class="tile is ancestor">
+        <div>
+
+        </div>
+        <div class="card">
+        <div class="tile is ancestor" >
 
 
             <div class="tile  is-4 is-parent ">
@@ -437,7 +441,7 @@
     </div>
 </div>
             </div>
-
+    </div>
 
 
         <div class="tile is-ancestor ">

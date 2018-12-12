@@ -11,7 +11,7 @@
                         <article class="media" style="margin-top: 10px;">
                             <div class="media-left">
                                 <p class="image is-128x128">
-                                    <img src="../../public/cook-image/1.jpg"><!-- 유저이미지 -->
+                                    <img width="parent" height="auto" v-bind:src=$url(img)><!-- 유저이미지 -->
                                 </p>
                             </div>
                             <div class="media-content">
@@ -61,6 +61,21 @@
                     }
                 })
             }
+        },
+        created() {
+            this.$http.get('http://localhost:8000/upload/userThink').then((res)=>{
+
+                for(let i=0;i<res.data.snslist;i++)
+                {
+                    console.log(res.data.snslist[i].user)
+                    console.log(this.$store.state.user.uid)
+                    if(res.data.snslist[i].user==this.$store.state.user.uid)
+                    {
+                        this.img='http://localhost:8000/'+res.data.snslist[i].image;
+                        console.log(this.img)
+                    }
+                }
+            })
         }
     }
 </script>
