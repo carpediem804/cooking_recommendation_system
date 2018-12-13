@@ -80,7 +80,7 @@ export default{
             formData.append('file', this.file);
             console.log(this.blog.title);
             this.submitted = true;
-            axios.post('http://localhost:8000/upload/img', formData,{
+            axios.post('http://54.190.129.64:8000/upload/img', formData,{
                 params: {
                     title: this.blog.title,
                     bodycotent: this.blog.content,

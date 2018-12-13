@@ -123,7 +123,7 @@
                 filter: null,
                 modalInfo: { title: '', content: '' },
                 mynickName : '',
-                test : 'http://localhost:8000/'
+                test : 'http://54.190.129.64:8000/'
             }
         },
         created(){
@@ -131,7 +131,7 @@
 
                 this.mynickName = doc.data().nickName
                 console.log(this.mynickName)
-                this.$http.post("http://localhost:8000/upload/myuser",{
+                this.$http.post("http://54.190.129.64:8000/upload/myuser",{
                     mymynick : this.mynickName
                 }).then((res) => {
                     this.titleList = res.data.myarticle
@@ -164,13 +164,13 @@
             },
             deletedata(data){
                 let deleteid = data.item._id;
-                this.$http.post('http://localhost:8000/delete/',{
+                this.$http.post('http://54.190.129.64:8000/delete/',{
                     removeId: deleteid
                 }).then(res=>{
                     console.log(res);
                     console.log("res응답욈");
                     console.log(res)
-                    this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                    this.$http.get("http://54.190.129.64:8000/upload/img").then((res)=>{
                         this.titleList = res.data.bloglist;
                     })
                 })

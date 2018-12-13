@@ -70,7 +70,7 @@ export default{
                 console.log(this.nickName);
             })
 
-            axios.post('http://localhost:8000/upload/userimg', formData,{
+            axios.post('http://54.190.129.64:8000/upload/userimg', formData,{
                 params: {
                         nickName:this.nickName,
                         uid : this.$store.state.user.uid

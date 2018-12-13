@@ -6,7 +6,7 @@ import json
 from importlib import reload
 from sklearn.neighbors import NearestNeighbors
 
-data = pd.read_csv('.\\routes\\recipe_data_3_1.csv', engine='python')
+data = pd.read_csv('./routes/recipe_data_3_1.csv', engine='python')
 
 b = data['recipeId'] #label
 a = data.loc[:,'ham'::] #data

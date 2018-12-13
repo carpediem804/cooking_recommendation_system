@@ -704,7 +704,7 @@
             },
 
             ingredients:function(){
-                this.$http.post('http://localhost:8000/findcook/',{
+                this.$http.post('http://54.190.129.64:8000/findcook/',{
                     checkedNames: this.checkedNames
                 }).then(res=>{
                     this.receive_data=res.body.send_data
@@ -722,7 +722,7 @@
                 this.sazin = this.image_list[data-1];
 
 
-                this.$http.post('http://localhost:8000/findcook/recipe',{
+                this.$http.post('http://54.190.129.64:8000/findcook/recipe',{
 
                     titles: this.recipeTitle
 

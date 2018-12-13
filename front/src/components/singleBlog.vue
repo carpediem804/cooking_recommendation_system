@@ -16,7 +16,7 @@ export default {
         }
     },
     created() {
-        this.$http.get('http://localhost:4000/posts/' + this.id).then(function(data){
+        this.$http.get('http://54.190.129.64:4000/posts/' + this.id).then(function(data){
             this.blog = data.body.data;
         });
     }

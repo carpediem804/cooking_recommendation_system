@@ -21,7 +21,7 @@
             }
         },
         created() {
-            this.$http.get('http://localhost:4000/').then(function(data){
+            this.$http.get('http://54.190.129.64:4000/').then(function(data){
 
                 this.blogs = data.body.data;
                 this.$store.state.blogs = this.blogs;

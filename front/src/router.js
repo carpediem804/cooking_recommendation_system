@@ -9,7 +9,6 @@ import singleBlog from './components/singleBlog.vue';
 import ingredient from './components/ingredient.vue';
 import login from './components/Login.vue'
 import blogblog from './components/blogtest.vue'
-import comment from './components/Comment.vue'
 import my from './components/mywrite.vue'
 import talk from './components/talk1.vue'
 Vue.use(Router)
@@ -23,11 +22,6 @@ export default new Router({
       name: 'home',
       component: Home
     },
-      {
-          path: '/comment',
-          name: 'comment',
-          component: comment
-      },
 
     {
       path: '/signUp',

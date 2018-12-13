@@ -62,7 +62,7 @@
                     if(res.data=="reject")
                     {
                         alert("이미 추천하셨습니다.")
-                        this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                        this.$http.get("http://54.190.129.64:8000/upload/img").then((res)=>{
                             this.list = res.data.bloglist;
                             console.log(this.list)
                             for(let i=0;i<this.list.length;i++)
@@ -73,12 +73,12 @@
                     }
                     else
                     {
-                        this.$http.get("http://localhost:8000/upload/img").then((res)=>{
+                        this.$http.get("http://54.190.129.64:8000/upload/img").then((res)=>{
                             this.list = res.data.bloglist;
                             console.log(this.list)
                             for(let i=0;i<this.list.length;i++)
                             {
-                                this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                                this.list[i].image='http://54.190.129.64:8000/'+this.list[i].image;
                             }
                         })
                         alert("추천하셨습니다")
@@ -87,20 +87,20 @@
                // this.reList()
             },
             reList:function () {
-                this.$http.get("http://localhost:8000/upload/userThink").then((res)=>{
+                this.$http.get("http://54.190.129.64:8000/upload/userThink").then((res)=>{
                     this.list = res.data.snslist;
                     for(let i=0;i<this.list.length;i++)
                     {
                         if(res.data.snslist[i].title!=='')
                         {
-                            this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                            this.list[i].image='http://54.190.129.64:8000/'+this.list[i].image;
                         }
                     }
                 })
             }
         },
         created(){
-            this.$http.get('http://localhost:8000/upload/userThink').then((res)=>{
+            this.$http.get('http://54.190.129.64:8000/upload/userThink').then((res)=>{
                 for(let i=res.data.snslist.length;i>0;i--)
                 {
                     if(res.data.snslist[i-1].title!=='')
@@ -118,7 +118,7 @@
                             }
                         });
                     });
-                    this.list[i].image='http://localhost:8000/'+this.list[i].image;
+                    this.list[i].image='http://54.190.129.64:8000/'+this.list[i].image;
                 }
             })
         },

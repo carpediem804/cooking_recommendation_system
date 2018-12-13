@@ -38,7 +38,7 @@ router.post('/',function(req,res,next){
         args: args,//req.body
 
     };
-    ps.PythonShell.run('.\\routes\\findcookname.py',options,function (err,result) {
+    ps.PythonShell.run('./routes/findcookname.py',options,function (err,result) {
         if(err) throw err;
 
         console.log("results %j",result);

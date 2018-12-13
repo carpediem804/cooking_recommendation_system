@@ -70,7 +70,7 @@ export default{
                         uid:user.user.uid
                     })
 
-                    this.$http.post('http://localhost:8000/signup',{
+                    this.$http.post('http://54.190.129.64:8000/signup',{
                         params:{
                             name:document.getElementById('name').value,
                             nickName:document.getElementById('nickName').value,
