@@ -8,7 +8,7 @@
   개인사용자들은 자신의 프로필 사진과 글을 수정할 수 있습니다. 
   
  # 처음 페이지
- ![default](https://user-images.githubusercontent.com/33194900/53871291-54b86a00-403f-11e9-80a7-19d232a2b595.JPG)
+ ![default](https://user-images.githubusercontent.com/33194900/53872981-c34af700-4042-11e9-850d-837fcf232bb5.JPG)
  # 요리 추천 페이지
  ![2](https://user-images.githubusercontent.com/33194900/53872732-2ee09480-4042-11e9-9564-993d816bdf30.JPG)
  # 재료에 따른 추천 요리 페이지
