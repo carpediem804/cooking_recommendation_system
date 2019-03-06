@@ -1,4 +1,4 @@
-# project1
+# web team project 
 
 ## Project setup
 ```
@@ -27,3 +27,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## 
+frontend 
+vue를 기본으로 만들었으며 buefy ,bootstrap 를 사용하였습니다
+
