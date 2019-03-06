@@ -35,4 +35,4 @@ npm run serve하여 vue를 실행시키면 됩니다.
         요리 추천을 위해 knn을 사용한 코드는 py파일에 있습니다.
         
 ## 
-  요리 추천 데이터 베이스는 
+  요리 추천 데이터 베이스는 backend/routes/recipe_data_3_1.csv파일에 있습니다.
